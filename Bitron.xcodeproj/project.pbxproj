@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
-		EDA6701A24D9F7870091BD4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701924D9F7870091BD4E /* SceneDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ViewController.swift */; };
 		EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6701D24D9F7870091BD4E /* Main.storyboard */; };
 		EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDA6701924D9F7870091BD4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EDA6701B24D9F7870091BD4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDA6701E24D9F7870091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
-				EDA6701924D9F7870091BD4E /* SceneDelegate.swift */,
 				EDA6701B24D9F7870091BD4E /* ViewController.swift */,
 				EDA6701D24D9F7870091BD4E /* Main.storyboard */,
 				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
@@ -325,7 +322,6 @@
 				EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */,
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
-				EDA6701A24D9F7870091BD4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
