@@ -16,6 +16,7 @@
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
 		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
 		EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */; };
+		EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6705124D9F8690091BD4E /* CryptoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronUITests.swift; sourceTree = "<group>"; };
 		EDA6703E24D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA6705124D9F8690091BD4E /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,13 @@
 		EDA6701624D9F7870091BD4E /* Bitron */ = {
 			isa = PBXGroup;
 			children = (
+				EDA6705024D9F8180091BD4E /* ViewModel */,
+				EDA6704F24D9F8140091BD4E /* Model */,
+				EDA6704E24D9F80B0091BD4E /* Coordinator */,
+				EDA6704D24D9F8040091BD4E /* ViewController */,
+				EDA6704C24D9F7F40091BD4E /* View */,
+				EDA6704B24D9F7D70091BD4E /* Services */,
+				EDA6704A24D9F7C80091BD4E /* Supporting */,
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
 				EDA6701924D9F7870091BD4E /* SceneDelegate.swift */,
 				EDA6701B24D9F7870091BD4E /* ViewController.swift */,
@@ -129,6 +138,56 @@
 				EDA6703E24D9F78B0091BD4E /* Info.plist */,
 			);
 			path = BitronUITests;
+			sourceTree = "<group>";
+		};
+		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		EDA6704B24D9F7D70091BD4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EDA6704C24D9F7F40091BD4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EDA6704D24D9F8040091BD4E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6705124D9F8690091BD4E /* CryptoViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EDA6704E24D9F80B0091BD4E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		EDA6704F24D9F8140091BD4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EDA6705024D9F8180091BD4E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +324,7 @@
 				EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */,
 				EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */,
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
+				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
 				EDA6701A24D9F7870091BD4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
