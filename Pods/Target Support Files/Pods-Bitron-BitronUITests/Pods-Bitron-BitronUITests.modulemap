@@ -1,0 +1,6 @@
+framework module Pods_Bitron_BitronUITests {
+  umbrella header "Pods-Bitron-BitronUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

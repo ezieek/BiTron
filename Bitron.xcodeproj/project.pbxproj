@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */; };
+		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
+		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ViewController.swift */; };
 		EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6701D24D9F7870091BD4E /* Main.storyboard */; };
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6BF556347057A90270617846 /* Pods-Bitron.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.debug.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.debug.xcconfig"; sourceTree = "<group>"; };
+		8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitron_BitronUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.release.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.release.xcconfig"; sourceTree = "<group>"; };
+		951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.debug.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA6701B24D9F7870091BD4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +61,8 @@
 		EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronUITests.swift; sourceTree = "<group>"; };
 		EDA6703E24D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA6705124D9F8690091BD4E /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
+		F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.release.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BB2B2BFB8084AE483F1D1C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */,
+				8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */,
+				F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D8DA2C54CA94DBD4541A2AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BF556347057A90270617846 /* Pods-Bitron.debug.xcconfig */,
+				9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */,
+				E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */,
+				951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */,
+				CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */,
+				FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EDA6700B24D9F7870091BD4E = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +124,8 @@
 				EDA6703024D9F78B0091BD4E /* BitronTests */,
 				EDA6703B24D9F78B0091BD4E /* BitronUITests */,
 				EDA6701524D9F7870091BD4E /* Products */,
+				7D8DA2C54CA94DBD4541A2AB /* Pods */,
+				3BB2B2BFB8084AE483F1D1C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +235,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA6704124D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "Bitron" */;
 			buildPhases = (
+				5119661E0ADC5E8A85177AD0 /* [CP] Check Pods Manifest.lock */,
 				EDA6701024D9F7870091BD4E /* Sources */,
 				EDA6701124D9F7870091BD4E /* Frameworks */,
 				EDA6701224D9F7870091BD4E /* Resources */,
@@ -211,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA6704424D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronTests" */;
 			buildPhases = (
+				229A3F7B0AC1965C2E3CEACC /* [CP] Check Pods Manifest.lock */,
 				EDA6702924D9F78B0091BD4E /* Sources */,
 				EDA6702A24D9F78B0091BD4E /* Frameworks */,
 				EDA6702B24D9F78B0091BD4E /* Resources */,
@@ -229,6 +272,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA6704724D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronUITests" */;
 			buildPhases = (
+				4F525217148A3CD3AC4A5EDB /* [CP] Check Pods Manifest.lock */,
 				EDA6703424D9F78B0091BD4E /* Sources */,
 				EDA6703524D9F78B0091BD4E /* Frameworks */,
 				EDA6703624D9F78B0091BD4E /* Resources */,
@@ -312,6 +356,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		229A3F7B0AC1965C2E3CEACC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitronTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F525217148A3CD3AC4A5EDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bitron-BitronUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5119661E0ADC5E8A85177AD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bitron-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDA6701024D9F7870091BD4E /* Sources */ = {
@@ -492,6 +605,7 @@
 		};
 		EDA6704224D9F78B0091BD4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BF556347057A90270617846 /* Pods-Bitron.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -510,6 +624,7 @@
 		};
 		EDA6704324D9F78B0091BD4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +643,7 @@
 		};
 		EDA6704524D9F78B0091BD4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -550,6 +666,7 @@
 		};
 		EDA6704624D9F78B0091BD4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -572,6 +689,7 @@
 		};
 		EDA6704824D9F78B0091BD4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -592,6 +710,7 @@
 		};
 		EDA6704924D9F78B0091BD4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
