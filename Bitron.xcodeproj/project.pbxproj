@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
+		EDA6701A24D9F7870091BD4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701924D9F7870091BD4E /* SceneDelegate.swift */; };
+		EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ViewController.swift */; };
+		EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6701D24D9F7870091BD4E /* Main.storyboard */; };
+		EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */; };
+		EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702324D9F78A0091BD4E /* Assets.xcassets */; };
+		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
+		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
+		EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDA6702E24D9F78B0091BD4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA6700C24D9F7870091BD4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA6701324D9F7870091BD4E;
+			remoteInfo = Bitron;
+		};
+		EDA6703924D9F78B0091BD4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA6700C24D9F7870091BD4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA6701324D9F7870091BD4E;
+			remoteInfo = Bitron;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDA6701924D9F7870091BD4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDA6701B24D9F7870091BD4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDA6701E24D9F7870091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
+		EDA6702324D9F78A0091BD4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA6702624D9F78A0091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDA6702824D9F78A0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA6703124D9F78B0091BD4E /* BitronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronTests.swift; sourceTree = "<group>"; };
+		EDA6703324D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronUITests.swift; sourceTree = "<group>"; };
+		EDA6703E24D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA6701124D9F7870091BD4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6702A24D9F78B0091BD4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6703524D9F78B0091BD4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDA6700B24D9F7870091BD4E = {
+			isa = PBXGroup;
+			children = (
+				EDA6701624D9F7870091BD4E /* Bitron */,
+				EDA6703024D9F78B0091BD4E /* BitronTests */,
+				EDA6703B24D9F78B0091BD4E /* BitronUITests */,
+				EDA6701524D9F7870091BD4E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA6701524D9F7870091BD4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6701424D9F7870091BD4E /* Bitron.app */,
+				EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */,
+				EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA6701624D9F7870091BD4E /* Bitron */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
+				EDA6701924D9F7870091BD4E /* SceneDelegate.swift */,
+				EDA6701B24D9F7870091BD4E /* ViewController.swift */,
+				EDA6701D24D9F7870091BD4E /* Main.storyboard */,
+				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
+				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
+				EDA6702824D9F78A0091BD4E /* Info.plist */,
+				EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */,
+			);
+			path = Bitron;
+			sourceTree = "<group>";
+		};
+		EDA6703024D9F78B0091BD4E /* BitronTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6703124D9F78B0091BD4E /* BitronTests.swift */,
+				EDA6703324D9F78B0091BD4E /* Info.plist */,
+			);
+			path = BitronTests;
+			sourceTree = "<group>";
+		};
+		EDA6703B24D9F78B0091BD4E /* BitronUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */,
+				EDA6703E24D9F78B0091BD4E /* Info.plist */,
+			);
+			path = BitronUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA6701324D9F7870091BD4E /* Bitron */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA6704124D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "Bitron" */;
+			buildPhases = (
+				EDA6701024D9F7870091BD4E /* Sources */,
+				EDA6701124D9F7870091BD4E /* Frameworks */,
+				EDA6701224D9F7870091BD4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bitron;
+			productName = Bitron;
+			productReference = EDA6701424D9F7870091BD4E /* Bitron.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDA6702C24D9F78B0091BD4E /* BitronTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA6704424D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronTests" */;
+			buildPhases = (
+				EDA6702924D9F78B0091BD4E /* Sources */,
+				EDA6702A24D9F78B0091BD4E /* Frameworks */,
+				EDA6702B24D9F78B0091BD4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA6702F24D9F78B0091BD4E /* PBXTargetDependency */,
+			);
+			name = BitronTests;
+			productName = BitronTests;
+			productReference = EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDA6703724D9F78B0091BD4E /* BitronUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA6704724D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronUITests" */;
+			buildPhases = (
+				EDA6703424D9F78B0091BD4E /* Sources */,
+				EDA6703524D9F78B0091BD4E /* Frameworks */,
+				EDA6703624D9F78B0091BD4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA6703A24D9F78B0091BD4E /* PBXTargetDependency */,
+			);
+			name = BitronUITests;
+			productName = BitronUITests;
+			productReference = EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA6700C24D9F7870091BD4E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Maciej Wołejko";
+				TargetAttributes = {
+					EDA6701324D9F7870091BD4E = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					EDA6702C24D9F78B0091BD4E = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = EDA6701324D9F7870091BD4E;
+					};
+					EDA6703724D9F78B0091BD4E = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = EDA6701324D9F7870091BD4E;
+					};
+				};
+			};
+			buildConfigurationList = EDA6700F24D9F7870091BD4E /* Build configuration list for PBXProject "Bitron" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA6700B24D9F7870091BD4E;
+			productRefGroup = EDA6701524D9F7870091BD4E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA6701324D9F7870091BD4E /* Bitron */,
+				EDA6702C24D9F78B0091BD4E /* BitronTests */,
+				EDA6703724D9F78B0091BD4E /* BitronUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA6701224D9F7870091BD4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */,
+				EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */,
+				EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6702B24D9F78B0091BD4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6703624D9F78B0091BD4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA6701024D9F7870091BD4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */,
+				EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */,
+				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
+				EDA6701A24D9F7870091BD4E /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6702924D9F78B0091BD4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA6703424D9F78B0091BD4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDA6702F24D9F78B0091BD4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA6701324D9F7870091BD4E /* Bitron */;
+			targetProxy = EDA6702E24D9F78B0091BD4E /* PBXContainerItemProxy */;
+		};
+		EDA6703A24D9F78B0091BD4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA6701324D9F7870091BD4E /* Bitron */;
+			targetProxy = EDA6703924D9F78B0091BD4E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDA6701D24D9F7870091BD4E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA6701E24D9F7870091BD4E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA6702624D9F78A0091BD4E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA6703F24D9F78B0091BD4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDA6704024D9F78B0091BD4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA6704224D9F78B0091BD4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = Bitron/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.Bitron;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA6704324D9F78B0091BD4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = Bitron/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.Bitron;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDA6704524D9F78B0091BD4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
+			};
+			name = Debug;
+		};
+		EDA6704624D9F78B0091BD4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
+			};
+			name = Release;
+		};
+		EDA6704824D9F78B0091BD4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitron;
+			};
+			name = Debug;
+		};
+		EDA6704924D9F78B0091BD4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitron;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA6700F24D9F7870091BD4E /* Build configuration list for PBXProject "Bitron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6703F24D9F78B0091BD4E /* Debug */,
+				EDA6704024D9F78B0091BD4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA6704124D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "Bitron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6704224D9F78B0091BD4E /* Debug */,
+				EDA6704324D9F78B0091BD4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA6704424D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6704524D9F78B0091BD4E /* Debug */,
+				EDA6704624D9F78B0091BD4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA6704724D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6704824D9F78B0091BD4E /* Debug */,
+				EDA6704924D9F78B0091BD4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */,
+			);
+			currentVersion = EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */;
+			path = Bitron.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EDA6700C24D9F7870091BD4E /* Project object */;
+}
