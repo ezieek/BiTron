@@ -11,7 +11,7 @@ import UIKit
 class Networking {
     
     private init() {}
-    static let shared = NetworkingService()
+    static let shared = Networking()
     
     func request(_ urlPath: String, completion: @escaping (Result<Data, NSError>) -> Void) {
         
