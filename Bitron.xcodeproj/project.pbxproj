@@ -19,6 +19,9 @@
 		9CD59B7B24DAA23200566236 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7A24DAA23200566236 /* DetailView.swift */; };
 		9CD59B7D24DAA46500566236 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7C24DAA46500566236 /* ApplicationCoordinator.swift */; };
 		9CD59B7F24DAA48300566236 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7E24DAA48300566236 /* Coordinator.swift */; };
+		9CD59B8124DAA59700566236 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8024DAA59700566236 /* Crypto.swift */; };
+		9CD59B8324DAA5E800566236 /* SavedCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8224DAA5E800566236 /* SavedCrypto.swift */; };
+		9CD59B8524DAA65700566236 /* CryptoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8424DAA65700566236 /* CryptoViewModel.swift */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* MainViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */; };
@@ -61,6 +64,9 @@
 		9CD59B7A24DAA23200566236 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9CD59B7C24DAA46500566236 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		9CD59B7E24DAA48300566236 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9CD59B8024DAA59700566236 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		9CD59B8224DAA5E800566236 /* SavedCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCrypto.swift; sourceTree = "<group>"; };
+		9CD59B8424DAA65700566236 /* CryptoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewModel.swift; sourceTree = "<group>"; };
 		CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.debug.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +246,8 @@
 		EDA6704F24D9F8140091BD4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CD59B8024DAA59700566236 /* Crypto.swift */,
+				9CD59B8224DAA5E800566236 /* SavedCrypto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +255,7 @@
 		EDA6705024D9F8180091BD4E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CD59B8424DAA65700566236 /* CryptoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 			files = (
 				EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */,
 				9CD59B7924DAA21F00566236 /* CryptoView.swift in Sources */,
+				9CD59B8324DAA5E800566236 /* SavedCrypto.swift in Sources */,
 				9CD59B7F24DAA48300566236 /* Coordinator.swift in Sources */,
 				9CD59B7524DAA1F900566236 /* MainView.swift in Sources */,
 				9CD59B7724DAA20B00566236 /* CryptoCell.swift in Sources */,
@@ -465,6 +475,8 @@
 				9CD59B7124DAA0D700566236 /* Persistence.swift in Sources */,
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
+				9CD59B8524DAA65700566236 /* CryptoViewModel.swift in Sources */,
+				9CD59B8124DAA59700566236 /* Crypto.swift in Sources */,
 				9CD59B7D24DAA46500566236 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
