@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  Bitron
 //
-//  Created by user175293 on 8/5/20.
+//  Created by Maciej Wołejko on 8/5/20.
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
