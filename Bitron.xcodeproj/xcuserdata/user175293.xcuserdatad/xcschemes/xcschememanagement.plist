@@ -7,7 +7,25 @@
 		<key>Bitron.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EDA6701324D9F7870091BD4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EDA6702C24D9F78B0091BD4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EDA6703724D9F78B0091BD4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

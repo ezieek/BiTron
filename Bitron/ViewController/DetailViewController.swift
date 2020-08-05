@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
         
-    let networking = NetworkingService.shared
+    let networking = Networking.shared
     var chosenCryptocurrency = ""
         
     override func viewDidLoad() {

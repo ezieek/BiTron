@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CryptoViewController: UIViewController {
 
@@ -15,8 +16,8 @@ class CryptoViewController: UIViewController {
     let reuseIdentifier = "reuseCell"
         
     let initObjects = CryptoView()
-    let networking = NetworkingService.shared
-    let persistence = PersistenceService.shared
+    let networking = Networking.shared
+    let persistence = Persistence.shared
     var cryptoViewModel: [CryptoViewModel] = []
     var cryptoNames = [""]
     var cryptoRates = [""]

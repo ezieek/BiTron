@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
         
     let initObjects = MainView()
     let reuseIdentifier = "reuseCell"
-    let networking = NetworkingService.shared
-    let persistence = PersistenceService.shared
+    let networking = Networking.shared
+    let persistence = Persistence.shared
     var cryptoNames = [""]
     var cryptoRates = [""]
     var chosenCryptoNames: [String] = []
