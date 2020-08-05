@@ -11,8 +11,7 @@
 		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
 		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
-		EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ViewController.swift */; };
-		EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6701D24D9F7870091BD4E /* Main.storyboard */; };
+		EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* MainViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */; };
 		EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702324D9F78A0091BD4E /* Assets.xcassets */; };
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
@@ -48,8 +47,7 @@
 		E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDA6701B24D9F7870091BD4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EDA6701E24D9F7870091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA6701B24D9F7870091BD4E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
 		EDA6702324D9F78A0091BD4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA6702624D9F78A0091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */,
 				FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,10 +146,6 @@
 				EDA6704C24D9F7F40091BD4E /* View */,
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
-				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
-				EDA6701B24D9F7870091BD4E /* ViewController.swift */,
-				EDA6701D24D9F7870091BD4E /* Main.storyboard */,
-				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
 				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
 				EDA6702824D9F78A0091BD4E /* Info.plist */,
 				EDA6702024D9F7870091BD4E /* Bitron.xcdatamodeld */,
@@ -181,6 +174,8 @@
 		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
+				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -202,6 +197,7 @@
 		EDA6704D24D9F8040091BD4E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDA6701B24D9F7870091BD4E /* MainViewController.swift */,
 				EDA6705124D9F8690091BD4E /* CryptoViewController.swift */,
 			);
 			path = ViewController;
@@ -337,7 +333,6 @@
 			files = (
 				EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */,
 				EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */,
-				EDA6701F24D9F7870091BD4E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA6701C24D9F7870091BD4E /* ViewController.swift in Sources */,
+				EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */,
 				EDA6702224D9F7870091BD4E /* Bitron.xcdatamodeld in Sources */,
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
@@ -470,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EDA6701D24D9F7870091BD4E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDA6701E24D9F7870091BD4E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
