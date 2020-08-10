@@ -165,9 +165,9 @@
 		EDA6701624D9F7870091BD4E /* Bitron */ = {
 			isa = PBXGroup;
 			children = (
+				EDA6704E24D9F80B0091BD4E /* Coordinator */,
 				EDA6705024D9F8180091BD4E /* ViewModel */,
 				EDA6704F24D9F8140091BD4E /* Model */,
-				EDA6704E24D9F80B0091BD4E /* Coordinator */,
 				EDA6704D24D9F8040091BD4E /* ViewController */,
 				EDA6704C24D9F7F40091BD4E /* View */,
 				EDA6704B24D9F7D70091BD4E /* Services */,
