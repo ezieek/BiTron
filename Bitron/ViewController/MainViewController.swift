@@ -12,7 +12,7 @@ import CoreData
 class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-        
+    var timer: Timer?
     let initObjects = MainView()
     let reuseIdentifier = "reuseCell"
     let networking = Networking.shared
@@ -29,6 +29,9 @@ class MainViewController: UIViewController {
         setupView()
         initObjectsActions()
         retriveData()
+        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
+            self?.parseJSONData()
+        })
     }
         
     override func loadView() {
@@ -183,7 +186,9 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.detailView(to: chosenCryptoNames[indexPath.row])
+        
+        coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
+            //.detailView(to: chosenCryptoNames[indexPath.row])
     }
 }
 

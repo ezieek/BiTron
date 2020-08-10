@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-        
+    let initObjects = DetailView()
     let networking = Networking.shared
-    var chosenCryptocurrency = ""
-        
+    let persistence = Persistence.shared
+    var savedCryptoNames: [String] = []
+    var chosenCryptocurrencyName = ""
+    var chosenCryptocurrencyRate = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = chosenCryptocurrency
+        navigationItem.title = chosenCryptocurrencyName
+        initObjects.rateLabel.text = chosenCryptocurrencyRate
         view.backgroundColor = .white
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        view = initObjects
     }
         
     func readData() {
@@ -82,7 +93,7 @@ class DetailViewController: UIViewController {
         let fetchRequest = NSFetchRequest<CryptoModel>(entityName: "CryptoModel")
                
         //fetchRequest.predicate = NSPredicate(format: "time = %@", chosenCryptoTime[index.row])
-        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames?[index.row] as! CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "title = %@", savedCryptoNames[index.row] as CVarArg)
         fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
 
         do {
