@@ -22,9 +22,9 @@ class MainCell: UITableViewCell {
     
     func setupColors() {
         
-        textLabel?.textColor = .black
+        textLabel?.textColor = .white
         detailTextLabel?.textColor = .red
-        backgroundColor = .white
+        backgroundColor = .clear
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
