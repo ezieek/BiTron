@@ -23,6 +23,7 @@
 		9CD59B8324DAA5E800566236 /* SavedCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8224DAA5E800566236 /* SavedCrypto.swift */; };
 		9CD59B8524DAA65700566236 /* CryptoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8424DAA65700566236 /* CryptoViewModel.swift */; };
 		9CD59B8724DAA8D200566236 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8624DAA8D200566236 /* DetailViewController.swift */; };
+		9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04C7024E2A2FE0072214F /* Colors.swift */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* MainViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* CryptoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptoModel.xcdatamodeld */; };
@@ -69,6 +70,7 @@
 		9CD59B8224DAA5E800566236 /* SavedCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCrypto.swift; sourceTree = "<group>"; };
 		9CD59B8424DAA65700566236 /* CryptoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewModel.swift; sourceTree = "<group>"; };
 		9CD59B8624DAA8D200566236 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9CE04C7024E2A2FE0072214F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.debug.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
+				9CE04C7024E2A2FE0072214F /* Colors.swift */,
 				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
 				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
 			);
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */,
+				9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */,
 				9CD59B8724DAA8D200566236 /* DetailViewController.swift in Sources */,
 				9CD59B7924DAA21F00566236 /* CryptoView.swift in Sources */,
 				9CD59B8324DAA5E800566236 /* SavedCrypto.swift in Sources */,
