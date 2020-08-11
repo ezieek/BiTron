@@ -10,8 +10,12 @@ import UIKit
 
 class MainView: UIView {
 
+    let screen = UIScreen.main.bounds
+    
     lazy var mainTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
+        tableView.separatorColor = .white
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -34,8 +38,8 @@ class MainView: UIView {
         NSLayoutConstraint.activate([
             mainTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             mainTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mainTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            mainTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            mainTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

@@ -15,6 +15,7 @@ class CryptoViewController: UIViewController {
         
     let reuseIdentifier = "reuseCell"
         
+    let colors = Colors()
     let initObjects = CryptoView()
     let networking = Networking.shared
     let persistence = Persistence.shared
@@ -32,27 +33,33 @@ class CryptoViewController: UIViewController {
         readData()
         updateCell()
     }
-        
+    
     override func loadView() {
         super.loadView()
             
         view = initObjects
     }
-        
+    
     func setupView() {
-            
-        navigationItem.setHidesBackButton(true, animated: true)
-        view.backgroundColor = .white
-        navigationItem.title = "BiTron"
-    }
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))
+        navigationItem.setHidesBackButton(true, animated: true)
+        view.layer.insertSublayer(colors.gradientColor, at: 0)
+        navigationItem.title = "Bitron"
+    }
+    
     func initObjectsActions() {
             
         initObjects.cryptoTableView.register(CryptoCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.cryptoTableView.delegate = self
         initObjects.cryptoTableView.dataSource = self
     }
+    
+    @objc func backButtonPressed() {
         
+        coordinator?.mainView()
+    }
+    
     func updateCell() {
             
         DispatchQueue.main.async {

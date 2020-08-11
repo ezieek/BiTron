@@ -10,11 +10,22 @@ import UIKit
 
 class DetailView: UIView {
 
+    let screen = UIScreen.main.bounds
+    
     lazy var rateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var pushNotificationButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .red
+        button.setTitle("Push Notifications Enabled", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -28,11 +39,15 @@ class DetailView: UIView {
     }
     
     func createSubViews() {
-        [rateLabel].forEach { addSubview($0) }
+        [rateLabel, pushNotificationButton].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             rateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            rateLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            rateLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.8),
+            pushNotificationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            pushNotificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
         ])
     }
 }

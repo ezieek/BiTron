@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     var timer: Timer?
+    let colors = Colors()
     let initObjects = MainView()
     let reuseIdentifier = "reuseCell"
     let networking = Networking.shared
@@ -22,13 +23,14 @@ class MainViewController: UIViewController {
     var chosenCryptoNames: [String] = []
     var chosenCryptoRates: [String] = []
     var chosenCryptoTime: [Int] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         initObjectsActions()
         retriveData()
+
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
             self?.parseJSONData()
         })
@@ -45,12 +47,12 @@ class MainViewController: UIViewController {
             
         parseJSONData()
     }
-        
+    
     func setupView() {
             
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCryptoButtonPressed))
-        view.backgroundColor = .white
-        navigationItem.title = "BiTron"
+        view.layer.insertSublayer(colors.gradientColor, at: 0)
+        navigationItem.title = "Bitron"
         navigationItem.setHidesBackButton(true, animated: true)
     }
         

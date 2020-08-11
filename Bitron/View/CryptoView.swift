@@ -12,6 +12,8 @@ class CryptoView: UIView {
     
     lazy var cryptoTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
+        tableView.separatorColor = .white
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -39,7 +41,7 @@ class CryptoView: UIView {
             cryptoTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             cryptoTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cryptoTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            cryptoTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            cryptoTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
