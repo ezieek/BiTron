@@ -12,6 +12,15 @@ class MainView: UIView {
 
     let screen = UIScreen.main.bounds
     
+    lazy var favouritesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Favourites"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 25)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var mainTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.separatorColor = .white
@@ -33,11 +42,13 @@ class MainView: UIView {
     
     func createSubViews() {
         
-        [mainTableView].forEach { addSubview($0) }
+        [favouritesLabel, mainTableView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
-            mainTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            mainTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            favouritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            favouritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            mainTableView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: 20),
+            mainTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             mainTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             mainTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
