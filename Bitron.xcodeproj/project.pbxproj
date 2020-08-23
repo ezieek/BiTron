@@ -10,6 +10,8 @@
 		2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */; };
 		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
 		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
+		9CA6DF4324E5456900CD5757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6DF4224E5456900CD5757 /* Assets.xcassets */; };
+		9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD72224E6B089006141CD /* LoginViewController.swift */; };
 		9CD59B6F24DAA0BF00566236 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B6E24DAA0BF00566236 /* Networking.swift */; };
 		9CD59B7124DAA0D700566236 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7024DAA0D700566236 /* Persistence.swift */; };
 		9CD59B7324DAA1DF00566236 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7224DAA1DF00566236 /* MainCell.swift */; };
@@ -27,7 +29,6 @@
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* MainViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* CryptoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptoModel.xcdatamodeld */; };
-		EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702324D9F78A0091BD4E /* Assets.xcassets */; };
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
 		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
 		EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */; };
@@ -57,6 +58,8 @@
 		8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.release.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.release.xcconfig"; sourceTree = "<group>"; };
 		951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9CA6DF4224E5456900CD5757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CBBD72224E6B089006141CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CD59B6E24DAA0BF00566236 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		9CD59B7024DAA0D700566236 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9CD59B7224DAA1DF00566236 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
@@ -77,7 +80,6 @@
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA6701B24D9F7870091BD4E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
-		EDA6702324D9F78A0091BD4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA6702624D9F78A0091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA6702824D9F78A0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,9 +203,9 @@
 		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				9CA6DF4224E5456900CD5757 /* Assets.xcassets */,
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
 				9CE04C7024E2A2FE0072214F /* Colors.swift */,
-				EDA6702324D9F78A0091BD4E /* Assets.xcassets */,
 				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
 			);
 			path = Supporting;
@@ -236,6 +238,7 @@
 				EDA6701B24D9F7870091BD4E /* MainViewController.swift */,
 				EDA6705124D9F8690091BD4E /* CryptoViewController.swift */,
 				9CD59B8624DAA8D200566236 /* DetailViewController.swift */,
+				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -373,8 +376,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA6DF4324E5456900CD5757 /* Assets.xcassets in Resources */,
 				EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */,
-				EDA6702424D9F78A0091BD4E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +475,7 @@
 				9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */,
 				9CD59B8724DAA8D200566236 /* DetailViewController.swift in Sources */,
 				9CD59B7924DAA21F00566236 /* CryptoView.swift in Sources */,
+				9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */,
 				9CD59B8324DAA5E800566236 /* SavedCrypto.swift in Sources */,
 				9CD59B7F24DAA48300566236 /* Coordinator.swift in Sources */,
 				9CD59B7524DAA1F900566236 /* MainView.swift in Sources */,
@@ -654,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -673,6 +678,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

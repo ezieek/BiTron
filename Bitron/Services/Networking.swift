@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 
 class Networking {
     
@@ -15,9 +16,21 @@ class Networking {
     
     func request(_ urlPath: String, completion: @escaping (Result<Data, NSError>) -> Void) {
         
+        let monitor = NWPathMonitor()
+        monitor.start(queue: .global())
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                //connection is available
+            } else {
+              //connection is lost
+            }
+        }
+        
         guard let url = URL(string: urlPath) else { return }
         
         let session = URLSession.shared
+        
         let task = session.dataTask(with: url) { (data, _, error) in
             
             if let unwrappedError = error {
