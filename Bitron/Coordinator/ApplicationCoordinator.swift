@@ -25,6 +25,13 @@ class ApplicationCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func loginView() {
+        
+        let vc = LoginViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func mainView() {
         
         let vc = MainViewController()

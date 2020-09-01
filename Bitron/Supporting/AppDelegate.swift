@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // create the main navigation controller to be used for our up
-        let rootViewController = MainViewController()
+        let rootViewController = LoginViewController()
         let navController = UINavigationController(rootViewController: rootViewController)
         
         // send that into our coordinator so that it can display vc
         coordinator = ApplicationCoordinator(navigationController: navController)
-        
+
         // tell the coordinator to take over control
         coordinator?.start()
         

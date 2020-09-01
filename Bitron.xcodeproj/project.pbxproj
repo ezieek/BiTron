@@ -28,7 +28,7 @@
 		9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04C7024E2A2FE0072214F /* Colors.swift */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* MainViewController.swift */; };
-		EDA6702224D9F7870091BD4E /* CryptoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptoModel.xcdatamodeld */; };
+		EDA6702224D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */; };
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
 		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
 		EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */; };
@@ -177,7 +177,7 @@
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
 				EDA6702824D9F78A0091BD4E /* Info.plist */,
-				EDA6702024D9F7870091BD4E /* CryptoModel.xcdatamodeld */,
+				EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */,
 			);
 			path = Bitron;
 			sourceTree = "<group>";
@@ -483,7 +483,7 @@
 				9CD59B7324DAA1DF00566236 /* MainCell.swift in Sources */,
 				9CD59B7B24DAA23200566236 /* DetailView.swift in Sources */,
 				9CD59B6F24DAA0BF00566236 /* Networking.swift in Sources */,
-				EDA6702224D9F7870091BD4E /* CryptoModel.xcdatamodeld in Sources */,
+				EDA6702224D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld in Sources */,
 				9CD59B7124DAA0D700566236 /* Persistence.swift in Sources */,
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
@@ -820,13 +820,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EDA6702024D9F7870091BD4E /* CryptoModel.xcdatamodeld */ = {
+		EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */,
 			);
 			currentVersion = EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */;
-			path = CryptoModel.xcdatamodeld;
+			path = CryptocurrencyModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
