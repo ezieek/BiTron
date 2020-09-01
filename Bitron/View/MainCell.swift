@@ -10,6 +10,8 @@ import UIKit
 
 class MainCell: UITableViewCell {
 
+    let screen = UIScreen.main.bounds
+    
     lazy var cryptoValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white

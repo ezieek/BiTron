@@ -12,7 +12,9 @@ import CoreData
 class CryptoViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-        
+    
+    let cryptoModelArray = [CryptocurrencyModel]()
+    
     let reuseIdentifier = "reuseCell"
         
     let colors = Colors()
@@ -22,9 +24,10 @@ class CryptoViewController: UIViewController {
     var cryptoViewModel: [CryptoViewModel] = []
     var cryptoNames = [""]
     var cryptoRates = [""]
+    var cryptoPreviousRates = [""]
     var storedCrypto = [""]
     var filteredData: [String] = []
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,16 +83,16 @@ class CryptoViewController: UIViewController {
                         let response = try decoder.decode(Crypto.self, from: data)
 
                         self?.cryptoNames = [
-                                response.items.btc.market.code,
-                                response.items.eth.market.code,
-                                response.items.ltc.market.code,
-                                response.items.lsk.market.code,
-                                response.items.alg.market.code,
-                                response.items.trx.market.code,
-                                response.items.amlt.market.code,
-                                response.items.neu.market.code,
-                                response.items.bob.market.code,
-                                response.items.xrp.market.code
+                            response.items.btc.market.code,
+                            response.items.eth.market.code,
+                            response.items.ltc.market.code,
+                            response.items.lsk.market.code,
+                            response.items.alg.market.code,
+                            response.items.trx.market.code,
+                            response.items.amlt.market.code,
+                            response.items.neu.market.code,
+                            response.items.bob.market.code,
+                            response.items.xrp.market.code
                         ]
 
                         self?.cryptoRates = [
@@ -104,7 +107,20 @@ class CryptoViewController: UIViewController {
                             response.items.bob.rate,
                             response.items.xrp.rate
                         ]
-                            
+                        
+                        self?.cryptoPreviousRates = [
+                            response.items.btc.previousRate,
+                            response.items.eth.previousRate,
+                            response.items.ltc.previousRate,
+                            response.items.lsk.previousRate,
+                            response.items.alg.previousRate,
+                            response.items.trx.previousRate,
+                            response.items.amlt.previousRate,
+                            response.items.neu.previousRate,
+                            response.items.bob.previousRate,
+                            response.items.xrp.previousRate
+                        ]
+                        
                         DispatchQueue.main.async {
                             self?.initObjects.cryptoTableView.reloadData()
                         }
@@ -120,16 +136,20 @@ class CryptoViewController: UIViewController {
         }
     }
         
-    func createData(title: String, value: String, time: Int) {
+    func createData(title: String, value: String, previousRate: String) {
             
         let context = persistence.context
              
-        guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptoModel", in: context) else { return }
+       /* let newValue = CryptocurrencyModel(context: context)
+        newValue.title = title
+        newValue.value = value
+        newValue.previous = previousRate*/
+        guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptocurrencyModel", in: context) else { return }
              
         let newValue = NSManagedObject(entity: userEntity, insertInto: context)
         newValue.setValue(title, forKey: "title")
         newValue.setValue(value, forKey: "value")
-        newValue.setValue(time, forKey: "time")
+        newValue.setValue(previousRate, forKey: "previous")
             
         do {
             try context.save()
@@ -142,7 +162,7 @@ class CryptoViewController: UIViewController {
             
         let context = persistence.context
             
-        let fetchRequest = NSFetchRequest<CryptoModel>(entityName: "CryptoModel")
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
             
         do {
             let results = try context.fetch(fetchRequest)
@@ -155,6 +175,8 @@ class CryptoViewController: UIViewController {
             print("Could not retrive data")
         }
     }
+    
+
 }
 
 extension CryptoViewController: UITableViewDataSource {
@@ -185,8 +207,9 @@ extension CryptoViewController: UITableViewDelegate {
             
         let name = cryptoNames[indexPath.row]
         let rate = cryptoRates[indexPath.row]
-        let time = Int(Date().timeIntervalSince1970)
-
+        //let time = Int(Date().timeIntervalSince1970)
+        let previousRate = cryptoPreviousRates[indexPath.row]
+        
         retriveData()
             
         let filterData = Array(NSOrderedSet(array: storedCrypto))
@@ -194,7 +217,7 @@ extension CryptoViewController: UITableViewDelegate {
         filteredData = filterData.map { ($0 as? String ?? "") }
             
         if !filteredData.contains(name) {
-            createData(title: name, value: rate, time: time)
+            createData(title: name, value: rate, previousRate: previousRate)
         }
             
         coordinator?.mainView()

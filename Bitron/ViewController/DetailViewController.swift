@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     let initObjects = DetailView()
+    let colors = Colors()
     let networking = Networking.shared
     let persistence = Persistence.shared
     var savedCryptoNames: [String] = []
@@ -25,14 +26,21 @@ class DetailViewController: UIViewController {
         
         navigationItem.title = chosenCryptocurrencyName[0]
        // initObjects.rateLabel.text = chosenCryptocurrencyRate
-        view.backgroundColor = .white
+        view.layer.insertSublayer(colors.gradientColor, at: 0)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))
         parseJSONData()
+        
     }
     
     override func loadView() {
         super.loadView()
         
         view = initObjects
+    }
+    
+    @objc func backButtonPressed() {
+        
+        coordinator?.mainView()
     }
         
     //chodzi o to, zeby parsowac tutaj rate danej krypto, teraz slabo to dziala

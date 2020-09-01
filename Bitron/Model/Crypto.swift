@@ -52,7 +52,7 @@ struct BTC: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct LML: Codable {
@@ -61,7 +61,7 @@ struct LML: Codable {
     var highestBid: String?//, moze miec nulla co z tym zrobic?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct TRX: Codable {
@@ -70,7 +70,7 @@ struct TRX: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct ALG: Codable {
@@ -79,7 +79,7 @@ struct ALG: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct LSK: Codable {
@@ -88,7 +88,7 @@ struct LSK: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct LTC: Codable {
@@ -97,7 +97,7 @@ struct LTC: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct ETH: Codable {
@@ -106,7 +106,7 @@ struct ETH: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct ZRX: Codable {
@@ -115,7 +115,7 @@ struct ZRX: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct BSV: Codable {
@@ -124,7 +124,7 @@ struct BSV: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct AMLT: Codable {
@@ -133,7 +133,7 @@ struct AMLT: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct NEU: Codable {
@@ -142,7 +142,7 @@ struct NEU: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct BOB: Codable {
@@ -151,7 +151,7 @@ struct BOB: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct XRP: Codable {
@@ -160,7 +160,7 @@ struct XRP: Codable {
     var highestBid: String?
     var lowestAsk: String?
     var rate: String
-    var previousRate: String?
+    var previousRate: String
 }
 
 struct Market: Codable {
