@@ -17,19 +17,26 @@ class DetailViewController: UIViewController {
     let networking = Networking.shared
     let persistence = Persistence.shared
     var savedCryptoNames: [String] = []
-    var chosenCryptocurrencyName = [""]
-    var chosenCryptocurrencyRate: [String] = []
+    var chosenCryptocurrencyName: String?// = ""
+    var chosenCryptocurrencyRate: [String] = [""]
     var cryptoRates = [""]
+    var assignedCryptoNames: [String] = []
+    var assignedCryptoSubNames: [String] = []
+    var assignedCryptoIcon: [String] = []
+    var assignedCryptoPreviousRates: [String] = []
+    var chosenCryptoNames: [String] = []
+    var chosenCryptoRates: [String] = []
+    var chosenCryptoPreviousRates: [String] = []
+    var cryptoPreviousRates = [""]
+    var percentResult = 0.0
+    var name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = chosenCryptocurrencyName[0]
-       // initObjects.rateLabel.text = chosenCryptocurrencyRate
-        view.layer.insertSublayer(colors.gradientColor, at: 0)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))
+        setupView()
+        retriveCoreData()
         parseJSONData()
-        
     }
     
     override func loadView() {
@@ -38,116 +45,280 @@ class DetailViewController: UIViewController {
         view = initObjects
     }
     
+    func setupView() {
+        
+        navigationItem.title = "Bitron"
+        initObjects.nameLabel.text = chosenCryptocurrencyName
+        view.layer.insertSublayer(colors.gradientColor, at: 0)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))
+    }
+    
     @objc func backButtonPressed() {
         
         coordinator?.mainView()
     }
         
-    //chodzi o to, zeby parsowac tutaj rate danej krypto, teraz slabo to dziala
-    func parseJSONData() {
-
-    //DispatchQueue.main.async {
+    func retriveCoreData() {
             
-        let urlPath = "https://api.bitbay.net/rest/trading/ticker"
-        self.networking.request(urlPath) { [weak self] (result) in
+        let context = persistence.context
+            
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
                 
-            switch result {
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(Crypto.self, from: data)
-                       
-                    self?.cryptoRates = [
-                        response.items.btc.rate,
-                        response.items.eth.rate,
-                        response.items.ltc.rate,
-                        response.items.lsk.rate,
-                        response.items.alg.rate,
-                        response.items.trx.rate,
-                        response.items.amlt.rate,
-                        response.items.neu.rate,
-                        response.items.bob.rate,
-                        response.items.xrp.rate
-                    ]
+        do {
+            let results = try context.fetch(fetchRequest)
                     
-                   // var currentIndex = 0
-                        
-                    for name in self?.chosenCryptocurrencyName ?? [] {
-                        
-                    switch(name) {
-                        case "BTC-PLN":
-                            print(response.items.btc
-                                .rate)
-                            //self?.initObjects.rateLabel.text = response.items.btc.rate
-                            //self?.chosenCryptocurrencyRate[0] = response.items.btc.rate
-                        
-                            //self?.chosenCryptocurrencyRate[currentIndex] = response.items.btc.rate
-                       // print("weszlo tu")
-                      /*  case "ETH-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.eth.rate
-                        case "LTC-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.ltc.rate
-                        case "LSK-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.lsk.rate
-                        case "ALG-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.alg.rate
-                        case "TRX-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.trx.rate
-                        case "AMLT-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.amlt.rate
-                        case "NEU-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.neu.rate
-                        case "BOB-PLN":
-                            self?.chosenCryptocurrencyRate[currentIndex] = response.items.bob.rate*/
-                        default:
-                            //self?.chosenCryptocurrencyRate[currentIndex] = response.items.xrp.rate
-                        print("asdasd")
-                        }
-                        //currentIndex += 1
-                    }
+            for result in results {
+                    
+                guard let readTitle = result.title else { return }
+                chosenCryptoNames.append(readTitle)
+                    
+                guard let readValue = result.value else { return }
+                chosenCryptoRates.append(readValue)
+                    
+                guard let readPreviousRates = result.previous else { return }
+                chosenCryptoPreviousRates.append(readPreviousRates)
+            }
+                
+            for name in chosenCryptoNames {
 
-                    /*DispatchQueue.main.async {
-                        self?.initObjects.rateLabel.text = self?.chosenCryptocurrencyRate[currentIndex]
-                        
-                    }*/
+                switch(name) {
                     
-                } catch let error {
+                case "BTC-PLN":
+                    assignedCryptoNames.append("Bitcoin")
+                    assignedCryptoSubNames.append("BTC")
+                    assignedCryptoIcon.append("btc-1")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "ETH-PLN":
+                    assignedCryptoNames.append("Ethereum")
+                    assignedCryptoSubNames.append("ETH")
+                    assignedCryptoIcon.append("eth-1")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "LTC-PLN":
+                    assignedCryptoNames.append("Litecoin")
+                    assignedCryptoSubNames.append("LTC")
+                    assignedCryptoIcon.append("ltc")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "LSK-PLN":
+                    assignedCryptoNames.append("Lisk")
+                    assignedCryptoSubNames.append("LSK")
+                    assignedCryptoIcon.append("lsk")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "ALG-PLN":
+                    assignedCryptoNames.append("Algory")
+                    assignedCryptoSubNames.append("ALG")
+                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "TRX-PLN":
+                    assignedCryptoNames.append("Tron")
+                    assignedCryptoSubNames.append("TRX")
+                    assignedCryptoIcon.append("trx")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "AMLT-PLN":
+                    assignedCryptoNames.append("AMLT")
+                    assignedCryptoSubNames.append("AMLT")
+                    assignedCryptoIcon.append("amlt")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                case "NEU-PLN":
+                    assignedCryptoNames.append("Neumark")
+                    assignedCryptoSubNames.append("NEU")
+                    assignedCryptoIcon.append("neu")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+
+                case "BOB-PLN":
+                    assignedCryptoNames.append("Bobs repair")
+                    assignedCryptoSubNames.append("BOB")
+                    assignedCryptoIcon.append("bob")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    
+                default:
+                    assignedCryptoNames.append("Ripple")
+                    assignedCryptoSubNames.append("XRP")
+                    assignedCryptoIcon.append("xrp")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                }
+            }
+            
+            //DispatchQueue.main.async {
+                
+                //self.initObjects.mainTableView.reloadData()
+            //}
+                
+        } catch {
+            print("Could not retrive data")
+        }
+    }
+    
+    func parseJSONData() {
+        
+        DispatchQueue.main.async {
+                
+            let urlPath = "https://api.bitbay.net/rest/trading/ticker"
+            self.networking.request(urlPath) { [weak self] (result) in
+                
+                switch result {
+                case .success(let data):
+                    do {
+                        let decoder = JSONDecoder()
+                        let response = try decoder.decode(Crypto.self, from: data)
+                        
+                        self?.cryptoRates = [
+                            response.items.btc.rate,
+                            response.items.eth.rate,
+                            response.items.ltc.rate,
+                            response.items.lsk.rate,
+                            response.items.alg.rate,
+                            response.items.trx.rate,
+                            response.items.amlt.rate,
+                            response.items.neu.rate,
+                            response.items.bob.rate,
+                            response.items.xrp.rate
+                        ]
+                        
+                        self?.cryptoPreviousRates = [
+                            response.items.btc.previousRate,
+                            response.items.eth.previousRate,
+                            response.items.ltc.previousRate,
+                            response.items.lsk.previousRate,
+                            response.items.alg.previousRate,
+                            response.items.trx.previousRate,
+                            response.items.amlt.previousRate,
+                            response.items.neu.previousRate,
+                            response.items.bob.previousRate,
+                            response.items.xrp.previousRate
+                        ]
+                        
+                    var currentIndex = 0
+                            
+                    self?.name = self?.chosenCryptocurrencyName ?? ""
+                        
+                    DispatchQueue.main.async {
+                            
+                        switch(self?.name) {
+                                
+                            case "BTC-PLN":
+                                let btcRate = response.items.btc.rate
+                                let btcPreviousRate = response.items.btc.previousRate
+                                self?.initObjects.rateLabel.text = btcRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: btcRate, previousRate: btcPreviousRate, index: currentIndex) ?? "")
+
+                            case "ETH-PLN":
+                                let ethRate = response.items.eth.rate
+                                let ethPreviousRate = response.items.eth.previousRate
+                                self?.initObjects.rateLabel.text = ethRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: ethRate, previousRate: ethPreviousRate, index: currentIndex) ?? "")
+
+                            case "LTC-PLN":
+                                let ltcRate = response.items.ltc.rate
+                                let ltcPreviousRate = response.items.ltc.previousRate
+                                self?.initObjects.rateLabel.text = ltcRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: ltcRate, previousRate: ltcPreviousRate, index: currentIndex) ?? "")
+
+                            case "LSK-PLN":
+                                let lskRate = response.items.lsk.rate
+                                let lskPreviousRate = response.items.lsk.previousRate
+                                self?.initObjects.rateLabel.text = lskRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: lskRate, previousRate: lskPreviousRate, index: currentIndex) ?? "")
+
+                            case "ALG-PLN":
+                                let algRate = response.items.alg.rate
+                                let algPreviousRate = response.items.alg.previousRate
+                                self?.initObjects.rateLabel.text = algRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: algRate, previousRate: algPreviousRate, index: currentIndex) ?? "")
+                                
+                            case "TRX-PLN":
+                                let trxRate = response.items.trx.rate
+                                let trxPreviousRate = response.items.trx.previousRate
+                                self?.initObjects.rateLabel.text = trxRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: trxRate, previousRate: trxPreviousRate, index: currentIndex) ?? "")
+                                
+                            case "AMLT-PLN":
+                                let amltRate = response.items.amlt.rate
+                                let amltPreviousRate = response.items.amlt.previousRate
+                                self?.initObjects.rateLabel.text = amltRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: amltRate, previousRate: amltPreviousRate, index: currentIndex) ?? "")
+                                
+                            case "NEU-PLN":
+                                let neuRate = response.items.neu.rate
+                                let neuPreviousRate = response.items.neu.previousRate
+                                self?.initObjects.rateLabel.text = neuRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: neuRate, previousRate: neuPreviousRate, index: currentIndex) ?? "")
+                                
+                            case "BOB-PLN":
+                                let bobRate = response.items.bob.rate
+                                let bobPreviousRate = response.items.bob.previousRate
+                                self?.initObjects.rateLabel.text = bobRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: bobRate, previousRate: bobPreviousRate, index: currentIndex) ?? "")
+                                
+                            default:
+                                let xrpRate = response.items.xrp.rate
+                                let xrpPreviousRate = response.items.xrp.previousRate
+                                self?.initObjects.rateLabel.text = xrpRate
+                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: xrpRate, previousRate: xrpPreviousRate, index: currentIndex) ?? "")
+                            }
+                            currentIndex += 1
+                       }
+                        
+                    } catch let error {
+                        print(error)
+                    }
+                        
+                case .failure(let error):
                     print(error)
                 }
-                    
-            case .failure(let error):
-                print(error)
             }
         }
     }
-    //}
-    /* func deleteData(index: IndexPath) {
-               
+    
+    func percentageValue(rate: String, previousRate: String, index: Int) -> String {
+        
+        let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
+        percentResult = 100 - percentValue
+        
+        if percentResult < 0 {
+            percentResult = percentResult * (-1)
+            initObjects.percentageRateLabel.textColor = .red
+        } else {
+            initObjects.percentageRateLabel.textColor = .green
+        }
+        
+        return String(format: "%.2f", percentResult)
+    }
+    
+    func deleteData(index: IndexPath) {
+        
         let context = persistence.context
                
-        let fetchRequest = NSFetchRequest<CryptoModel>(entityName: "CryptoModel")
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
                
-        //fetchRequest.predicate = NSPredicate(format: "time = %@", chosenCryptoTime[index.row])
-        fetchRequest.predicate = NSPredicate(format: "title = %@", savedCryptoNames[index.row] as CVarArg)
-        fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
+       // fetchRequest.predicate = NSPredicate(format: "title = %@", /chosenCryptoNames[index.row])
+       // fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
+       // fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates[index.row] as CVarArg)
 
         do {
-            let test = try context.fetch(fetchRequest)
-            let objectToDelete = test[0] as NSManagedObject
-            context.delete(objectToDelete)
-            chosenCryptoTime.remove(at: index.row)
-            chosenCryptoNames?.remove(at: index.row)
-            chosenCryptoRates.remove(at: index.row)
-            initObjects.mainTableView.deleteRows(at: [index], with: .fade)
+            
+            if let result = try? context.fetch(fetchRequest) {
+                for object in result {
+                    context.delete(object)
+                   // chosenCryptoNames.remove(at: index.row)
+                    //chosenCryptoRates.remove(at: index.row)
+                    //chosenCryptoPreviousRates.remove(at: index.row)
+                    //initObjects.mainTableView.deleteRows(at: [index], with: .middle)
+                    //initObjects.mainTableView.reloadData()
+                }
+            }
 
             do {
                 try context.save()
             } catch {
                 print(error)
             }
-                   
-        } catch {
-            print("There is an error deleting data")
         }
-    }*/
+    }
 }
