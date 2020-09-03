@@ -13,9 +13,7 @@ class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
-    
     let cryptoModelArray: [CryptocurrencyModel] = []
-    
     let colors = Colors()
     let initObjects = MainView()
     let reuseIdentifier = "reuseCell"
@@ -36,12 +34,11 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         setupView()
         initObjectsActions()
-        retriveData()
+        retriveCoreData()
         parseJSONData()
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         startTimer()
     }
         
@@ -62,8 +59,7 @@ class MainViewController: UIViewController {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
             self?.parseJSONData()
-            self?.updateData(title: "BTC-PLN", value: "10000.0", previousRate: "9999.0")
-            print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+            //self?.updateData(title: "BTC-PLN", value: "10000.0", previousRate: "9999.0")
         })
     }
     
@@ -138,10 +134,9 @@ class MainViewController: UIViewController {
                             response.items.xrp.previousRate
                         ]
                         
-                        
-                    var currentIndex = 0
+                        var currentIndex = 0
                             
-                       for name in self?.chosenCryptoNames ?? [] {
+                        for name in self?.chosenCryptoNames ?? [] {
                             
                             switch(name) {
                                 
@@ -150,14 +145,12 @@ class MainViewController: UIViewController {
                                 let btcPreviousRate = response.items.btc.previousRate
                                 self?.chosenCryptoRates[currentIndex] = btcRate
                                 self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: btcRate, previousRate: btcPreviousRate, index: currentIndex) ?? "")
-                                self?.updateData(title: "BTC-PLN", value: btcRate, previousRate: btcPreviousRate)
 
                             case "ETH-PLN":
                                 let ethRate = response.items.eth.rate
                                 let ethPreviousRate = response.items.eth.previousRate
                                 self?.chosenCryptoRates[currentIndex] = ethRate
                                 self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: ethRate, previousRate: ethPreviousRate, index: currentIndex) ?? "")
-                                //self?.updateData(title: "ETH-PLN", value: ethRate, previousRate: ethPreviousRate)
 
                             case "LTC-PLN":
                                 let ltcRate = response.items.ltc.rate
@@ -209,7 +202,6 @@ class MainViewController: UIViewController {
                             }
                             currentIndex += 1
                         }
-                        
 
                         DispatchQueue.main.async {
                             self?.initObjects.mainTableView.reloadData()
@@ -225,32 +217,8 @@ class MainViewController: UIViewController {
             }
         }
     }
-        
-    //tutaj problem jest tego typu, ze czasami jak wciskam ta sama walute
-    //na CryptoViewControllerze, to tu sie pokazuje jakas inna wartosc tych walut
-    //moze sprawdzic w bazie sql czy przypadkiem nie ma tam innych wartosci
-    //tej samej krypto, czyli ze nasza baza nie ma duzej ilosci takich samych
-    //krypto, czego nie powinno byc, bo o to tutaj chodzi
     
-   /* func createData(title: String, value: String, previousRate: String) {
-            
-        let context = persistence.context
-             
-        guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptoModel", in: context) else { return }
-             
-        let newValue = NSManagedObject(entity: userEntity, insertInto: context)
-        newValue.setValue(title, forKey: "title")
-        newValue.setValue(value, forKey: "value")
-        newValue.setValue(previousRate, forKey: "previous")
-            
-        do {
-            try context.save()
-        } catch {
-            print("Saving error")
-        }
-    }*/
-    
-    func retriveData() {
+    func retriveCoreData() {
             
         let context = persistence.context
             
@@ -272,34 +240,34 @@ class MainViewController: UIViewController {
             }
                 
             for name in chosenCryptoNames {
-                
+
                 switch(name) {
                     
                 case "BTC-PLN":
                     assignedCryptoNames.append("Bitcoin")
                     assignedCryptoSubNames.append("BTC")
-                    assignedCryptoIcon.append("btc")
+                    assignedCryptoIcon.append("btc-1")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "ETH-PLN":
                     assignedCryptoNames.append("Ethereum")
                     assignedCryptoSubNames.append("ETH")
-                    assignedCryptoIcon.append("eth")
+                    assignedCryptoIcon.append("eth-1")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "LTC-PLN":
                     assignedCryptoNames.append("Litecoin")
                     assignedCryptoSubNames.append("LTC")
-                    assignedCryptoIcon.append("litecoin")
+                    assignedCryptoIcon.append("ltc")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "LSK-PLN":
                     assignedCryptoNames.append("Lisk")
                     assignedCryptoSubNames.append("LSK")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("lsk")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
@@ -313,45 +281,44 @@ class MainViewController: UIViewController {
                 case "TRX-PLN":
                     assignedCryptoNames.append("Tron")
                     assignedCryptoSubNames.append("TRX")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("trx")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "AMLT-PLN":
                     assignedCryptoNames.append("AMLT")
                     assignedCryptoSubNames.append("AMLT")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("amlt")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "NEU-PLN":
                     assignedCryptoNames.append("Neumark")
                     assignedCryptoSubNames.append("NEU")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("neu")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
 
                 case "BOB-PLN":
                     assignedCryptoNames.append("Bobs repair")
                     assignedCryptoSubNames.append("BOB")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("bob")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 default:
                     assignedCryptoNames.append("Ripple")
                     assignedCryptoSubNames.append("XRP")
-                    assignedCryptoIcon.append("bitcoin")
+                    assignedCryptoIcon.append("xrp")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
-                    
                 }
             }
             
             DispatchQueue.main.async {
                 self.initObjects.mainTableView.reloadData()
             }
-                
+            
         } catch {
             print("Could not retrive data")
         }
@@ -378,22 +345,22 @@ class MainViewController: UIViewController {
                
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
                
-        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames[index.row] as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames[index.row])
         fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
-        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates[index.row] as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates[index.row])
 
         do {
             
             if let result = try? context.fetch(fetchRequest) {
                 for object in result {
                     context.delete(object)
+                    chosenCryptoNames.remove(at: index.row)
+                    chosenCryptoRates.remove(at: index.row)
+                    chosenCryptoPreviousRates.remove(at: index.row)
+                    initObjects.mainTableView.deleteRows(at: [index], with: .middle)
+                    initObjects.mainTableView.reloadData()
                 }
             }
-
-            chosenCryptoNames.remove(at: index.row)
-            chosenCryptoRates.remove(at: index.row)
-            chosenCryptoPreviousRates.remove(at: index.row)
-            initObjects.mainTableView.deleteRows(at: [index], with: .fade)
 
             do {
                 try context.save()
@@ -403,6 +370,8 @@ class MainViewController: UIViewController {
         }
     }
     
+    //nalezaloby zapewnic nadpisywanie zapisanych danych, gdyz wystepuje tu blad, iz
+    //czasami na ulamek sekundy wybrane kryptowaluty maja wczesniejsze wartosci...
     func updateData(title: String, value: String, previousRate: String) {
         
         /*let context = persistence.context
@@ -421,9 +390,8 @@ class MainViewController: UIViewController {
                 object.setValue(previousRate, forKey: "previous")
                 //print(object)
                 //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-            }*/
-        //cryptoModelArray.
-          /*  do {
+            }
+           do {
                 try context.save()
             } catch {
                 print("Saving error")
@@ -444,8 +412,9 @@ extension MainViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-        guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
         
+        guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
+
         cell.textLabel?.text = assignedCryptoNames[indexPath.row]
         cell.detailTextLabel?.text = assignedCryptoSubNames[indexPath.row]
         cell.imageView?.image = UIImage(named: assignedCryptoIcon[indexPath.row])
@@ -459,9 +428,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        deleteData(index: indexPath)
-        //coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
-            //.detailView(to: chosenCryptoNames[indexPath.row])
+        coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
