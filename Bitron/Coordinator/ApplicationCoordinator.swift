@@ -49,8 +49,7 @@ class ApplicationCoordinator: Coordinator {
     func detailView(name: String, rate: String ) {
         
         let vc = DetailViewController()
-        vc.chosenCryptocurrencyName[0] = name
-        //vc.chosenCryptocurrencyRate = rate
+        vc.chosenCryptocurrencyName = name
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
