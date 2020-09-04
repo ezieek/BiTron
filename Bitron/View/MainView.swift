@@ -12,6 +12,12 @@ class MainView: UIView {
 
     let screen = UIScreen.main.bounds
     
+    lazy var menuBarButtonItem: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "menu")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        return button
+    }()
+    
     lazy var favouritesLabel: UILabel = {
         let label = UILabel()
         label.text = "Favourites"

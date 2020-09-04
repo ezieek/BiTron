@@ -30,8 +30,8 @@ class MainViewController: UIViewController {
     var chosenCryptoRates: [String] = []
     var chosenCryptoPreviousRates: [String] = []
     var percentColors: [UIColor] = []
-    var percentResult: Double = 0.0
-
+    var percentResult = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -75,6 +75,7 @@ class MainViewController: UIViewController {
     
     func setupView() {
             
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: initObjects.menuBarButtonItem)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCryptoButtonPressed))
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.title = "Bitron"
@@ -83,6 +84,7 @@ class MainViewController: UIViewController {
         
     func initObjectsActions() {
             
+        initObjects.menuBarButtonItem.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
         initObjects.mainTableView.register(MainCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.mainTableView.delegate = self
         initObjects.mainTableView.dataSource = self
@@ -90,6 +92,11 @@ class MainViewController: UIViewController {
         
     }
         
+    @objc func settingsButtonPressed() {
+        
+        print(1)
+    }
+    
     @objc func addCryptoButtonPressed() {
             
         coordinator?.cryptoView()
@@ -246,14 +253,14 @@ class MainViewController: UIViewController {
                 case "BTC-PLN":
                     assignedCryptoNames.append("Bitcoin")
                     assignedCryptoSubNames.append("BTC")
-                    assignedCryptoIcon.append("btc-1")
+                    assignedCryptoIcon.append("btc")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
                 case "ETH-PLN":
                     assignedCryptoNames.append("Ethereum")
                     assignedCryptoSubNames.append("ETH")
-                    assignedCryptoIcon.append("eth-1")
+                    assignedCryptoIcon.append("eth")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
@@ -329,7 +336,7 @@ class MainViewController: UIViewController {
         let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
         percentResult = 100 - percentValue
         
-        if percentResult < 0 {
+        if percentResult < 0.0 {
             percentResult = percentResult * (-1)
             percentColors.insert(.red, at: index)
         } else {
