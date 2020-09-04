@@ -14,9 +14,7 @@ class CryptoViewController: UIViewController {
     weak var coordinator: ApplicationCoordinator?
     
     let cryptoModelArray = [CryptocurrencyModel]()
-    
     let reuseIdentifier = "reuseCell"
-        
     let colors = Colors()
     let initObjects = CryptoView()
     let networking = Networking.shared
@@ -45,7 +43,7 @@ class CryptoViewController: UIViewController {
     
     func setupView() {
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.setHidesBackButton(true, animated: true)
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.title = "Bitron"
