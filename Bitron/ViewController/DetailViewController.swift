@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
     
     func setupView() {
         
-        navigationItem.title = "Bitron"
+        navigationItem.title = chosenCryptocurrencyName
         initObjects.nameLabel.text = chosenCryptocurrencyName
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: #selector(backButtonPressed))

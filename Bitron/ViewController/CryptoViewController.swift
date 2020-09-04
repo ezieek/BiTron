@@ -54,6 +54,7 @@ class CryptoViewController: UIViewController {
         initObjects.cryptoTableView.register(CryptoCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.cryptoTableView.delegate = self
         initObjects.cryptoTableView.dataSource = self
+        initObjects.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     @objc func backButtonPressed() {
@@ -188,6 +189,8 @@ extension CryptoViewController: UITableViewDataSource {
             
         guard let cell = initObjects.cryptoTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
             
+        cell.accessoryType = .detailButton
+        cell.tintColor = .white
         cell.textLabel?.text = cryptoNames[indexPath.row]
         cell.detailTextLabel?.text = cryptoRates[indexPath.row]
         return cell
@@ -198,7 +201,7 @@ extension CryptoViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
-        return 50
+        return 100
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

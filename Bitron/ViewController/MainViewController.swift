@@ -325,7 +325,6 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 self.initObjects.mainTableView.reloadData()
             }
-            
         } catch {
             print("Could not retrive data")
         }
@@ -339,6 +338,7 @@ class MainViewController: UIViewController {
         if percentResult < 0.0 {
             percentResult = percentResult * (-1)
             percentColors.insert(.red, at: index)
+            
         } else {
             percentColors.insert(.green, at: index)
         }
@@ -426,6 +426,7 @@ extension MainViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = assignedCryptoSubNames[indexPath.row]
         cell.imageView?.image = UIImage(named: assignedCryptoIcon[indexPath.row])
         cell.cryptoValueLabel.text = "\(chosenCryptoRates[indexPath.row])  PLN"
+        cell.upArrowImage.tintColor = percentColors[indexPath.row]
         cell.cryptoSubValueLabel.textColor = percentColors[indexPath.row]
         cell.cryptoSubValueLabel.text = "\(assignedCryptoPreviousRates[indexPath.row]) %"
         return cell
@@ -435,7 +436,8 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
+        //coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
+        coordinator?.detailView(name: assignedCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
