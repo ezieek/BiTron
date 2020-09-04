@@ -29,6 +29,12 @@ class MainCell: UITableViewCell {
         return label
     }()
     
+    lazy var upArrowImage: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "arrow-up")?.withRenderingMode(.alwaysTemplate))
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
@@ -56,11 +62,15 @@ class MainCell: UITableViewCell {
     
     func createSubViews() {
         
-        [cryptoValueLabel, cryptoSubValueLabel].forEach { addSubview($0) }
+        [cryptoValueLabel, upArrowImage, cryptoSubValueLabel].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             cryptoValueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             cryptoValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            upArrowImage.topAnchor.constraint(equalTo: topAnchor, constant: 57),
+            upArrowImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 312),
+            upArrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -52),
+            upArrowImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35),
             cryptoSubValueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 54),
             cryptoSubValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])

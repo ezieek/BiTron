@@ -14,7 +14,7 @@ class DetailView: UIView {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30)
+        label.font = .systemFont(ofSize: 15)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -22,7 +22,7 @@ class DetailView: UIView {
     
     lazy var rateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 30)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -60,8 +60,8 @@ class DetailView: UIView {
         
         NSLayoutConstraint.activate([
             nameLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
-            rateLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 85),
+            rateLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             rateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
             percentageRateLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 120),
             percentageRateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
