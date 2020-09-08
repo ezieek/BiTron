@@ -17,6 +17,9 @@ class Colors {
         let colorTop = UIColor(red: 0.15, green: 0.18, blue: 0.29, alpha: 1.00).cgColor
         let colorBottom = UIColor(red: 0.09, green: 0.09, blue: 0.14, alpha: 1.00).cgColor
         
+        let colorTop2 = UIColor(red: 0.18, green: 0.22, blue: 0.26, alpha: 1.00).cgColor
+        let colorBottom2 = UIColor(red: 0.27, green: 0.32, blue: 0.37, alpha: 1.00).cgColor
+
         let view = UIScreen.main.bounds
         
         gradientColor.frame = view

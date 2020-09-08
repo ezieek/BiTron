@@ -10,6 +10,7 @@
 		2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */; };
 		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
 		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
+		9C6836F52507B90E0041A814 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6836F42507B90E0041A814 /* LoginView.swift */; };
 		9CA6DF4324E5456900CD5757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6DF4224E5456900CD5757 /* Assets.xcassets */; };
 		9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD72224E6B089006141CD /* LoginViewController.swift */; };
 		9CD59B6F24DAA0BF00566236 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B6E24DAA0BF00566236 /* Networking.swift */; };
@@ -58,6 +59,7 @@
 		8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.release.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.release.xcconfig"; sourceTree = "<group>"; };
 		951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9C6836F42507B90E0041A814 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9CA6DF4224E5456900CD5757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CBBD72224E6B089006141CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CD59B6E24DAA0BF00566236 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				9CD59B7624DAA20B00566236 /* CryptoCell.swift */,
 				9CD59B7824DAA21F00566236 /* CryptoView.swift */,
 				9CD59B7A24DAA23200566236 /* DetailView.swift */,
+				9C6836F42507B90E0041A814 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				EDA6705224D9F8690091BD4E /* CryptoViewController.swift in Sources */,
 				9CD59B8524DAA65700566236 /* CryptoViewModel.swift in Sources */,
 				9CD59B8124DAA59700566236 /* Crypto.swift in Sources */,
+				9C6836F52507B90E0041A814 /* LoginView.swift in Sources */,
 				9CD59B7D24DAA46500566236 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
