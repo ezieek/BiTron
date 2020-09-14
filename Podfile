@@ -7,6 +7,7 @@ target 'Bitron' do
 
   # Pods for Bitron
 pod 'SwiftLint'
+pod 'SideMenu'
 
   target 'BitronTests' do
     inherit! :search_paths

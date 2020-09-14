@@ -68,7 +68,7 @@ class DetailView: UIView {
             pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.8),
             pushNotificationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             pushNotificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
+            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
         ])
     }
 }

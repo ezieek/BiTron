@@ -22,6 +22,7 @@ class CryptoViewController: UIViewController {
     var cryptoViewModel: [CryptoViewModel] = []
     var cryptoNames = [""]
     var cryptoRates = [""]
+    var cryptoIcons = ["btc", "eth", "ltc", "lsk", "alg", "trx", "amlt", "neu", "bob", "xrp"]
     var cryptoPreviousRates = [""]
     var storedCrypto = [""]
     var filteredData: [String] = []
@@ -174,8 +175,6 @@ class CryptoViewController: UIViewController {
             print("Could not retrive data")
         }
     }
-    
-
 }
 
 extension CryptoViewController: UITableViewDataSource {
@@ -193,6 +192,7 @@ extension CryptoViewController: UITableViewDataSource {
         cell.tintColor = .white
         cell.textLabel?.text = cryptoNames[indexPath.row]
         cell.detailTextLabel?.text = cryptoRates[indexPath.row]
+        cell.imageView?.image = UIImage(named: cryptoIcons[indexPath.row])
         return cell
     }
 }
@@ -222,5 +222,10 @@ extension CryptoViewController: UITableViewDelegate {
         }
             
         coordinator?.mainView()
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        coordinator?.detailView(name: cryptoNames[indexPath.row], rate: cryptoRates[indexPath.row])
     }
 }

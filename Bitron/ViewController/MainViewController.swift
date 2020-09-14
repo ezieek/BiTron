@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import SideMenu
 
 class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
+    var menu: UISideMenuNavigationController?
     let cryptoModelArray: [CryptocurrencyModel] = []
     let colors = Colors()
     let initObjects = MainView()
@@ -34,12 +36,17 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         setupView()
         initObjectsActions()
         retriveCoreData()
         parseJSONData()
         startTimer()
+        
+        menu = UISideMenuNavigationController(rootViewController: UIViewController())
+        menu?.leftSide = true
+        
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.view)
     }
         
     override func loadView() {
@@ -89,12 +96,16 @@ class MainViewController: UIViewController {
         initObjects.mainTableView.delegate = self
         initObjects.mainTableView.dataSource = self
         initObjects.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+        initObjects.deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func deleteButtonPressed() {
+        print(2)
     }
         
     @objc func settingsButtonPressed() {
         
-        print(1)
+        present(menu!, animated: true)
     }
     
     @objc func addCryptoButtonPressed() {
@@ -142,7 +153,7 @@ class MainViewController: UIViewController {
                         ]
                         
                         var currentIndex = 0
-                            
+                        
                         for name in self?.chosenCryptoNames ?? [] {
                             
                             switch(name) {
@@ -207,11 +218,14 @@ class MainViewController: UIViewController {
                                 self?.chosenCryptoRates[currentIndex] = xrpRate
                                 self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: xrpRate, previousRate: xrpPreviousRate, index: currentIndex) ?? "")
                             }
+                            
+                            
+                            DispatchQueue.main.async {
+                                
+                                self?.initObjects.mainTableView.reloadData()
+                            }
+                            
                             currentIndex += 1
-                        }
-
-                        DispatchQueue.main.async {
-                            self?.initObjects.mainTableView.reloadData()
                         }
                         
                     } catch let error {
@@ -323,6 +337,7 @@ class MainViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
+                
                 self.initObjects.mainTableView.reloadData()
             }
         } catch {
@@ -338,7 +353,6 @@ class MainViewController: UIViewController {
         if percentResult < 0.0 {
             percentResult = percentResult * (-1)
             percentColors.insert(.red, at: index)
-            
         } else {
             percentColors.insert(.green, at: index)
         }
@@ -419,7 +433,6 @@ extension MainViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-        
         guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
 
         cell.textLabel?.text = assignedCryptoNames[indexPath.row]
@@ -434,10 +447,12 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
-        coordinator?.detailView(name: assignedCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
+        //deleteData(index: indexPath)
+        coordinator?.detailView(name: chosenCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
+       // coordinator?.detailView(name: assignedCryptoNames[indexPath.row], rate: chosenCryptoRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -20,6 +20,48 @@ class LoginView: UIView {
         return label
     }()
     
+    lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    lazy var passwordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Password"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    lazy var signInButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign In", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var newAccountButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("New Account? Sign Up!", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -32,12 +74,21 @@ class LoginView: UIView {
     
     func createSubViews() {
         
-        [appNameLabel].forEach { addSubview($0) }
+        [appNameLabel, emailLabel, emailTextField, passwordLabel, passwordTextField, signInButton, newAccountButton].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
-            appNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            appNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            appNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -250),
+            appNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emailLabel.topAnchor.constraint(equalTo: topAnchor, constant: 150),
+            emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: 250),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+            emailTextField.heightAnchor.constraint(equalToConstant: 50)
+           /* emailLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            emailLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),*/
         ])
-
     }
 }
