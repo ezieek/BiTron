@@ -180,7 +180,6 @@ class DetailViewController: UIViewController {
                             response.items.eth.rate,
                             response.items.ltc.rate,
                             response.items.lsk.rate,
-                            response.items.alg.rate,
                             response.items.trx.rate,
                             response.items.amlt.rate,
                             response.items.neu.rate,
@@ -193,7 +192,6 @@ class DetailViewController: UIViewController {
                             response.items.eth.previousRate,
                             response.items.ltc.previousRate,
                             response.items.lsk.previousRate,
-                            response.items.alg.previousRate,
                             response.items.trx.previousRate,
                             response.items.amlt.previousRate,
                             response.items.neu.previousRate,
@@ -233,12 +231,6 @@ class DetailViewController: UIViewController {
                                 self?.initObjects.rateLabel.text = lskRate
                                 self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: lskRate, previousRate: lskPreviousRate, index: currentIndex) ?? "")
 
-                            case "ALG-PLN":
-                                let algRate = response.items.alg.rate
-                                let algPreviousRate = response.items.alg.previousRate
-                                self?.initObjects.rateLabel.text = algRate
-                                self?.initObjects.percentageRateLabel.text = String(self?.percentageValue(rate: algRate, previousRate: algPreviousRate, index: currentIndex) ?? "")
-                                
                             case "TRX-PLN":
                                 let trxRate = response.items.trx.rate
                                 let trxPreviousRate = response.items.trx.previousRate

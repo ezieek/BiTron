@@ -13,8 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var coordinator: ApplicationCoordinator?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+       /* let window = UIWindow(frame: UIScreen.main.bounds)
+        coordinator = ApplicationCoordinator(window: window)
+        coordinator?.start()*/
+        
         
         // create the main navigation controller to be used for our up
         let rootViewController = LoginViewController()

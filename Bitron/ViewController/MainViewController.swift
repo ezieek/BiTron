@@ -8,13 +8,13 @@
 
 import UIKit
 import CoreData
-import SideMenu
+import Alamofire
+import SwiftyJSON
 
 class MainViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
-    var menu: UISideMenuNavigationController?
     let cryptoModelArray: [CryptocurrencyModel] = []
     let colors = Colors()
     let initObjects = MainView()
@@ -34,19 +34,27 @@ class MainViewController: UIViewController {
     var percentColors: [UIColor] = []
     var percentResult = 0.0
     
+   /* let checkedButton = UIImage(named: "checked-32")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+    let uncheckedButton = UIImage(named: "unchecked-32")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+    var isChecked: Bool = false {
+        didSet {
+            if isChecked == true {
+                self.setImage(checkedButton, for: UIControl.State.normal)
+            } else {
+                self.setImage(uncheckedButton, for: UIControl.State.normal)
+            }
+        }
+    }*/
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         setupView()
         initObjectsActions()
         retriveCoreData()
         parseJSONData()
         startTimer()
-        
-        menu = UISideMenuNavigationController(rootViewController: UIViewController())
-        menu?.leftSide = true
-        
-        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.view)
     }
         
     override func loadView() {
@@ -63,11 +71,12 @@ class MainViewController: UIViewController {
     
     func startTimer() {
         
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
-            self?.parseJSONData()
+       // timer?.invalidate()
+       // timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
+         //   self?.alamofireParseData()
+            //self?.parseJSONData()
             //self?.updateData(title: "BTC-PLN", value: "10000.0", previousRate: "9999.0")
-        })
+       // })
     }
     
     func stopTimer() {
@@ -100,19 +109,21 @@ class MainViewController: UIViewController {
     }
     
     @objc func deleteButtonPressed() {
+        
+
         print(2)
     }
         
     @objc func settingsButtonPressed() {
         
-        present(menu!, animated: true)
+        print(1)
     }
     
     @objc func addCryptoButtonPressed() {
             
         coordinator?.cryptoView()
     }
-        
+    
     func parseJSONData() {
 
         DispatchQueue.main.async {
@@ -131,7 +142,6 @@ class MainViewController: UIViewController {
                             response.items.eth.rate,
                             response.items.ltc.rate,
                             response.items.lsk.rate,
-                            response.items.alg.rate,
                             response.items.trx.rate,
                             response.items.amlt.rate,
                             response.items.neu.rate,
@@ -144,7 +154,6 @@ class MainViewController: UIViewController {
                             response.items.eth.previousRate,
                             response.items.ltc.previousRate,
                             response.items.lsk.previousRate,
-                            response.items.alg.previousRate,
                             response.items.trx.previousRate,
                             response.items.amlt.previousRate,
                             response.items.neu.previousRate,
@@ -181,12 +190,6 @@ class MainViewController: UIViewController {
                                 let lskPreviousRate = response.items.lsk.previousRate
                                 self?.chosenCryptoRates[currentIndex] = lskRate
                                 self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: lskRate, previousRate: lskPreviousRate, index: currentIndex) ?? "")
-
-                            case "ALG-PLN":
-                                let algRate = response.items.alg.rate
-                                let algPreviousRate = response.items.alg.previousRate
-                                self?.chosenCryptoRates[currentIndex] = algRate
-                                self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: algRate, previousRate: algPreviousRate, index: currentIndex) ?? "")
                                 
                             case "TRX-PLN":
                                 let trxRate = response.items.trx.rate
@@ -212,6 +215,10 @@ class MainViewController: UIViewController {
                                 self?.chosenCryptoRates[currentIndex] = bobRate
                                 self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: bobRate, previousRate: bobPreviousRate, index: currentIndex) ?? "")
                                 
+                            case "GNT-PLN":
+                                self?.chosenCryptoRates[currentIndex] = "1111111"
+                                self?.assignedCryptoPreviousRates[currentIndex] = String(self?.percentageValue(rate: "1111111", previousRate: "22222222", index: currentIndex) ?? "")
+
                             default:
                                 let xrpRate = response.items.xrp.rate
                                 let xrpPreviousRate = response.items.xrp.previousRate
@@ -292,13 +299,6 @@ class MainViewController: UIViewController {
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)
                     
-                case "ALG-PLN":
-                    assignedCryptoNames.append("Algory")
-                    assignedCryptoSubNames.append("ALG")
-                    assignedCryptoIcon.append("bitcoin")
-                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
-                    percentColors.append(.clear)
-                    
                 case "TRX-PLN":
                     assignedCryptoNames.append("Tron")
                     assignedCryptoSubNames.append("TRX")
@@ -323,6 +323,13 @@ class MainViewController: UIViewController {
                 case "BOB-PLN":
                     assignedCryptoNames.append("Bobs repair")
                     assignedCryptoSubNames.append("BOB")
+                    assignedCryptoIcon.append("bob")
+                    assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
+                    percentColors.append(.clear)
+                    
+                case "GNT-PLN":
+                    assignedCryptoNames.append("GNT")
+                    assignedCryptoSubNames.append("GNT")
                     assignedCryptoIcon.append("bob")
                     assignedCryptoPreviousRates.append(contentsOf: chosenCryptoPreviousRates)
                     percentColors.append(.clear)

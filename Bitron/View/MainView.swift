@@ -82,7 +82,7 @@ class MainView: UIView {
         NSLayoutConstraint.activate([
             favouritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             favouritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            mainTableView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: 20),
+            mainTableView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: 0),
             mainTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             mainTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             mainTableView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor),

@@ -12,6 +12,11 @@ class ApplicationCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    //private let window: UIWindow
+    
+   /* init(window: UIWindow) {
+        self.window = window
+    }*/
     
     init(navigationController: UINavigationController) {
         
@@ -20,6 +25,10 @@ class ApplicationCoordinator: Coordinator {
     
     func start() {
         
+        /*let viewController = MainViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()*/
         let vc = MainViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)

@@ -18,7 +18,6 @@ struct Items: Codable {
         case btc = "BTC-PLN"
         case lml = "LML-PLN"
         case trx = "TRX-PLN"
-        case alg = "ALG-PLN"
         case lsk = "LSK-PLN"
         case eth = "ETH-PLN"
         case ltc = "LTC-PLN"
@@ -33,7 +32,6 @@ struct Items: Codable {
     var btc: BTC
     var lml: LML
     var trx: TRX
-    var alg: ALG
     var lsk: LSK
     var eth: ETH
     var ltc: LTC
@@ -65,15 +63,6 @@ struct LML: Codable {
 }
 
 struct TRX: Codable {
-    var market: Market
-    var time: String?
-    var highestBid: String?
-    var lowestAsk: String?
-    var rate: String
-    var previousRate: String
-}
-
-struct ALG: Codable {
     var market: Market
     var time: String?
     var highestBid: String?
