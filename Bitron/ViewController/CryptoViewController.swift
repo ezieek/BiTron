@@ -12,28 +12,20 @@ import CoreData
 class CryptoViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-    
-    let cryptoModelArray = [CryptocurrencyModel]()
-    let reuseIdentifier = "reuseCell"
-    let colors = Colors()
-    let initObjects = CryptoView()
-    let networking = Networking.shared
-    let persistence = Persistence.shared
-    var cryptoViewModel: [CryptoViewModel] = []
-    var cryptoNames = [""]
-    var cryptoRates = [""]
-    var cryptoIcons = ["btc", "eth", "ltc", "lsk", "alg", "trx", "amlt", "neu", "bob", "xrp"]
-    var cryptoPreviousRates = [""]
-    var storedCrypto = [""]
-    var filteredData: [String] = []
-    
+    private let initObjects = CryptoView()
+    private let dataModel = CryptocurrencyViewModel()
+    private let reuseIdentifier = "reuseCell"
+    private let colors = Colors()
+    private var cryptocurrencyName: [String] = []
+    private var cryptocurrencyRate: [String] = []
+    private var cryptocurrencyPreviousRate: [String] = []
+    private var cryptocurrencyIcons = ["btc", "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-        initObjectsActions()
-        readData()
-        updateCell()
+        dataModelActions()
     }
     
     override func loadView() {
@@ -42,16 +34,22 @@ class CryptoViewController: UIViewController {
         view = initObjects
     }
     
+    func dataModelActions() {
+        
+        dataModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
+            self?.cryptocurrencyName.append(contentsOf: names)
+            self?.cryptocurrencyRate.append(contentsOf: rates)
+            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
+            self?.initObjects.cryptoTableView.reloadData()
+        }
+    }
+    
     func setupView() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.setHidesBackButton(true, animated: true)
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.title = "Bitron"
-    }
-    
-    func initObjectsActions() {
-            
         initObjects.cryptoTableView.register(CryptoCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.cryptoTableView.delegate = self
         initObjects.cryptoTableView.dataSource = self
@@ -62,138 +60,31 @@ class CryptoViewController: UIViewController {
         
         coordinator?.mainView()
     }
-    
-    func updateCell() {
-            
-        DispatchQueue.main.async {
-            self.readData()
-        }
-    }
-        
-    func readData() {
-
-        DispatchQueue.main.async {
-            let urlPath = "https://api.bitbay.net/rest/trading/ticker"
-            self.networking.request(urlPath) { [weak self] (result) in
-     
-                switch result {
-                case .success(let data):
-                    do {
-                        let decoder = JSONDecoder()
-                        let response = try decoder.decode(Crypto.self, from: data)
-
-                        self?.cryptoNames = [
-                            response.items.btc.market.code,
-                            response.items.eth.market.code,
-                            response.items.ltc.market.code,
-                            response.items.lsk.market.code,
-                            response.items.alg.market.code,
-                            response.items.trx.market.code,
-                            response.items.amlt.market.code,
-                            response.items.neu.market.code,
-                            response.items.bob.market.code,
-                            response.items.xrp.market.code
-                        ]
-
-                        self?.cryptoRates = [
-                            response.items.btc.rate,
-                            response.items.eth.rate,
-                            response.items.ltc.rate,
-                            response.items.lsk.rate,
-                            response.items.alg.rate,
-                            response.items.trx.rate,
-                            response.items.amlt.rate,
-                            response.items.neu.rate,
-                            response.items.bob.rate,
-                            response.items.xrp.rate
-                        ]
-                        
-                        self?.cryptoPreviousRates = [
-                            response.items.btc.previousRate,
-                            response.items.eth.previousRate,
-                            response.items.ltc.previousRate,
-                            response.items.lsk.previousRate,
-                            response.items.alg.previousRate,
-                            response.items.trx.previousRate,
-                            response.items.amlt.previousRate,
-                            response.items.neu.previousRate,
-                            response.items.bob.previousRate,
-                            response.items.xrp.previousRate
-                        ]
-                        
-                        DispatchQueue.main.async {
-                            self?.initObjects.cryptoTableView.reloadData()
-                        }
-                            
-                    } catch let error {
-                        print(error)
-                    }
-                        
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-    }
-        
-    func createData(title: String, value: String, previousRate: String) {
-            
-        let context = persistence.context
-             
-       /* let newValue = CryptocurrencyModel(context: context)
-        newValue.title = title
-        newValue.value = value
-        newValue.previous = previousRate*/
-        guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptocurrencyModel", in: context) else { return }
-             
-        let newValue = NSManagedObject(entity: userEntity, insertInto: context)
-        newValue.setValue(title, forKey: "title")
-        newValue.setValue(value, forKey: "value")
-        newValue.setValue(previousRate, forKey: "previous")
-            
-        do {
-            try context.save()
-        } catch {
-            print("Saving error")
-        }
-    }
-        
-    func retriveData() {
-            
-        let context = persistence.context
-            
-        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-            
-        do {
-            let results = try context.fetch(fetchRequest)
-                    
-            for result in results {
-                guard let readTitle = result.title else { return }
-                storedCrypto.append(readTitle)
-            }
-        } catch {
-            print("Could not retrive data")
-        }
-    }
 }
 
 extension CryptoViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-        return cryptoNames.count
+       return cryptocurrencyName.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
         guard let cell = initObjects.cryptoTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
             
+        configureCell(cell: cell, indexPath: indexPath)
+       
+        return cell
+    }
+    
+    func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+        
+        cell.textLabel?.text = cryptocurrencyName[indexPath.row]
+        cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
+        //cell.imageView?.image = UIImage(named: cryptoIcons[indexPath.row]) ERROR: INDEX OUT OF RANGE
         cell.accessoryType = .detailButton
         cell.tintColor = .white
-        cell.textLabel?.text = cryptoNames[indexPath.row]
-        cell.detailTextLabel?.text = cryptoRates[indexPath.row]
-        cell.imageView?.image = UIImage(named: cryptoIcons[indexPath.row])
-        return cell
     }
 }
 
@@ -205,27 +96,13 @@ extension CryptoViewController: UITableViewDelegate {
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-        let name = cryptoNames[indexPath.row]
-        let rate = cryptoRates[indexPath.row]
-        //let time = Int(Date().timeIntervalSince1970)
-        let previousRate = cryptoPreviousRates[indexPath.row]
-        
-        retriveData()
-            
-        let filterData = Array(NSOrderedSet(array: storedCrypto))
-            
-        filteredData = filterData.map { ($0 as? String ?? "") }
-            
-        if !filteredData.contains(name) {
-            createData(title: name, value: rate, previousRate: previousRate)
-        }
-            
+      
+        dataModel.pushData(index: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         
-        coordinator?.detailView(name: cryptoNames[indexPath.row], rate: cryptoRates[indexPath.row])
+        coordinator?.detailView(name: cryptocurrencyName[indexPath.row], rate: cryptocurrencyRate[indexPath.row])
     }
 }
