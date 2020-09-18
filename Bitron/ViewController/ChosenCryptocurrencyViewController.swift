@@ -16,8 +16,9 @@ class ChosenCryptocurrencyViewController: UIViewController {
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
     private let dataViewModel = ChosenCryptocurrencyViewModel()
+    private let initObjects = MainView()
+
     let colors = Colors()
-    let initObjects = MainView()
     let reuseIdentifier = "reuseCell"
     let networking = Networking.shared
     let persistence = Persistence.shared
@@ -34,10 +35,24 @@ class ChosenCryptocurrencyViewController: UIViewController {
     var percentColors: [UIColor] = []
     var percentResult = 0.0
     
+    private var cryptocurrencyName: [String] = []
+    private var cryptocurrencyRate: [String] = []
+    private var cryptocurrencyPreviousRate: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        
+        /*dataViewModel.retriveCoreData { [weak self] (names: [String], rates: [String], previousRates: [String])  in
+            
+            self?.cryptocurrencyName.append(contentsOf: names)
+            self?.cryptocurrencyRate.append(contentsOf: rates)
+            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
+            self?.initObjects.mainTableView.reloadData()
+        }
+        
+        dataViewModel.getJSON()*/
         retriveCoreData()
         parseJSONData()
         startTimer()
@@ -57,12 +72,12 @@ class ChosenCryptocurrencyViewController: UIViewController {
     
     func startTimer() {
         
-       // timer?.invalidate()
-       // timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
-         //   self?.alamofireParseData()
-            //self?.parseJSONData()
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
+            self?.parseJSONData()
             //self?.updateData(title: "BTC-PLN", value: "10000.0", previousRate: "9999.0")
-       // })
+
+        })
     }
     
     func stopTimer() {
@@ -335,17 +350,17 @@ class ChosenCryptocurrencyViewController: UIViewController {
     }
     
     func percentageValue(rate: String, previousRate: String, index: Int) -> String {
-        
+          
         let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
         percentResult = 100 - percentValue
-        
+          
         if percentResult < 0.0 {
             percentResult = percentResult * (-1)
             percentColors.insert(.red, at: index)
         } else {
             percentColors.insert(.green, at: index)
         }
-        
+          
         return String(format: "%.2f", percentResult)
     }
     
@@ -379,59 +394,36 @@ class ChosenCryptocurrencyViewController: UIViewController {
             }
         }
     }
-    
-    //nalezaloby zapewnic nadpisywanie zapisanych danych, gdyz wystepuje tu blad, iz
-    //czasami na ulamek sekundy wybrane kryptowaluty maja wczesniejsze wartosci...
-    func updateData(title: String, value: String, previousRate: String) {
-        
-        /*let context = persistence.context
-             
-        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-        
-        fetchRequest.predicate = NSPredicate(format: "title = %@", title as CVarArg)
-        fetchRequest.predicate = NSPredicate(format: "value = %@", value)
-        fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate as CVarArg)
-        
-        do {
-            let result = try context.fetch(fetchRequest)
-            for object in result {
-                object.setValue(title, forKey: "title")
-                object.setValue(value, forKey: "value")
-                object.setValue(previousRate, forKey: "previous")
-                //print(object)
-                //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-            }
-           do {
-                try context.save()
-            } catch {
-                print("Saving error")
-            }
-            
-        } catch {
-            print(error)
-        }*/
-    }
 }
 
 extension ChosenCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-        return chosenCryptoNames.count
+        return chosenCryptoNames.count//cryptocurrencyName.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
         guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
 
+        configureCell(cell: cell, indexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(cell: MainCell, indexPath: IndexPath) {
+
         cell.textLabel?.text = assignedCryptoNames[indexPath.row]
         cell.detailTextLabel?.text = assignedCryptoSubNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: assignedCryptoIcon[indexPath.row])
         cell.cryptoValueLabel.text = "\(chosenCryptoRates[indexPath.row])  PLN"
+        //cell.textLabel?.text = cryptocurrencyName[indexPath.row]
+        //cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
+        //cell.cryptoValueLabel.text = "\(cryptocurrencyPreviousRate[indexPath.row])  PLN"
         cell.upArrowImage.tintColor = percentColors[indexPath.row]
         cell.cryptoSubValueLabel.textColor = percentColors[indexPath.row]
+        //cell.cryptoSubValueLabel.text = "\(value3[indexPath.row]) %"
         cell.cryptoSubValueLabel.text = "\(assignedCryptoPreviousRates[indexPath.row]) %"
-        return cell
     }
 }
 
@@ -450,3 +442,37 @@ extension ChosenCryptocurrencyViewController: UITableViewDelegate {
     }
 }
 
+
+/*   */
+
+//nalezaloby zapewnic nadpisywanie zapisanych danych, gdyz wystepuje tu blad, iz
+//czasami na ulamek sekundy wybrane kryptowaluty maja wczesniejsze wartosci...
+/*func updateData(title: String, value: String, previousRate: String) {
+    
+    /*let context = persistence.context
+         
+    let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
+    
+    fetchRequest.predicate = NSPredicate(format: "title = %@", title as CVarArg)
+    fetchRequest.predicate = NSPredicate(format: "value = %@", value)
+    fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate as CVarArg)
+    
+    do {
+        let result = try context.fetch(fetchRequest)
+        for object in result {
+            object.setValue(title, forKey: "title")
+            object.setValue(value, forKey: "value")
+            object.setValue(previousRate, forKey: "previous")
+            //print(object)
+            //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        }
+       do {
+            try context.save()
+        } catch {
+            print("Saving error")
+        }
+        
+    } catch {
+        print(error)
+    }*/
+}*/
