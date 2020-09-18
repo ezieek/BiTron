@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class MainViewController: UIViewController {
+class ChosenCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
@@ -34,24 +34,10 @@ class MainViewController: UIViewController {
     var percentColors: [UIColor] = []
     var percentResult = 0.0
     
-   /* let checkedButton = UIImage(named: "checked-32")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-    let uncheckedButton = UIImage(named: "unchecked-32")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-    var isChecked: Bool = false {
-        didSet {
-            if isChecked == true {
-                self.setImage(checkedButton, for: UIControl.State.normal)
-            } else {
-                self.setImage(uncheckedButton, for: UIControl.State.normal)
-            }
-        }
-    }*/
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+
         setupView()
-        initObjectsActions()
         retriveCoreData()
         parseJSONData()
         startTimer()
@@ -96,10 +82,6 @@ class MainViewController: UIViewController {
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.title = "Bitron"
         navigationItem.setHidesBackButton(true, animated: true)
-    }
-        
-    func initObjectsActions() {
-            
         initObjects.menuBarButtonItem.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
         initObjects.mainTableView.register(MainCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.mainTableView.delegate = self
@@ -431,7 +413,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension ChosenCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
@@ -453,7 +435,7 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-extension MainViewController: UITableViewDelegate {
+extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

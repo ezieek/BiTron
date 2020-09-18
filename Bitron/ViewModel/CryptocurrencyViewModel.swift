@@ -59,7 +59,7 @@ class CryptocurrencyViewModel {
         }
     }
     
-    func pushData(index: NSIndexPath) {
+    func pushDataToMainController(index: NSIndexPath) {
         
         let name = cryptocurrencyNames[index.row]
         let rate = cryptocurrencyRates[index.row]

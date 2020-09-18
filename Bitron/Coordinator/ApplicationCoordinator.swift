@@ -29,7 +29,7 @@ class ApplicationCoordinator: Coordinator {
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()*/
-        let vc = MainViewController()
+        let vc = ChosenCryptocurrencyViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
@@ -43,14 +43,14 @@ class ApplicationCoordinator: Coordinator {
     
     func mainView() {
         
-        let vc = MainViewController()
+        let vc = ChosenCryptocurrencyViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func cryptoView() {
         
-        let vc = CryptoViewController()
+        let vc = CryptocurrencyViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

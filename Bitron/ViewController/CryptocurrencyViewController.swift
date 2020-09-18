@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CryptoViewController: UIViewController {
+class CryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     private let initObjects = CryptoView()
@@ -34,16 +34,6 @@ class CryptoViewController: UIViewController {
         view = initObjects
     }
     
-    func dataModelActions() {
-        
-        dataModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
-            self?.cryptocurrencyName.append(contentsOf: names)
-            self?.cryptocurrencyRate.append(contentsOf: rates)
-            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
-            self?.initObjects.cryptoTableView.reloadData()
-        }
-    }
-    
     func setupView() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
@@ -56,13 +46,23 @@ class CryptoViewController: UIViewController {
         initObjects.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
+    func dataModelActions() {
+        
+        dataModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
+            self?.cryptocurrencyName.append(contentsOf: names)
+            self?.cryptocurrencyRate.append(contentsOf: rates)
+            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
+            self?.initObjects.cryptoTableView.reloadData()
+        }
+    }
+    
     @objc func backButtonPressed() {
         
         coordinator?.mainView()
     }
 }
 
-extension CryptoViewController: UITableViewDataSource {
+extension CryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
@@ -88,7 +88,7 @@ extension CryptoViewController: UITableViewDataSource {
     }
 }
 
-extension CryptoViewController: UITableViewDelegate {
+extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
@@ -97,7 +97,7 @@ extension CryptoViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataModel.pushData(index: indexPath as NSIndexPath)
+        dataModel.pushDataToMainController(index: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
