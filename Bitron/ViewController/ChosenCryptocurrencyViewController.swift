@@ -15,7 +15,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
-    let cryptoModelArray: [CryptocurrencyModel] = []
+    private let dataViewModel = ChosenCryptocurrencyViewModel()
     let colors = Colors()
     let initObjects = MainView()
     let reuseIdentifier = "reuseCell"

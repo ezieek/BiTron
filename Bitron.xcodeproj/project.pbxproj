@@ -177,11 +177,11 @@
 		EDA6701624D9F7870091BD4E /* Bitron */ = {
 			isa = PBXGroup;
 			children = (
-				EDA6704E24D9F80B0091BD4E /* Coordinator */,
-				EDA6705024D9F8180091BD4E /* ViewModel */,
 				EDA6704F24D9F8140091BD4E /* Model */,
-				EDA6704D24D9F8040091BD4E /* ViewController */,
 				EDA6704C24D9F7F40091BD4E /* View */,
+				EDA6705024D9F8180091BD4E /* ViewModel */,
+				EDA6704D24D9F8040091BD4E /* ViewController */,
+				EDA6704E24D9F80B0091BD4E /* Coordinator */,
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
 				EDA6702824D9F78A0091BD4E /* Info.plist */,
@@ -211,6 +211,7 @@
 		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				9CD59B8424DAA65700566236 /* CryptoViewModel.swift */,
 				9CA6DF4224E5456900CD5757 /* Assets.xcassets */,
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
 				9CE04C7024E2A2FE0072214F /* Colors.swift */,
@@ -274,7 +275,6 @@
 		EDA6705024D9F8180091BD4E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9CD59B8424DAA65700566236 /* CryptoViewModel.swift */,
 				9C67CD8B25134F1100ECC938 /* CryptocurrencyViewModel.swift */,
 				9C81AF182514AB5800BE1ECA /* ChosenCryptocurrencyViewModel.swift */,
 			);

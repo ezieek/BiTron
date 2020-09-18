@@ -13,7 +13,7 @@ class CryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     private let initObjects = CryptoView()
-    private let dataModel = CryptocurrencyViewModel()
+    private let dataViewModel = CryptocurrencyViewModel()
     private let reuseIdentifier = "reuseCell"
     private let colors = Colors()
     private var cryptocurrencyName: [String] = []
@@ -25,7 +25,7 @@ class CryptocurrencyViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
-        dataModelActions()
+        dataViewModelActions()
     }
     
     override func loadView() {
@@ -46,9 +46,9 @@ class CryptocurrencyViewController: UIViewController {
         initObjects.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func dataModelActions() {
+    func dataViewModelActions() {
         
-        dataModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
+        dataViewModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
             self?.cryptocurrencyName.append(contentsOf: names)
             self?.cryptocurrencyRate.append(contentsOf: rates)
             self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
@@ -97,7 +97,7 @@ extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataModel.pushDataToMainController(index: indexPath as NSIndexPath)
+        dataViewModel.pushDataToMainController(index: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
