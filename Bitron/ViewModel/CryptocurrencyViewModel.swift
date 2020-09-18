@@ -25,35 +25,35 @@ class CryptocurrencyViewModel {
         Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
            
             switch response.result {
-            
-                case .success(let value):
+                
+            case .success(let value):
                     
-                    let jsonValue = JSON(value)
+                let jsonValue = JSON(value)
                     
-                    //searching for every available cryptocurrencies in PLN
-                    for (_, subJson):(String, JSON) in jsonValue {
-                        for(key,_):(String, JSON) in subJson {
+                //searching for every available cryptocurrencies in PLN
+                for (_, subJson):(String, JSON) in jsonValue {
+                    for(key,_):(String, JSON) in subJson {
                             
-                            let subString = "-PLN"
-                            if key.contains(subString) {
-                                self.cryptocurrencyNames.append(key)
-                            }
+                        let subString = "-PLN"
+                        if key.contains(subString) {
+                            self.cryptocurrencyNames.append(key)
                         }
                     }
+                }
                     
-                    for items in self.cryptocurrencyNames {
+                for items in self.cryptocurrencyNames {
                         
-                        let json = JSON(jsonValue)["items"][items]
-                        var cryptocurrency = Cryptocurrency(json: json)
-                        cryptocurrency.name = items
+                    let json = JSON(jsonValue)["items"][items]
+                    var cryptocurrency = Cryptocurrency(json: json)
+                    cryptocurrency.name = items
                         
-                        self.cryptocurrencyRates.append(cryptocurrency.rate ?? "")
-                        self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
-                    }
+                    self.cryptocurrencyRates.append(cryptocurrency.rate ?? "")
+                    self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
+                }
                     
-                    completion(self.cryptocurrencyNames, self.cryptocurrencyRates, self.cryptocurrencyPreviousRates)
+                completion(self.cryptocurrencyNames, self.cryptocurrencyRates, self.cryptocurrencyPreviousRates)
 
-                case .failure(let error):
+            case .failure(let error):
                    print(error)
             }
         }

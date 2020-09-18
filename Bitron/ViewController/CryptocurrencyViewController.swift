@@ -19,7 +19,7 @@ class CryptocurrencyViewController: UIViewController {
     private var cryptocurrencyName: [String] = []
     private var cryptocurrencyRate: [String] = []
     private var cryptocurrencyPreviousRate: [String] = []
-    private var cryptocurrencyIcons = ["btc", "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
+    private var cryptocurrencyIcons = ["btc"]//, "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +82,8 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
         cell.textLabel?.text = cryptocurrencyName[indexPath.row]
         cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
-        //cell.imageView?.image = UIImage(named: cryptoIcons[indexPath.row]) ERROR: INDEX OUT OF RANGE
+        cell.imageView?.image = UIImage(named: "btc")//cryptocurrencyIcons)[indexPath.row])
+        //ERROR: INDEX OUT OF RANGE
         cell.accessoryType = .detailButton
         cell.tintColor = .white
     }

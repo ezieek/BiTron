@@ -246,8 +246,8 @@
 		EDA6704D24D9F8040091BD4E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
 				EDA6705124D9F8690091BD4E /* CryptocurrencyViewController.swift */,
+				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
 				9CD59B8624DAA8D200566236 /* DetailViewController.swift */,
 				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
 			);
