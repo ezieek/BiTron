@@ -1,5 +1,5 @@
 //
-//  SavedCrypto.swift
+//  Cryptocurrency.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.

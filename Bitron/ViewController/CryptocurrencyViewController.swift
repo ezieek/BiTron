@@ -1,5 +1,5 @@
 //
-//  CryptoViewController.swift
+//  CryptocurrencyViewController.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 04/08/2020.
