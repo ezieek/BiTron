@@ -1,5 +1,5 @@
 //
-//  ChosenCryptocurrencyViewModel.swift
+//  FavoritesCryptocurrencyViewModel.swift
 //  Bitron
 //
 //  Created by user175293 on 9/18/20.
@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class ChosenCryptocurrencyViewModel {
+class FavoritesCryptocurrencyViewModel {
     
     private let persistence = Persistence.shared
     private var chosenCryptocurrencyNames: [String] = []

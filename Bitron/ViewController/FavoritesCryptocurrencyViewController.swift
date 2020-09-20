@@ -15,7 +15,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
-    private let dataViewModel = ChosenCryptocurrencyViewModel()
+    private let dataViewModel = FavoritesCryptocurrencyViewModel()
     private let initObjects = MainView()
 
     let colors = Colors()
