@@ -82,8 +82,8 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
         cell.textLabel?.text = cryptocurrencyName[indexPath.row]
         cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
-        cell.imageView?.image = UIImage(named: "btc")//cryptocurrencyIcons)[indexPath.row])
-        //ERROR: INDEX OUT OF RANGE
+        cell.imageView?.image = UIImage(named: "btc")
+        //cryptocurrencyIcons)[indexPath.row]) //ERROR: INDEX OUT OF RANGE
         cell.accessoryType = .detailButton
         cell.tintColor = .white
     }
