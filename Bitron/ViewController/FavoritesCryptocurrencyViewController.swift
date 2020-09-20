@@ -1,5 +1,5 @@
 //
-//  ChosenCryptocurrencyViewController.swift
+//  FavoritesCryptocurrencyViewController.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 04/08/2020.
@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class ChosenCryptocurrencyViewController: UIViewController {
+class FavoritesCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     weak var timer: Timer?
@@ -396,7 +396,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
     }
 }
 
-extension ChosenCryptocurrencyViewController: UITableViewDataSource {
+extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
@@ -427,7 +427,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
     }
 }
 
-extension ChosenCryptocurrencyViewController: UITableViewDelegate {
+extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
