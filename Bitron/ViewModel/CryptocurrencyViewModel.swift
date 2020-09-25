@@ -30,7 +30,6 @@ class CryptocurrencyViewModel {
                     
                 let jsonValue = JSON(value)
                     
-                //searching for every available cryptocurrencies in PLN
                 for (_, subJson):(String, JSON) in jsonValue {
                     for(key,_):(String, JSON) in subJson {
                             
@@ -76,7 +75,7 @@ class CryptocurrencyViewModel {
         }
     }
     
-    func createCoreData(title: String, value: String, previousRate: String) {
+    private func createCoreData(title: String, value: String, previousRate: String) {
             
         let context = persistence.context
         
@@ -94,7 +93,7 @@ class CryptocurrencyViewModel {
         }
     }
         
-    func retriveCoreData() {
+    private func retriveCoreData() {
             
         let context = persistence.context
             
@@ -104,6 +103,7 @@ class CryptocurrencyViewModel {
             let results = try context.fetch(fetchRequest)
                     
             for result in results {
+                
                 guard let readTitle = result.title else { return }
                 storedCryptocurrencyCoreData.append(readTitle)
             }
