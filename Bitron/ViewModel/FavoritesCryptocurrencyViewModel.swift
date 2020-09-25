@@ -127,6 +127,37 @@ class FavoritesCryptocurrencyViewModel {
         }
     }
     
+    //gdy dana wartosc (Rate) zostanie zmieniony to nalezy ja od razu zapisac do pamieci telefonu
+    /*func updateData(title: String, value: String, previousRate: String) {
+        
+        let context = persistence.context
+             
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
+        
+        fetchRequest.predicate = NSPredicate(format: "title = %@", title as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "value = %@", value)
+        fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate as CVarArg)
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            for object in result {
+                object.setValue(title, forKey: "title")
+                object.setValue(value, forKey: "value")
+                object.setValue(previousRate, forKey: "previous")
+                //print(object)
+                //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+            }
+           do {
+                try context.save()
+            } catch {
+                print("Saving error")
+            }
+            
+        } catch {
+            print(error)
+        }
+    }*/
+
     private func calculatingThePercentageDifference(rate: String, previousRate: String) -> String {
           
         let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
