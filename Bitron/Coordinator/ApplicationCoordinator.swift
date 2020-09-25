@@ -57,7 +57,7 @@ class ApplicationCoordinator: Coordinator {
     
     func detailView(name: String, subName: String, rate: String, previousRate: String) {
         
-        let viewController = DetailViewController()
+        let viewController = DetailCryptocurrencyViewController()
         viewController.pushedCryptocurrencyName = name
         viewController.pushedCryptocurrencySubName = subName
         viewController.pushedCryptocurrencyRate = rate

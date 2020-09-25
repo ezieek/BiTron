@@ -103,6 +103,7 @@ extension CryptocurrencyViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
         //tutaj nalezy takze dodac parsowanie cryptocurrencySubName
         
        // coordinator?.detailView(name: cryptocurrencyName[indexPath.row], subName: cryptocurrencySubName[indexPath.row], rate: cryptocurrencyRate[indexPath.row], previousRate: cryptocurrencyPreviousRate[indexPath.row])

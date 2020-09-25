@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  DetailCryptocurrencyViewController.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -9,34 +9,25 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController {
+class DetailCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     let initObjects = DetailView()
     let colors = Colors()
     let networking = Networking.shared
     let persistence = Persistence.shared
-    var savedCryptoNames: [String] = []
-    var chosenCryptocurrencyName: String?// = ""
-    var chosenCryptocurrencyRate: [String] = [""]
-    var cryptoRates = [""]
-    var assignedCryptoNames: [String] = []
-    var assignedCryptoSubNames: [String] = []
-    var assignedCryptoIcon: [String] = []
-    var assignedCryptoPreviousRates: [String] = []
-    var chosenCryptoNames: [String] = []
-    var chosenCryptoRates: [String] = []
-    var chosenCryptoPreviousRates: [String] = []
-    var cryptoPreviousRates = [""]
-    var percentResult = 0.0
-    var name = ""
+    
+    var pushedCryptocurrencyName: String = ""
+    var pushedCryptocurrencySubName: String = ""
+    var pushedCryptocurrencyRate: String = ""
+    var pushedCryptocurrencyPreviousRate: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        retriveCoreData()
-        parseJSONData()
+       // retriveCoreData()
+       // parseJSONData()
     }
     
     override func loadView() {
@@ -47,8 +38,8 @@ class DetailViewController: UIViewController {
     
     func setupView() {
         
-        navigationItem.title = chosenCryptocurrencyName
-        initObjects.nameLabel.text = chosenCryptocurrencyName
+        navigationItem.title = pushedCryptocurrencyName
+        initObjects.nameLabel.text = pushedCryptocurrencyRate
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         initObjects.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
@@ -64,7 +55,7 @@ class DetailViewController: UIViewController {
         
         coordinator?.mainView()
     }
-        
+    /*
     func retriveCoreData() {
             
         let context = persistence.context
@@ -160,8 +151,8 @@ class DetailViewController: UIViewController {
         } catch {
             print("Could not retrive data")
         }
-    }
-    
+    }*/
+    /*
     func parseJSONData() {
         
         DispatchQueue.main.async {
@@ -273,8 +264,8 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-    }
-    
+    }*/
+    /*
     func percentageValue(rate: String, previousRate: String, index: Int) -> String {
         
         let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
@@ -288,36 +279,37 @@ class DetailViewController: UIViewController {
         }
         
         return String(format: "%.2f", percentResult)
-    }
+    }*/
     
-    func deleteData(index: IndexPath) {
-        
-        let context = persistence.context
-               
-        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-               
-        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames)
-        fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates)
-        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates as CVarArg)
+    /*  func deleteData(index: IndexPath) {
+                 
+          let context = persistence.context
+                 
+          let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
+                 
+          fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames[index.row])
+          fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
+          fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates[index.row])
 
-        do {
-            
-            if let result = try? context.fetch(fetchRequest) {
-                for object in result {
-                    context.delete(object)
-                    chosenCryptoNames.remove(at: index.row)
-                    chosenCryptoRates.remove(at: index.row)
-                    chosenCryptoPreviousRates.remove(at: index.row)
-                   /* initObjects.mainTableView.deleteRows(at: [index], with: .middle)
-                    initObjects.mainTableView.reloadData()*/
-                }
-            }
+          do {
+              
+              if let result = try? context.fetch(fetchRequest) {
+                  for object in result {
+                      context.delete(object)
+                      chosenCryptoNames.remove(at: index.row)
+                      chosenCryptoRates.remove(at: index.row)
+                      chosenCryptoPreviousRates.remove(at: index.row)
+                      initObjects.mainTableView.deleteRows(at: [index], with: .middle)
+                      initObjects.mainTableView.reloadData()
+                  }
+              }
 
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
-        }
-    }
+              do {
+                  try context.save()
+              } catch {
+                  print(error)
+              }
+          }
+      }*/
+    
 }
