@@ -36,22 +36,22 @@ class DetailCryptocurrencyViewController: UIViewController {
         view = initObjects
     }
     
-    func setupView() {
+    private func setupView() {
         
-        navigationItem.title = pushedCryptocurrencyName
+        navigationItem.title = "\(pushedCryptocurrencyName) (\(pushedCryptocurrencySubName))"
         initObjects.nameLabel.text = pushedCryptocurrencyRate
         view.layer.insertSublayer(colors.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         initObjects.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
     }
     
-    @objc func deleteDataButtonPressed() {
+    @objc private func deleteDataButtonPressed() {
         print(1)
         
            // deleteData()
     }
     
-    @objc func backButtonPressed() {
+    @objc private func backButtonPressed() {
         
         coordinator?.mainView()
     }

@@ -34,7 +34,7 @@ class CryptocurrencyViewController: UIViewController {
         view = initObjects
     }
     
-    func setupView() {
+    private func setupView() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.setHidesBackButton(true, animated: true)
@@ -46,7 +46,7 @@ class CryptocurrencyViewController: UIViewController {
         initObjects.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func dataViewModelActions() {
+    private func dataViewModelActions() {
         
         dataViewModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
             self?.cryptocurrencyName.append(contentsOf: names)
@@ -56,7 +56,7 @@ class CryptocurrencyViewController: UIViewController {
         }
     }
     
-    @objc func backButtonPressed() {
+    @objc private func backButtonPressed() {
         
         coordinator?.mainView()
     }
@@ -78,7 +78,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         
         cell.textLabel?.text = cryptocurrencyName[indexPath.row]
         cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]

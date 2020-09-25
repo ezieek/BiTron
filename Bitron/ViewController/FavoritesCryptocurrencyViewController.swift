@@ -84,17 +84,17 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         initObjects.deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
     }
     
-    @objc func deleteButtonPressed() {
+    @objc private func deleteButtonPressed() {
     
         print("The delete button has been pressed")
     }
         
-    @objc func settingsButtonPressed() {
+    @objc private func settingsButtonPressed() {
         
         print("The setting button has been pressed")
     }
     
-    @objc func addCryptoButtonPressed() {
+    @objc private func addCryptoButtonPressed() {
             
         coordinator?.cryptoView()
     }
@@ -116,7 +116,7 @@ extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureCell(cell: MainCell, indexPath: IndexPath) {
+    private func configureCell(cell: MainCell, indexPath: IndexPath) {
 
         cell.textLabel?.text = cryptocurrencyName[indexPath.row]
         cell.detailTextLabel?.text = cryptocurrencySubName[indexPath.row]
