@@ -51,4 +51,19 @@ class FavoritesCryptocurrencyViewModel {
             print("Could not retrive data")
         }
     }
+    
+    private func calculatingThePercentageDifference(rate: String, previousRate: String) -> String {
+          
+        let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
+        percentResult = 100 - percentValue
+          
+        if percentResult < 0.0 {
+            percentResult = percentResult * (-1)
+            percentColors.append(.red)
+        } else {
+            percentColors.append(.green)
+        }
+        
+        return String(format: "%.2f", percentResult)
+    }
 }
