@@ -12,22 +12,16 @@ import CoreData
 class FavoritesCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-    weak var timer: Timer?
     private let dataViewModel = FavoritesCryptocurrencyViewModel()
     private let initObjects = MainView()
     private let colors = Colors()
     private let reuseIdentifier = "reuseCell"
-    private var cryptocurrencyName: [String] = []
-    private var cryptocurrencySubName: [String] = []
-    private var cryptocurrencyRate: [String] = []
-    private var cryptocurrencyPreviousRate: [String] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         dataViewModelActions()
-       //constantlyParsingCryptocurrencyData()
     }
         
     override func loadView() {
@@ -39,34 +33,14 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
-        pauseParsingCryptocurrencyData()
+        dataViewModel.turnOffTheCounter()
     }
     
     private func dataViewModelActions() {
         
-        dataViewModel.getCurrentValueOfSavedCryptocurrencies { [weak self] (name: [String], subName: [String], rate: [String], previousRate: [String]) in
-            self?.cryptocurrencyName.append(contentsOf: name)
-            self?.cryptocurrencySubName.append(contentsOf: subName)
-            self?.cryptocurrencyRate.append(contentsOf: rate)
-            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRate)
-            self?.initObjects.mainTableView.reloadData()
-        }
-    }
-    
-    private func constantlyParsingCryptocurrencyData() {
-        
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { [weak self] (_) in
-            
-            //dodac:
-            //funkcje getCurrentValueOfSavedCryptocurrencies
-            //funkcje do zapisu danych do pamieci telefonu
-        })
-    }
-    
-    private func pauseParsingCryptocurrencyData() {
-        
-        timer?.invalidate()
+        self.dataViewModel.getCurrentValueOfSavedCryptocyrrencies { [weak self] in
+             self?.initObjects.mainTableView.reloadData()
+         }
     }
     
     private func setupView() {
@@ -103,8 +77,8 @@ class FavoritesCryptocurrencyViewController: UIViewController {
 extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            
-        return cryptocurrencyName.count
+           
+        return dataViewModel.assignedCryptoNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,10 +92,10 @@ extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
     
     private func configureCell(cell: MainCell, indexPath: IndexPath) {
 
-        cell.textLabel?.text = cryptocurrencyName[indexPath.row]
-        cell.detailTextLabel?.text = cryptocurrencySubName[indexPath.row]
-        cell.cryptoValueLabel.text = "\(cryptocurrencyRate[indexPath.row])  PLN"
-        cell.cryptoSubValueLabel.text = "\(cryptocurrencyPreviousRate[indexPath.row]) %"
+        cell.textLabel?.text = dataViewModel.assignedCryptoNames[indexPath.row]
+        cell.detailTextLabel?.text = dataViewModel.assignedCryptoSubNames[indexPath.row]
+        cell.cryptoValueLabel.text = "\(dataViewModel.assignedCryptoRates[indexPath.row])  PLN"
+        cell.cryptoSubValueLabel.text = "\(dataViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
         cell.cryptoSubValueLabel.textColor = dataViewModel.percentColors[indexPath.row]
     }
 }
@@ -130,7 +104,7 @@ extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        coordinator?.detailView(name: cryptocurrencyName[indexPath.row], subName: cryptocurrencySubName[indexPath.row], rate: cryptocurrencyRate[indexPath.row], previousRate: cryptocurrencyPreviousRate[indexPath.row])
+        //coordinator?.detailView(name: cryptocurrencyName[indexPath.row], subName: cryptocurrencySubName[indexPath.row], rate: cryptocurrencyRate[indexPath.row], previousRate: cryptocurrencyPreviousRate[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

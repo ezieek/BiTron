@@ -13,19 +13,24 @@ import SwiftyJSON
 
 class FavoritesCryptocurrencyViewModel {
     
+    weak var timer: Timer?
     private let persistence = Persistence.shared
     private var chosenCryptocurrencyNames: [String] = []
     private var chosenCryptocurrencyRates: [String] = []
     private var chosenCryptocurrencyPreviousRates: [String] = []
-    private var assignedCryptoNames: [String] = []
-    private var assignedCryptoSubNames: [String] = []
-    private var assignedCryptoIcon: [String] = []
-    private var assignedCryptoRates: [String] = []
-    private var assignedCryptoPreviousRates: [String] = []
     private var percentResult = 0.0
     var percentColors: [UIColor] = []
+    var assignedCryptoNames: [String] = []
+    var assignedCryptoSubNames: [String] = []
+    var assignedCryptoIcon: [String] = []
+    var assignedCryptoRates: [String] = []
+    var assignedCryptoPreviousRates: [String] = []
     
     func retriveCoreData() {
+        
+        chosenCryptocurrencyNames.removeAll()
+        chosenCryptocurrencyRates.removeAll()
+        chosenCryptocurrencyPreviousRates.removeAll()
         
         let context = persistence.context
         
@@ -52,79 +57,94 @@ class FavoritesCryptocurrencyViewModel {
         }
     }
     
-    func getCurrentValueOfSavedCryptocurrencies(completion: @escaping (_ name: [String], _ subName: [String], _ rate: [String], _ previousRate: [String]) -> Void) {
-            
-        retriveCoreData()
+    @objc func getCurrentValueOfSavedCryptocyrrencies(completion: @escaping () -> Void) {
         
-        Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { [weak self] (_) in
             
-            switch response.result {
+            self?.retriveCoreData()
+        
+            Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [self] (response) in
             
-            case .success(let value):
+                switch response.result {
+            
+                case .success(let value):
 
-                let jsonValue = JSON(value)
-                var arrayCryptocurrenyNames: [String] = []
-                var arrayCryptocurrencySubNames: [String] = []
-                var arrayCryptocurrencyRates: [String] = []
-                var arrayCryptocurrencyPreviousRate: [String] = []
+                    let jsonValue = JSON(value)
+                    var arrayCryptocurrenyNames: [String] = []
+                    var arrayCryptocurrencySubNames: [String] = []
+                    var arrayCryptocurrencyRates: [String] = []
+                    var arrayCryptocurrencyPreviousRates: [String] = []
                 
-                for names in self.chosenCryptocurrencyNames {
+                    for names in self?.chosenCryptocurrencyNames ?? [""] {
+                    
+                        let json = JSON(jsonValue)["items"][names]
+                        let cryptocurrency = Cryptocurrency(json: json)
+                        let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
+                    
+                        arrayCryptocurrenyNames.append(self?.settingTheMainNameOfCryptocurrency(getName: names) ?? "")
+                        arrayCryptocurrencySubNames.append(removingUselessString)
+                        arrayCryptocurrencyRates.append(cryptocurrency.rate ?? "")
+                        arrayCryptocurrencyPreviousRates.append(self?.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? "") ?? "")
+                    }
+                
+                    for i in 0...arrayCryptocurrenyNames.count - 1 {
 
-                    let json = JSON(jsonValue)["items"][names]
-                    let cryptocurrency = Cryptocurrency(json: json)
-                    let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
+                        switch(arrayCryptocurrenyNames[i]) {
                     
-                    arrayCryptocurrenyNames.append(self.settingTheMainNameOfCryptocurrency(getName: names))
-                    arrayCryptocurrencySubNames.append(removingUselessString)
-                    arrayCryptocurrencyRates.append(cryptocurrency.rate ?? "")
-                    arrayCryptocurrencyPreviousRate.append(self.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? ""))
+                        case arrayCryptocurrenyNames[i]:
+                            self?.assignedCryptoNames.append(arrayCryptocurrenyNames[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Names!")
+                        }
+
+                        switch(arrayCryptocurrencySubNames[i]) {
+                    
+                        case arrayCryptocurrencySubNames[i]:
+                            self?.assignedCryptoSubNames.append(arrayCryptocurrencySubNames[i])
+
+                        default:
+                            print("There is an problem in Cryptocurrencies SubNames!")
+                        }
+                
+                        switch(arrayCryptocurrencyRates[i]) {
+                    
+                        case arrayCryptocurrencyRates[i]:
+                            self?.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Rates!")
+                        }
+
+                        switch(arrayCryptocurrencyPreviousRates[i]) {
+                    
+                        case arrayCryptocurrencyPreviousRates[i]:
+                            self?.assignedCryptoPreviousRates.append(arrayCryptocurrencyPreviousRates[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Previous Rates!")
+                        }
+                    }
+                
+                    completion()
+
+                case .failure(let error):
+                    print(error)
                 }
-                    
-                for i in 0...arrayCryptocurrenyNames.count - 1 {
-                        
-                    switch(arrayCryptocurrenyNames[i]) {
-                    
-                    case arrayCryptocurrenyNames[i]:
-                        self.assignedCryptoNames.append(arrayCryptocurrenyNames[i])
-                        
-                    default:
-                        print("There is an problem in Cryptocurrencies Names!")
-                    }
-                    
-                    switch(arrayCryptocurrencySubNames[i]) {
-                    
-                    case arrayCryptocurrencySubNames[i]:
-                        self.assignedCryptoSubNames.append(arrayCryptocurrencySubNames[i])
-                        
-                    default:
-                        print("There is an problem in Cryptocurrencies SubNames!")
-                    }
-                
-                    switch(arrayCryptocurrencyRates[i]) {
-                    
-                    case arrayCryptocurrencyRates[i]:
-                        self.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
-                        
-                    default:
-                        print("There is an problem in Cryptocurrencies Rates!")
-                    }
-                    
-                    switch(arrayCryptocurrencyPreviousRate[i]) {
-                    
-                    case arrayCryptocurrencyPreviousRate[i]:
-                        self.assignedCryptoPreviousRates.append(arrayCryptocurrencyPreviousRate[i])
-                        
-                    default:
-                        print("There is an problem in Cryptocurrencies Previous Rates!")
-                    }
-                }
-                
-                completion(self.assignedCryptoNames, self.assignedCryptoSubNames, self.assignedCryptoRates, self.assignedCryptoPreviousRates)
-                
-            case .failure(let error):
-                print(error)
             }
-        }
+            
+            self?.assignedCryptoNames.removeAll()
+            self?.assignedCryptoSubNames.removeAll()
+            self?.assignedCryptoRates.removeAll()
+            self?.assignedCryptoPreviousRates.removeAll()
+         })
+    }
+    
+    func turnOffTheCounter() {
+        
+        timer?.invalidate()
     }
     
     //gdy dana wartosc (Rate) zostanie zmieniony to nalezy ja od razu zapisac do pamieci telefonu
