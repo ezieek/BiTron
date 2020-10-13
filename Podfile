@@ -10,6 +10,8 @@ pod 'SwiftLint'
 pod 'SideMenu'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Alamofire', '~> 4.4'
+pod 'RxSwift', '6.0.0-rc.1'
+pod 'RxCocoa', '6.0.0-rc.1'
 
   target 'BitronTests' do
     inherit! :search_paths

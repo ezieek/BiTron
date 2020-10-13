@@ -185,8 +185,11 @@
 				EDA6704E24D9F80B0091BD4E /* Coordinator */,
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
-				EDA6702824D9F78A0091BD4E /* Info.plist */,
+				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
+				9CA6DF4224E5456900CD5757 /* Assets.xcassets */,
 				EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */,
+				EDA6702824D9F78A0091BD4E /* Info.plist */,
+				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
 			);
 			path = Bitron;
 			sourceTree = "<group>";
@@ -212,10 +215,7 @@
 		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				9CA6DF4224E5456900CD5757 /* Assets.xcassets */,
-				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
 				9CE04C7024E2A2FE0072214F /* Colors.swift */,
-				EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */,
 				9C81AF1A2514AD4200BE1ECA /* Constants.swift */,
 			);
 			path = Supporting;
