@@ -57,15 +57,15 @@ class FavoritesCryptocurrencyViewModel {
         }
     }
     
-    @objc func getCurrentValueOfSavedCryptocyrrencies(completion: @escaping () -> Void) {
+    @objc func getCurrentValueOfSavedCryptocurrencies(completion: @escaping () -> Void) {
         
         timer?.invalidate()
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { [weak self] (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { [weak self] (_) in
             
+            self?.percentColors.removeAll()
             self?.retriveCoreData()
         
-            Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [self] (response) in
+            Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
             
                 switch response.result {
             
@@ -139,7 +139,7 @@ class FavoritesCryptocurrencyViewModel {
             self?.assignedCryptoSubNames.removeAll()
             self?.assignedCryptoRates.removeAll()
             self?.assignedCryptoPreviousRates.removeAll()
-         })
+        })
     }
     
     func turnOffTheCounter() {
@@ -179,15 +179,15 @@ class FavoritesCryptocurrencyViewModel {
     }*/
 
     private func calculatingThePercentageDifference(rate: String, previousRate: String) -> String {
-          
+        
         let percentValue = (previousRate as NSString).doubleValue * 100 / (rate as NSString).doubleValue
         percentResult = 100 - percentValue
           
-        if percentResult < 0.0 {
+        if percentResult > 0.0 {
+            percentColors.append(.green)
+        } else {
             percentResult = percentResult * (-1)
             percentColors.append(.red)
-        } else {
-            percentColors.append(.green)
         }
         
         return String(format: "%.2f", percentResult)

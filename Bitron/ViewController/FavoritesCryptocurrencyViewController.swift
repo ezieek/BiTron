@@ -38,7 +38,8 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     
     private func dataViewModelActions() {
         
-        self.dataViewModel.getCurrentValueOfSavedCryptocyrrencies { [weak self] in
+        self.dataViewModel.getCurrentValueOfSavedCryptocurrencies { [weak self] in
+
              self?.initObjects.mainTableView.reloadData()
          }
     }
