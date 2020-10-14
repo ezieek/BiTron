@@ -13,14 +13,15 @@ import CoreData
 
 class CryptocurrencyViewModel {
     
-    private var cryptocurrencyNames: [String] = []
-    private var cryptocurrencyRates: [String] = []
-    private var cryptocurrencyPreviousRates: [String] = []
     private var storedCryptocurrencyCoreData: [String] = []
     private var filteredData: [String] = []
     private var persistence = Persistence.shared
+    var cryptocurrencyShortNames: [String] = []
+    var cryptocurrencyNames: [String] = []
+    var cryptocurrencyRates: [String] = []
+    var cryptocurrencyPreviousRates: [String] = []
     
-    func getJSON(completion: @escaping ((_ names: [String], _ rates: [String], _ previousRates: [String]) -> Void)) {
+    func getJSONUsingBitbayAPI(completion: @escaping () -> Void) {
     
         Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
            
@@ -35,22 +36,23 @@ class CryptocurrencyViewModel {
                             
                         let subString = "-PLN"
                         if key.contains(subString) {
-                            self.cryptocurrencyNames.append(key)
+                           self.cryptocurrencyShortNames.append(key)
                         }
                     }
                 }
                     
-                for items in self.cryptocurrencyNames {
-                        
+                for items in self.cryptocurrencyShortNames {
+
                     let json = JSON(jsonValue)["items"][items]
                     var cryptocurrency = Cryptocurrency(json: json)
                     cryptocurrency.name = items
-                        
+                    
+                    self.cryptocurrencyNames.append(self.settingTheMainNameOfCryptocurrency(getName: items))
                     self.cryptocurrencyRates.append(cryptocurrency.rate ?? "")
                     self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
                 }
-                    
-                completion(self.cryptocurrencyNames, self.cryptocurrencyRates, self.cryptocurrencyPreviousRates)
+                
+                completion()
 
             case .failure(let error):
                    print(error)
@@ -58,9 +60,9 @@ class CryptocurrencyViewModel {
         }
     }
     
-    func pushDataToMainController(index: NSIndexPath) {
+    func pushDataToFavoritesViewController(index: NSIndexPath) {
         
-        let name = cryptocurrencyNames[index.row]
+        let name = cryptocurrencyShortNames[index.row]
         let rate = cryptocurrencyRates[index.row]
         let previousRate = cryptocurrencyPreviousRates[index.row]
         
@@ -85,7 +87,7 @@ class CryptocurrencyViewModel {
         newValue.setValue(title, forKey: "title")
         newValue.setValue(value, forKey: "value")
         newValue.setValue(previousRate, forKey: "previous")
-            
+        
         do {
             try context.save()
         } catch {
@@ -111,5 +113,106 @@ class CryptocurrencyViewModel {
         } catch {
             print("Could not retrive data")
         }
+    }
+    
+    private func settingTheMainNameOfCryptocurrency(getName: String) -> String {
+        
+        var nameReceived: String = ""
+        
+        switch(getName) {
+        
+        case "XLM-PLN":
+            nameReceived = "Stellar"
+            
+        case "BTC-PLN":
+            nameReceived = "Bitcoin"
+            
+        case "BCC-PLN":
+            nameReceived = "Bitcoin Cash"
+
+        case "NEU-PLN":
+            nameReceived = "Neumark"
+
+        case "BCP-PLN":
+            nameReceived = "Blockchain Poland"
+            
+        case "EXY-PLN":
+            nameReceived = "Experty"
+            
+        case "LML-PLN":
+            nameReceived = "Lisk Machine Learning"
+
+        case "BOB-PLN":
+            nameReceived = "Bob's Repair"
+
+        case "XIN-PLN":
+            nameReceived = "Infinity Economics"
+            
+        case "BTG-PLN":
+            nameReceived = "Bitcoin Gold"
+            
+        case "AMLT-PLN":
+            nameReceived = "AMLT"
+
+        case "MKR-PLN":
+            nameReceived = "Maker"
+
+        case "XRP-PLN":
+            nameReceived = "Ripple"
+            
+        case "ZRX-PLN":
+            nameReceived = "0x"
+            
+        case "GNT-PLN":
+            nameReceived = "Golem"
+
+        case "LINK-PLN":
+            nameReceived = "Chainlink"
+
+        case "LSK-PLN":
+            nameReceived = "Lisk"
+            
+        case "GAME-PLN":
+            nameReceived = "Game Credits"
+            
+        case "LTC-PLN":
+            nameReceived = "Litecoin"
+
+        case "BAT-PLN":
+            nameReceived = "Basic Attention Token"
+
+        case "TRX-PLN":
+            nameReceived = "Tron"
+            
+        case "PAY-PLN":
+            nameReceived = "TenX"
+            
+        case "ZEC-PLN":
+            nameReceived = "Zcash"
+
+        case "DASH-PLN":
+            nameReceived = "Dash"
+
+        case "OMG-PLN":
+            nameReceived = "OmniseGO"
+            
+        case "ETH-PLN":
+            nameReceived = "Ethereum"
+            
+        case "ALG-PLN":
+            nameReceived = "Algory"
+
+        case "BSV-PLN":
+            nameReceived = "Bitcoin SV"
+            
+        case "REP-PLN":
+            nameReceived = "Augur"
+        
+        default:
+            nameReceived = "Error!"
+            print("There is an problem with that cryptocurrency")
+        }
+        
+        return nameReceived
     }
 }

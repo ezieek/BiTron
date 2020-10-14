@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class CryptocurrencyViewController: UIViewController {
 
@@ -16,9 +15,6 @@ class CryptocurrencyViewController: UIViewController {
     private let dataViewModel = CryptocurrencyViewModel()
     private let reuseIdentifier = "reuseCell"
     private let colors = Colors()
-    private var cryptocurrencyName: [String] = []
-    private var cryptocurrencyRate: [String] = []
-    private var cryptocurrencyPreviousRate: [String] = []
     private var cryptocurrencyIcons = ["btc"]//, "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
 
     override func viewDidLoad() {
@@ -48,10 +44,8 @@ class CryptocurrencyViewController: UIViewController {
     
     private func dataViewModelActions() {
         
-        dataViewModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
-            self?.cryptocurrencyName.append(contentsOf: names)
-            self?.cryptocurrencyRate.append(contentsOf: rates)
-            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
+        dataViewModel.getJSONUsingBitbayAPI { [weak self] in
+            
             self?.initObjects.cryptoTableView.reloadData()
         }
     }
@@ -66,7 +60,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-       return cryptocurrencyName.count
+        return dataViewModel.cryptocurrencyNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,8 +74,8 @@ extension CryptocurrencyViewController: UITableViewDataSource {
     
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         
-        cell.textLabel?.text = cryptocurrencyName[indexPath.row]
-        cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
+        cell.textLabel?.text = dataViewModel.cryptocurrencyNames[indexPath.row]
+        cell.detailTextLabel?.text = dataViewModel.cryptocurrencyRates[indexPath.row]
         cell.imageView?.image = UIImage(named: "btc")
         //cryptocurrencyIcons)[indexPath.row]) //ERROR: INDEX OUT OF RANGE
         cell.accessoryType = .detailButton
@@ -98,7 +92,7 @@ extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataViewModel.pushDataToMainController(index: indexPath as NSIndexPath)
+        dataViewModel.pushDataToFavoritesViewController(index: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
