@@ -57,10 +57,91 @@ class FavoritesCryptocurrencyViewModel {
         }
     }
     
-    @objc func getCurrentValueOfSavedCryptocurrencies(completion: @escaping () -> Void) {
+    @objc func getCurrentValueOfSavedCryptocurrenciesFirstLoadView(completion: @escaping () -> Void) {
+        
+        self.percentColors.removeAll()
+        self.retriveCoreData()
+        
+        Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+            
+            switch response.result {
+            
+            case .success(let value):
+
+                let jsonValue = JSON(value)
+                var arrayCryptocurrenyNames: [String] = []
+                var arrayCryptocurrencySubNames: [String] = []
+                var arrayCryptocurrencyRates: [String] = []
+                var arrayCryptocurrencyPreviousRates: [String] = []
+                
+                for names in self?.chosenCryptocurrencyNames ?? [""] {
+                    
+                    let json = JSON(jsonValue)["items"][names]
+                    let cryptocurrency = Cryptocurrency(json: json)
+                    let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
+                    
+                    arrayCryptocurrenyNames.append(self?.settingTheMainNameOfCryptocurrency(getName: names) ?? "")
+                    arrayCryptocurrencySubNames.append(removingUselessString)
+                    arrayCryptocurrencyRates.append(cryptocurrency.rate ?? "")
+                    arrayCryptocurrencyPreviousRates.append(self?.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? "") ?? "")
+                }
+                
+                for i in 0...arrayCryptocurrenyNames.count - 1 {
+
+                    switch(arrayCryptocurrenyNames[i]) {
+                    
+                    case arrayCryptocurrenyNames[i]:
+                        self?.assignedCryptoNames.append(arrayCryptocurrenyNames[i])
+                        
+                    default:
+                        print("There is an problem in Cryptocurrencies Names!")
+                    }
+
+                    switch(arrayCryptocurrencySubNames[i]) {
+                    
+                    case arrayCryptocurrencySubNames[i]:
+                        self?.assignedCryptoSubNames.append(arrayCryptocurrencySubNames[i])
+
+                    default:
+                        print("There is an problem in Cryptocurrencies SubNames!")
+                    }
+                
+                    switch(arrayCryptocurrencyRates[i]) {
+                    
+                    case arrayCryptocurrencyRates[i]:
+                        self?.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
+                        
+                    default:
+                        print("There is an problem in Cryptocurrencies Rates!")
+                    }
+
+                    switch(arrayCryptocurrencyPreviousRates[i]) {
+                    
+                    case arrayCryptocurrencyPreviousRates[i]:
+                        self?.assignedCryptoPreviousRates.append(arrayCryptocurrencyPreviousRates[i])
+                        
+                    default:
+                        print("There is an problem in Cryptocurrencies Previous Rates!")
+                    }
+                }
+                
+                completion()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        self.assignedCryptoNames.removeAll()
+        self.assignedCryptoSubNames.removeAll()
+        self.assignedCryptoRates.removeAll()
+        self.assignedCryptoPreviousRates.removeAll()
+    }
+    
+    @objc func getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: Double, completion: @escaping () -> Void) {
         
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { [weak self] (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self] (_) in
             
             self?.percentColors.removeAll()
             self?.retriveCoreData()
@@ -141,7 +222,91 @@ class FavoritesCryptocurrencyViewModel {
             self?.assignedCryptoPreviousRates.removeAll()
         })
     }
-    
+    private func timerWithSecondTimeInterval() {
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { [weak self] (_) in
+            
+            print("tak2")
+            self?.percentColors.removeAll()
+            self?.retriveCoreData()
+        
+            Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+            
+                switch response.result {
+            
+                case .success(let value):
+
+                    let jsonValue = JSON(value)
+                    var arrayCryptocurrenyNames: [String] = []
+                    var arrayCryptocurrencySubNames: [String] = []
+                    var arrayCryptocurrencyRates: [String] = []
+                    var arrayCryptocurrencyPreviousRates: [String] = []
+                
+                    for names in self?.chosenCryptocurrencyNames ?? [""] {
+                    
+                        let json = JSON(jsonValue)["items"][names]
+                        let cryptocurrency = Cryptocurrency(json: json)
+                        let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
+                    
+                        arrayCryptocurrenyNames.append(self?.settingTheMainNameOfCryptocurrency(getName: names) ?? "")
+                        arrayCryptocurrencySubNames.append(removingUselessString)
+                        arrayCryptocurrencyRates.append(cryptocurrency.rate ?? "")
+                        arrayCryptocurrencyPreviousRates.append(self?.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? "") ?? "")
+                    }
+                
+                    for i in 0...arrayCryptocurrenyNames.count - 1 {
+
+                        switch(arrayCryptocurrenyNames[i]) {
+                    
+                        case arrayCryptocurrenyNames[i]:
+                            self?.assignedCryptoNames.append(arrayCryptocurrenyNames[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Names!")
+                        }
+
+                        switch(arrayCryptocurrencySubNames[i]) {
+                    
+                        case arrayCryptocurrencySubNames[i]:
+                            self?.assignedCryptoSubNames.append(arrayCryptocurrencySubNames[i])
+
+                        default:
+                            print("There is an problem in Cryptocurrencies SubNames!")
+                        }
+                
+                        switch(arrayCryptocurrencyRates[i]) {
+                    
+                        case arrayCryptocurrencyRates[i]:
+                            self?.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Rates!")
+                        }
+
+                        switch(arrayCryptocurrencyPreviousRates[i]) {
+                    
+                        case arrayCryptocurrencyPreviousRates[i]:
+                            self?.assignedCryptoPreviousRates.append(arrayCryptocurrencyPreviousRates[i])
+                        
+                        default:
+                            print("There is an problem in Cryptocurrencies Previous Rates!")
+                        }
+                    }
+                
+                    //completion()
+
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+            self?.assignedCryptoNames.removeAll()
+            self?.assignedCryptoSubNames.removeAll()
+            self?.assignedCryptoRates.removeAll()
+            self?.assignedCryptoPreviousRates.removeAll()
+        })
+    }
     func turnOffTheCounter() {
         
         timer?.invalidate()

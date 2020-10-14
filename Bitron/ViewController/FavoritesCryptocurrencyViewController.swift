@@ -16,10 +16,10 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     private let initObjects = MainView()
     private let colors = Colors()
     private let reuseIdentifier = "reuseCell"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
         dataViewModelActions()
     }
@@ -37,11 +37,14 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     }
     
     private func dataViewModelActions() {
-        
-        self.dataViewModel.getCurrentValueOfSavedCryptocurrencies { [weak self] in
 
-             self?.initObjects.mainTableView.reloadData()
-         }
+        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+            self?.initObjects.mainTableView.reloadData()
+        }
+
+        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: 5.0) { [weak self] in
+            self?.initObjects.mainTableView.reloadData()
+        }
     }
     
     private func setupView() {
@@ -105,7 +108,7 @@ extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //coordinator?.detailView(name: cryptocurrencyName[indexPath.row], subName: cryptocurrencySubName[indexPath.row], rate: cryptocurrencyRate[indexPath.row], previousRate: cryptocurrencyPreviousRate[indexPath.row])
+        coordinator?.detailView(name: dataViewModel.assignedCryptoNames[indexPath.row], subName: dataViewModel.assignedCryptoSubNames[indexPath.row], rate: dataViewModel.assignedCryptoRates[indexPath.row], previousRate: dataViewModel.assignedCryptoPreviousRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
