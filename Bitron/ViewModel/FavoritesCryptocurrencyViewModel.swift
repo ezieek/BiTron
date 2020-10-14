@@ -86,7 +86,7 @@ class FavoritesCryptocurrencyViewModel {
                     arrayCryptocurrencyPreviousRates.append(self?.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? "") ?? "")
                 }
                 
-                for i in 0...arrayCryptocurrenyNames.count - 1 {
+                for i in 0..<arrayCryptocurrenyNames.count {
 
                     switch(arrayCryptocurrenyNames[i]) {
                     
@@ -170,7 +170,7 @@ class FavoritesCryptocurrencyViewModel {
                         arrayCryptocurrencyPreviousRates.append(self?.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? "") ?? "")
                     }
                 
-                    for i in 0...arrayCryptocurrenyNames.count - 1 {
+                    for i in 0..<arrayCryptocurrenyNames.count {
 
                         switch(arrayCryptocurrenyNames[i]) {
                     
@@ -222,11 +222,42 @@ class FavoritesCryptocurrencyViewModel {
             self?.assignedCryptoPreviousRates.removeAll()
         })
     }
-    
+   
     func turnOffTheCounter() {
         
         timer?.invalidate()
     }
+    
+    func deleteCoreData(index: IndexPath, completion: @escaping () -> Void) {
+                 
+        let context = persistence.context
+        
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
+        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptocurrencyNames[index.row])
+        fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptocurrencyRates[index.row])
+        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptocurrencyPreviousRates[index.row])
+
+        do {
+            if let result = try? context.fetch(fetchRequest) {
+            
+                for object in result {
+                    context.delete(object)
+                    chosenCryptocurrencyNames.remove(at: index.row)
+                    chosenCryptocurrencyRates.remove(at: index.row)
+                    chosenCryptocurrencyPreviousRates.remove(at: index.row)
+                
+                    completion()
+                }
+            }
+
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     
     //gdy dana wartosc (Rate) zostanie zmieniony to nalezy ja od razu zapisac do pamieci telefonu
     /*func updateData(title: String, value: String, previousRate: String) {
@@ -285,6 +316,9 @@ class FavoritesCryptocurrencyViewModel {
             
         case "BTC-PLN":
             nameReceived = "Bitcoin"
+            
+        case "BCC-PLN":
+            nameReceived = "Bitcoin Cash"
 
         case "NEU-PLN":
             nameReceived = "Neumark"

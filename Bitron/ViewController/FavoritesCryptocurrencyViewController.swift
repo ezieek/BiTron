@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class FavoritesCryptocurrencyViewController: UIViewController {
 
@@ -16,6 +15,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     private let initObjects = MainView()
     private let colors = Colors()
     private let reuseIdentifier = "reuseCell"
+    private var timeInterval = 5.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +39,12 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     private func dataViewModelActions() {
 
         self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+            
             self?.initObjects.mainTableView.reloadData()
         }
 
-        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: 5.0) { [weak self] in
+        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
+
             self?.initObjects.mainTableView.reloadData()
         }
     }
@@ -108,7 +110,12 @@ extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        coordinator?.detailView(name: dataViewModel.assignedCryptoNames[indexPath.row], subName: dataViewModel.assignedCryptoSubNames[indexPath.row], rate: dataViewModel.assignedCryptoRates[indexPath.row], previousRate: dataViewModel.assignedCryptoPreviousRates[indexPath.row])
+        dataViewModel.deleteCoreData(index: indexPath) {
+            
+            self.initObjects.mainTableView.reloadData()
+        }
+        
+       // coordinator?.detailView(name: dataViewModel.assignedCryptoNames[indexPath.row], subName: dataViewModel.assignedCryptoSubNames[indexPath.row], rate: dataViewModel.assignedCryptoRates[indexPath.row], previousRate: dataViewModel.assignedCryptoPreviousRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
