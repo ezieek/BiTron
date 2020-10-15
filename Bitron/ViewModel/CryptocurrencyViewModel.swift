@@ -18,8 +18,30 @@ class CryptocurrencyViewModel {
     private var persistence = Persistence.shared
     var cryptocurrencyShortNames: [String] = []
     var cryptocurrencyNames: [String] = []
+    var cryptocurrencySortedNames: [String] = []
     var cryptocurrencyRates: [String] = []
     var cryptocurrencyPreviousRates: [String] = []
+    var cryptocurrencyIcon: [String] = []
+    
+    private func retriveCoreData() {
+            
+        let context = persistence.context
+            
+        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
+            
+        do {
+            let results = try context.fetch(fetchRequest)
+                    
+            for result in results {
+                
+                guard let readTitle = result.title else { return }
+                storedCryptocurrencyCoreData.append(readTitle)
+            }
+            
+        } catch {
+            print("Could not retrive data")
+        }
+    }
     
     func getJSONUsingBitbayAPI(completion: @escaping () -> Void) {
     
@@ -30,19 +52,13 @@ class CryptocurrencyViewModel {
             case .success(let value):
                     
                 let jsonValue = JSON(value)
-                    
-                for (_, subJson):(String, JSON) in jsonValue {
-                    for(key,_):(String, JSON) in subJson {
-                            
-                        let subString = "-PLN"
-                        if key.contains(subString) {
-                           self.cryptocurrencyShortNames.append(key)
-                        }
-                    }
-                }
-                    
-                for items in self.cryptocurrencyShortNames {
 
+                self.cryptocurrencySortedNames = ["ZRX-PLN", "ALG-PLN", "AMLT-PLN", "REP-PLN", "BAT-PLN", "BTC-PLN", "BCC-PLN", "BTG-PLN", "BSV-PLN", "BCP-PLN", "BOB-PLN", "LINK-PLN", "DASH-PLN", "ETH-PLN", "EXY-PLN", "GAME-PLN", "GNT-PLN", "XIN-PLN", "LSK-PLN", "LML-PLN", "LTC-PLN", "MKR-PLN", "NEU-PLN", "OMG-PLN", "XRP-PLN", "XLM-PLN", "PAY-PLN", "TRX-PLN", "ZEC-PLN"]
+                
+                self.cryptocurrencyIcon = ["zrx", "btc", "amlt", "rep", "bat", "btc", "bcc", "btg", "bsv", "btc", "bob", "link", "dash", "eth", "btc", "game", "gnt", "xin", "lsk", "btc", "ltc", "mkr", "neu", "omg", "xrp", "btc", "pay", "trx", "zec"]
+                
+                for items in self.cryptocurrencySortedNames {
+                    
                     let json = JSON(jsonValue)["items"][items]
                     var cryptocurrency = Cryptocurrency(json: json)
                     cryptocurrency.name = items
@@ -60,11 +76,11 @@ class CryptocurrencyViewModel {
         }
     }
     
-    func pushDataToFavoritesViewController(index: NSIndexPath) {
+    func pushDataToFavoritesViewController(indexPath: NSIndexPath) {
         
-        let name = cryptocurrencyShortNames[index.row]
-        let rate = cryptocurrencyRates[index.row]
-        let previousRate = cryptocurrencyPreviousRates[index.row]
+        let name = cryptocurrencySortedNames[indexPath.row]
+        let rate = cryptocurrencyRates[indexPath.row]
+        let previousRate = cryptocurrencyPreviousRates[indexPath.row]
         
         retriveCoreData()
             
@@ -92,26 +108,6 @@ class CryptocurrencyViewModel {
             try context.save()
         } catch {
             print("Saving error")
-        }
-    }
-        
-    private func retriveCoreData() {
-            
-        let context = persistence.context
-            
-        let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-            
-        do {
-            let results = try context.fetch(fetchRequest)
-                    
-            for result in results {
-                
-                guard let readTitle = result.title else { return }
-                storedCryptocurrencyCoreData.append(readTitle)
-            }
-            
-        } catch {
-            print("Could not retrive data")
         }
     }
     
