@@ -15,7 +15,6 @@ class CryptocurrencyViewController: UIViewController {
     private let dataViewModel = CryptocurrencyViewModel()
     private let reuseIdentifier = "reuseCell"
     private let colors = Colors()
-    private var cryptocurrencyIcons = ["btc"]//, "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +75,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
         cell.textLabel?.text = dataViewModel.cryptocurrencyNames[indexPath.row]
         cell.detailTextLabel?.text = dataViewModel.cryptocurrencyRates[indexPath.row]
-        cell.imageView?.image = UIImage(named: "btc")
-        //cryptocurrencyIcons)[indexPath.row]) //ERROR: INDEX OUT OF RANGE
+        cell.imageView?.image = UIImage(named: dataViewModel.cryptocurrencyIcon[indexPath.row])
         cell.accessoryType = .detailButton
         cell.tintColor = .white
     }
@@ -92,7 +90,7 @@ extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataViewModel.pushDataToFavoritesViewController(index: indexPath as NSIndexPath)
+        dataViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
