@@ -26,7 +26,7 @@ class FavoritesCryptocurrencyViewModel {
     var assignedCryptoRates: [String] = []
     var assignedCryptoPreviousRates: [String] = []
     
-    func retriveCoreData() {
+    private func retriveCoreData() {
         
         chosenCryptocurrencyNames.removeAll()
         chosenCryptocurrencyRates.removeAll()
