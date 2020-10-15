@@ -81,6 +81,7 @@ class CryptocurrencyViewModel {
         let name = cryptocurrencySortedNames[indexPath.row]
         let rate = cryptocurrencyRates[indexPath.row]
         let previousRate = cryptocurrencyPreviousRates[indexPath.row]
+        let icon = cryptocurrencyIcon[indexPath.row]
         
         retriveCoreData()
             
@@ -89,11 +90,11 @@ class CryptocurrencyViewModel {
         filteredData = filterData.map { ($0 as? String ?? "") }
             
         if !filteredData.contains(name) {
-            createCoreData(title: name, value: rate, previousRate: previousRate)
+            createCoreData(title: name, value: rate, previousRate: previousRate, image: icon)
         }
     }
     
-    private func createCoreData(title: String, value: String, previousRate: String) {
+    private func createCoreData(title: String, value: String, previousRate: String, image: String) {
             
         let context = persistence.context
         
@@ -103,6 +104,7 @@ class CryptocurrencyViewModel {
         newValue.setValue(title, forKey: "title")
         newValue.setValue(value, forKey: "value")
         newValue.setValue(previousRate, forKey: "previous")
+        newValue.setValue(image, forKey: "image")
         
         do {
             try context.save()
