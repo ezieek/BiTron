@@ -11,8 +11,8 @@ import UIKit
 class FavoritesCryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
-    private let dataViewModel = FavoritesCryptocurrencyViewModel()
-    private let initObjects = MainView()
+    private let favoritesViewModel = FavoritesCryptocurrencyViewModel()
+    private let initObjects = FavoriteView()
     private let colors = Colors()
     private let reuseIdentifier = "reuseCell"
     private var timeInterval = 5.0
@@ -33,17 +33,17 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
-        dataViewModel.turnOffTheCounter()
+        favoritesViewModel.turnOffTheCounter()
     }
     
     private func dataViewModelActions() {
 
-        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
             
             self?.initObjects.mainTableView.reloadData()
         }
 
-        self.dataViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
+        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
 
             self?.initObjects.mainTableView.reloadData()
         }
@@ -57,7 +57,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         navigationItem.title = "Bitron"
         navigationItem.setHidesBackButton(true, animated: true)
         initObjects.menuBarButtonItem.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
-        initObjects.mainTableView.register(MainCell.self, forCellReuseIdentifier: reuseIdentifier)
+        initObjects.mainTableView.register(FavoriteCell.self, forCellReuseIdentifier: reuseIdentifier)
         initObjects.mainTableView.delegate = self
         initObjects.mainTableView.dataSource = self
         initObjects.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -84,25 +84,26 @@ extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            
-        return dataViewModel.assignedCryptoNames.count
+        return favoritesViewModel.assignedCryptoNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-        guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
+        guard let cell = initObjects.mainTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FavoriteCell else { return UITableViewCell() }
 
         configureCell(cell: cell, indexPath: indexPath)
         
         return cell
     }
     
-    private func configureCell(cell: MainCell, indexPath: IndexPath) {
+    private func configureCell(cell: FavoriteCell, indexPath: IndexPath) {
 
-        cell.textLabel?.text = dataViewModel.assignedCryptoNames[indexPath.row]
-        cell.detailTextLabel?.text = dataViewModel.assignedCryptoSubNames[indexPath.row]
-        cell.cryptoValueLabel.text = "\(dataViewModel.assignedCryptoRates[indexPath.row])  PLN"
-        cell.cryptoSubValueLabel.text = "\(dataViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
-        cell.cryptoSubValueLabel.textColor = dataViewModel.percentColors[indexPath.row]
+        cell.textLabel?.text = favoritesViewModel.assignedCryptoNames[indexPath.row]
+        cell.detailTextLabel?.text = favoritesViewModel.assignedCryptoSubNames[indexPath.row]
+        cell.imageView?.image = UIImage(named: favoritesViewModel.assignedCryptoIcon[indexPath.row])
+        cell.cryptoValueLabel.text = "\(favoritesViewModel.assignedCryptoRates[indexPath.row])  PLN"
+        cell.cryptoSubValueLabel.text = "\(favoritesViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
+        cell.cryptoSubValueLabel.textColor = favoritesViewModel.percentColors[indexPath.row]
     }
 }
 
@@ -110,12 +111,13 @@ extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        dataViewModel.deleteCoreData(index: indexPath) {
+        //delete function for testing
+       //favoritesViewModel.deleteCoreData(indexPath: indexPath) {
             
-            self.initObjects.mainTableView.reloadData()
-        }
+       //   self.initObjects.mainTableView.reloadData()
+       //}
         
-       // coordinator?.detailView(name: dataViewModel.assignedCryptoNames[indexPath.row], subName: dataViewModel.assignedCryptoSubNames[indexPath.row], rate: dataViewModel.assignedCryptoRates[indexPath.row], previousRate: dataViewModel.assignedCryptoPreviousRates[indexPath.row])
+        coordinator?.detailView(name: favoritesViewModel.assignedCryptoNames[indexPath.row], subName: favoritesViewModel.assignedCryptoSubNames[indexPath.row], rate: favoritesViewModel.assignedCryptoRates[indexPath.row], previousRate: favoritesViewModel.assignedCryptoPreviousRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

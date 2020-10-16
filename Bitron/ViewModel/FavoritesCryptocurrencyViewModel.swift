@@ -57,7 +57,7 @@ class FavoritesCryptocurrencyViewModel {
                 chosenCryptocurrencyImage.append(readImageName)
             }
         } catch {
-            print("Could not retrive data")
+            print("Could not retrive core data!")
         }
     }
     
@@ -144,7 +144,7 @@ class FavoritesCryptocurrencyViewModel {
                 self.assignedCryptoNames.append(arrayCryptocurrenyNames[i])
             
             default:
-                print("There is an problem in Cryptocurrencies Names!")
+                print("There is a problem with the names of the fetchted cryptocurrencies!")
             }
 
             switch(arrayCryptocurrencySubNames[i]) {
@@ -153,7 +153,7 @@ class FavoritesCryptocurrencyViewModel {
                 self.assignedCryptoSubNames.append(arrayCryptocurrencySubNames[i])
 
             default:
-                print("There is an problem in Cryptocurrencies SubNames!")
+                print("There is a problem with the subnames of the fetched cryptocurrencies!")
             }
     
             switch(arrayCryptocurrencyRates[i]) {
@@ -162,7 +162,7 @@ class FavoritesCryptocurrencyViewModel {
                 self.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
             
             default:
-                print("There is an problem in Cryptocurrencies Rates!")
+                print("There is a problem with the rates of the fetched cryptocurrencies!")
             }
 
             switch(arrayCryptocurrencyPreviousRates[i]) {
@@ -171,7 +171,7 @@ class FavoritesCryptocurrencyViewModel {
                 self.assignedCryptoPreviousRates.append(arrayCryptocurrencyPreviousRates[i])
             
             default:
-                print("There is an problem in Cryptocurrencies Previous Rates!")
+                print("There is a problem with the previous rates of the fetched cryptocurrencies!")
             }
         }
     }
@@ -355,7 +355,7 @@ class FavoritesCryptocurrencyViewModel {
         
         default:
             nameReceived = "Error!"
-            print("There is an problem with that cryptocurrency")
+            print("There is a problem with that cryptocurrency")
         }
         
         return nameReceived
