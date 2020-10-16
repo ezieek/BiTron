@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  FavoriteView.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainView: UIView {
+class FavoriteView: UIView {
 
     let screen = UIScreen.main.bounds
     
@@ -35,13 +35,6 @@ class MainView: UIView {
         return tableView
     }()
     
-    lazy var mainCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
     lazy var bottomStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [pushNotificationButton, deleteButton])
         stackView.axis = .horizontal
@@ -77,7 +70,7 @@ class MainView: UIView {
     
     func createSubViews() {
         
-        [favouritesLabel, mainTableView, mainCollectionView, bottomStackView].forEach { addSubview($0) }
+        [favouritesLabel, mainTableView, bottomStackView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             favouritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -90,10 +83,6 @@ class MainView: UIView {
             bottomStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-           /* mainCollectionView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: 20),
-            mainCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            mainCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            mainCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)*/
         ])
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MainCell.swift
+//  FavoriteCell.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCell: UITableViewCell {
+class FavoriteCell: UITableViewCell {
 
     let screen = UIScreen.main.bounds
     
