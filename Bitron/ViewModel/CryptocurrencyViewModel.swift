@@ -6,10 +6,10 @@
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
 import Alamofire
 import SwiftyJSON
-import CoreData
 
 class CryptocurrencyViewModel {
     
@@ -19,6 +19,7 @@ class CryptocurrencyViewModel {
     var cryptocurrencyShortNames: [String] = []
     var cryptocurrencyNames: [String] = []
     var cryptocurrencySortedNames: [String] = []
+    var cryptocurrencySubNames : [String] = []
     var cryptocurrencyRates: [String] = []
     var cryptocurrencyPreviousRates: [String] = []
     var cryptocurrencyIcon: [String] = []
@@ -39,7 +40,7 @@ class CryptocurrencyViewModel {
             }
             
         } catch {
-            print("Could not retrive data")
+            print("Could not retrive core data!")
         }
     }
     
@@ -54,6 +55,8 @@ class CryptocurrencyViewModel {
                 let jsonValue = JSON(value)
 
                 self.cryptocurrencySortedNames = ["ZRX-PLN", "ALG-PLN", "AMLT-PLN", "REP-PLN", "BAT-PLN", "BTC-PLN", "BCC-PLN", "BTG-PLN", "BSV-PLN", "BCP-PLN", "BOB-PLN", "LINK-PLN", "DASH-PLN", "ETH-PLN", "EXY-PLN", "GAME-PLN", "GNT-PLN", "XIN-PLN", "LSK-PLN", "LML-PLN", "LTC-PLN", "MKR-PLN", "NEU-PLN", "OMG-PLN", "XRP-PLN", "XLM-PLN", "PAY-PLN", "TRX-PLN", "ZEC-PLN"]
+
+                self.cryptocurrencySubNames = ["ZRX", "ALG", "AMLT", "REP", "BAT", "BTC", "BCC", "BTG", "BSV", "BCP", "BOB", "LINK", "DASH", "ETH", "EXY", "GAME", "GNT", "XIN", "LSK", "LML", "LTC", "MKR", "NEU", "OMG", "XRP", "XLM", "PAY", "TRX", "ZEC"]
                 
                 self.cryptocurrencyIcon = ["zrx", "btc", "amlt", "rep", "bat", "btc", "bcc", "btg", "bsv", "btc", "bob", "link", "dash", "eth", "btc", "game", "gnt", "xin", "lsk", "btc", "ltc", "mkr", "neu", "omg", "xrp", "btc", "pay", "trx", "zec"]
                 
@@ -208,7 +211,7 @@ class CryptocurrencyViewModel {
         
         default:
             nameReceived = "Error!"
-            print("There is an problem with that cryptocurrency")
+            print("There is a problem with that cryptocurrency")
         }
         
         return nameReceived
