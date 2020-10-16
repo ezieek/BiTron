@@ -12,7 +12,7 @@ class CryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     private let initObjects = CryptoView()
-    private let dataViewModel = CryptocurrencyViewModel()
+    private let cryptocurrencyViewModel = CryptocurrencyViewModel()
     private let reuseIdentifier = "reuseCell"
     private let colors = Colors()
 
@@ -43,7 +43,7 @@ class CryptocurrencyViewController: UIViewController {
     
     private func dataViewModelActions() {
         
-        dataViewModel.getJSONUsingBitbayAPI { [weak self] in
+        cryptocurrencyViewModel.getJSONUsingBitbayAPI { [weak self] in
             
             self?.initObjects.cryptoTableView.reloadData()
         }
@@ -59,7 +59,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-        return dataViewModel.cryptocurrencyNames.count
+        return cryptocurrencyViewModel.cryptocurrencyNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,9 +73,9 @@ extension CryptocurrencyViewController: UITableViewDataSource {
     
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         
-        cell.textLabel?.text = dataViewModel.cryptocurrencyNames[indexPath.row]
-        cell.detailTextLabel?.text = dataViewModel.cryptocurrencyRates[indexPath.row]
-        cell.imageView?.image = UIImage(named: dataViewModel.cryptocurrencyIcon[indexPath.row])
+        cell.textLabel?.text = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
+        cell.detailTextLabel?.text = cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row]
+        cell.imageView?.image = UIImage(named: cryptocurrencyViewModel.cryptocurrencyIcon[indexPath.row])
         cell.accessoryType = .detailButton
         cell.tintColor = .white
     }
@@ -90,14 +90,12 @@ extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
+        cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-        //tutaj nalezy takze dodac parsowanie cryptocurrencySubName
-        
-       // coordinator?.detailView(name: cryptocurrencyName[indexPath.row], subName: cryptocurrencySubName[indexPath.row], rate: cryptocurrencyRate[indexPath.row], previousRate: cryptocurrencyPreviousRate[indexPath.row])
+
+        coordinator?.detailView(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row], subName: cryptocurrencyViewModel.cryptocurrencySubNames[indexPath.row], rate: cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row], previousRate: cryptocurrencyViewModel.cryptocurrencyPreviousRates[indexPath.row])
     }
 }
