@@ -10,6 +10,8 @@
 		2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */; };
 		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
 		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
+		9C678C6F2539D3D900611202 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C6E2539D3D900611202 /* DetailViewModel.swift */; };
+		9C678C742539D54F00611202 /* DetailCryptocurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C732539D54F00611202 /* DetailCryptocurrency.swift */; };
 		9C67CD8C25134F1100ECC938 /* CryptocurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67CD8B25134F1100ECC938 /* CryptocurrencyViewModel.swift */; };
 		9C6836F52507B90E0041A814 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6836F42507B90E0041A814 /* LoginView.swift */; };
 		9C81AF192514AB5800BE1ECA /* FavoritesCryptocurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81AF182514AB5800BE1ECA /* FavoritesCryptocurrencyViewModel.swift */; };
@@ -61,6 +63,8 @@
 		8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.release.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.release.xcconfig"; sourceTree = "<group>"; };
 		951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9C678C6E2539D3D900611202 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		9C678C732539D54F00611202 /* DetailCryptocurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptocurrency.swift; sourceTree = "<group>"; };
 		9C67CD8B25134F1100ECC938 /* CryptocurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyViewModel.swift; sourceTree = "<group>"; };
 		9C6836F42507B90E0041A814 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9C81AF182514AB5800BE1ECA /* FavoritesCryptocurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCryptocurrencyViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				9CD59B8224DAA5E800566236 /* Cryptocurrency.swift */,
+				9C678C732539D54F00611202 /* DetailCryptocurrency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			children = (
 				9C67CD8B25134F1100ECC938 /* CryptocurrencyViewModel.swift */,
 				9C81AF182514AB5800BE1ECA /* FavoritesCryptocurrencyViewModel.swift */,
+				9C678C6E2539D3D900611202 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				9C81AF1B2514AD4200BE1ECA /* Constants.swift in Sources */,
 				9CD59B8324DAA5E800566236 /* Cryptocurrency.swift in Sources */,
 				9CD59B7F24DAA48300566236 /* Coordinator.swift in Sources */,
+				9C678C6F2539D3D900611202 /* DetailViewModel.swift in Sources */,
 				9C81AF192514AB5800BE1ECA /* FavoritesCryptocurrencyViewModel.swift in Sources */,
 				9CD59B7524DAA1F900566236 /* FavoriteView.swift in Sources */,
 				9CD59B7724DAA20B00566236 /* CryptoCell.swift in Sources */,
@@ -537,6 +544,7 @@
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* CryptocurrencyViewController.swift in Sources */,
 				9C6836F52507B90E0041A814 /* LoginView.swift in Sources */,
+				9C678C742539D54F00611202 /* DetailCryptocurrency.swift in Sources */,
 				9CD59B7D24DAA46500566236 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,7 +714,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -726,7 +734,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
