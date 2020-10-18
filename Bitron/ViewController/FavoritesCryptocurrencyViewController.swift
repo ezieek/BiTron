@@ -61,14 +61,8 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         initObjects.mainTableView.delegate = self
         initObjects.mainTableView.dataSource = self
         initObjects.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        initObjects.deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
     }
-    
-    @objc private func deleteButtonPressed() {
-    
-        print("The delete button has been pressed")
-    }
-        
+
     @objc private func settingsButtonPressed() {
         
         print("The setting button has been pressed")
