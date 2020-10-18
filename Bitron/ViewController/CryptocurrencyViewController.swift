@@ -7,19 +7,14 @@
 //
 
 import UIKit
-import CoreData
 
 class CryptocurrencyViewController: UIViewController {
 
     weak var coordinator: ApplicationCoordinator?
     private let initObjects = CryptoView()
-    private let dataViewModel = CryptocurrencyViewModel()
+    private let cryptocurrencyViewModel = CryptocurrencyViewModel()
     private let reuseIdentifier = "reuseCell"
     private let colors = Colors()
-    private var cryptocurrencyName: [String] = []
-    private var cryptocurrencyRate: [String] = []
-    private var cryptocurrencyPreviousRate: [String] = []
-    private var cryptocurrencyIcons = ["btc"]//, "eth", "ltc", "lsk", "trx", "amlt", "neu", "bob", "xrp"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +29,7 @@ class CryptocurrencyViewController: UIViewController {
         view = initObjects
     }
     
-    func setupView() {
+    private func setupView() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.setHidesBackButton(true, animated: true)
@@ -46,17 +41,15 @@ class CryptocurrencyViewController: UIViewController {
         initObjects.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func dataViewModelActions() {
+    private func dataViewModelActions() {
         
-        dataViewModel.getJSON { [weak self] (names: [String], rates: [String], previousRates: [String])  in
-            self?.cryptocurrencyName.append(contentsOf: names)
-            self?.cryptocurrencyRate.append(contentsOf: rates)
-            self?.cryptocurrencyPreviousRate.append(contentsOf: previousRates)
+        cryptocurrencyViewModel.getJSONUsingBitbayAPI { [weak self] in
+            
             self?.initObjects.cryptoTableView.reloadData()
         }
     }
     
-    @objc func backButtonPressed() {
+    @objc private func backButtonPressed() {
         
         coordinator?.mainView()
     }
@@ -66,7 +59,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-       return cryptocurrencyName.count
+        return cryptocurrencyViewModel.cryptocurrencyNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,12 +71,11 @@ extension CryptocurrencyViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         
-        cell.textLabel?.text = cryptocurrencyName[indexPath.row]
-        cell.detailTextLabel?.text = cryptocurrencyRate[indexPath.row]
-        cell.imageView?.image = UIImage(named: "btc")//cryptocurrencyIcons)[indexPath.row])
-        //ERROR: INDEX OUT OF RANGE
+        cell.textLabel?.text = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
+        cell.detailTextLabel?.text = cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row]
+        cell.imageView?.image = UIImage(named: cryptocurrencyViewModel.cryptocurrencyIcon[indexPath.row])
         cell.accessoryType = .detailButton
         cell.tintColor = .white
     }
@@ -98,12 +90,12 @@ extension CryptocurrencyViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        dataViewModel.pushDataToMainController(index: indexPath as NSIndexPath)
+        cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
         coordinator?.mainView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-        coordinator?.detailView(name: cryptocurrencyName[indexPath.row], rate: cryptocurrencyRate[indexPath.row])
+
+        coordinator?.detailView(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row], subName: cryptocurrencyViewModel.cryptocurrencySubNames[indexPath.row], rate: cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row], previousRate: cryptocurrencyViewModel.cryptocurrencyPreviousRates[indexPath.row])
     }
 }

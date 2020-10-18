@@ -20,6 +20,7 @@ struct Cryptocurrency {
 }
 
 extension Cryptocurrency {
+    
     enum PropertyKey: String {
         case name, time, rate, lowestAsk, highestBid, previousRate
     }

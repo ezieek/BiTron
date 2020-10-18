@@ -29,37 +29,40 @@ class ApplicationCoordinator: Coordinator {
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()*/
-        let vc = FavoritesCryptocurrencyViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = FavoritesCryptocurrencyViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func loginView() {
         
-        let vc = LoginViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = LoginViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func mainView() {
         
-        let vc = FavoritesCryptocurrencyViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = FavoritesCryptocurrencyViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func cryptoView() {
         
-        let vc = CryptocurrencyViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = CryptocurrencyViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
     
-    func detailView(name: String, rate: String ) {
+    func detailView(name: String, subName: String, rate: String, previousRate: String) {
         
-        let vc = DetailViewController()
-        vc.chosenCryptocurrencyName = name
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = DetailCryptocurrencyViewController()
+        viewController.pushedCryptocurrencyName = name
+        viewController.pushedCryptocurrencySubName = subName
+        viewController.pushedCryptocurrencyRate = rate
+        viewController.pushedCryptocurrencyPreviousRate = previousRate
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
