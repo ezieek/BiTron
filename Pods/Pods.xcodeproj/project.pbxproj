@@ -19,10 +19,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		04BF425D5D0EF7D383CD2DB1C29F2414 /* Pods-Bitron-BitronUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0FB447A586B57B86F837935A851BB /* Pods-Bitron-BitronUITests-dummy.m */; };
 		0C5E11DE24DAA737704B355F5F2F3426 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50F511A774F7A1FD5D460A96F1DC70B /* ParameterEncoding.swift */; };
 		132E0F619E4338E5D1B27E4C72076B3F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895BF32EB9A74ECF96C5493A0DBB009 /* Notifications.swift */; };
-		17F0EB041492B85FC968DDFAF2D1875B /* Pods-BitronTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC5878A0CDF803B70CF22135EFC9B0A /* Pods-BitronTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1942F7D3B7722A5637C3FC0BE44B1E6C /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7E951A3ED74EBE4187993D4EAD2AB9 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1945CD5D63A1C164AEAAA9A33E85571E /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E06D55F91CA493768E188A64C6C7D /* Alamofire-dummy.m */; };
 		1986B50C74F1697EA43F68335C93CEB3 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E364B5394F96CED404EDC7C355858E91 /* MultipartFormData.swift */; };
@@ -31,99 +29,101 @@
 		31CE630E5C5F4243C759C329C3D04B62 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5FA241A32EDF8268EFEA84B187BD9 /* SideMenuTransition.swift */; };
 		3571F958A3907B3A806E62D50C2550D4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97393CC5BCDCABCD9B4BE2DEFF87FB51 /* NetworkReachabilityManager.swift */; };
 		464450D037D17ED5EE2322E180A6A9F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		4AF7EF8FAFF50CEFA25AD4588462E0D6 /* Pods-Bitron-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CED187594BF196353623EFDC34E2B06F /* Pods-Bitron-dummy.m */; };
 		53791F5E5F07400F92CFDFC89A432305 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911EA8858145F0D9315E5303EE301D6 /* Validation.swift */; };
 		5CFFA4088CF87E34D428A868C68C9B2A /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E708124D9F80169F4A603AA5DF3E61 /* UISideMenuNavigationController.swift */; };
+		60A22926B7E3736DFCD3D045CE0B64C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		64744C911253C3E01461FAD7C935C8D7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A6BB5C13158107787A64F3CB5555B /* Result.swift */; };
+		65F6EEDFDA78F14913197080978752A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		7209C32379ACDCF3937E1C77149E1E63 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA06C6EA0AFA31E58FD9C9BE2A652F2 /* UITableViewVibrantCell.swift */; };
 		735674B48DD22F00E2BBBB9291115489 /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C9A5C2EE400CD8ECF81342AE9DEC0 /* SideMenu-dummy.m */; };
 		7389F893E9B1ECD81A61DFC4CE5798E6 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C13D6E49D5377D55FB344E35E0B9F /* SideMenuManager.swift */; };
 		7664FD4F59A0C00866CBAE60B0A3AD64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40CC5EFC40979DCD7F82BAF9F265415 /* SwiftyJSON.swift */; };
-		7EA5F4CF8E55A49EFC27705FD899F0EE /* Pods-BitronTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5058B96735D9E7A579326943149E6EE /* Pods-BitronTests-dummy.m */; };
+		806FB28E82AFF3777C9066595F38BE36 /* Pods-BitronTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC5878A0CDF803B70CF22135EFC9B0A /* Pods-BitronTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83956E20859CDBBE7BC38ABADE0170FB /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3EC60AFBF24FD5A578DE442420B713 /* AFError.swift */; };
+		84D23ADD153064E0FACAD1155EADD798 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		8DA1DCD729CE544E554426AC6A02CC0B /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E31F17D107EF3945BC53B93F3F456C /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EC61CEE77E6B9A36AB104CC62756861 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		90692F371D41484755A20FC416EB45E6 /* Pods-Bitron-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CF51879EE858F08F1A07575C4BD2E9B /* Pods-Bitron-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		931BBB8230A25161D5C37528A8F9FECF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D247367D4D931A907E3E2D0012B85918 /* SessionManager.swift */; };
 		933FDA5970AA525D6CB92BFEBA2BAB4A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EE27BBD11C0684E73326B8E3E7CED0 /* Timeline.swift */; };
-		94258D1B84DD5112BF11646CC3C42734 /* Pods-Bitron-BitronUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ABDAC986350B535080974226929D1534 /* Pods-Bitron-BitronUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98A929C8E9012AB167672714FFD2113C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50076A3444D1F83195EB0DE89400321 /* Request.swift */; };
-		A831003E47F1950ED6C87B4B80BD194D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		A4A34DCBD8684C59B66549A0A29C120B /* Pods-Bitron-BitronUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0FB447A586B57B86F837935A851BB /* Pods-Bitron-BitronUITests-dummy.m */; };
 		AFC64B1097F7355FF423D6A73E9C7210 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B160E621E3B103457DEAF7754064883 /* TaskDelegate.swift */; };
 		B6F28CE1A332A2E43551FBA7CC71337A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		BEE6B677416CA71C981D1D3F60B18C96 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD1DF1C0BF9185BDC278213C97749 /* Alamofire.swift */; };
-		CFA149AC56AF88BA01E51FAC31CC537C /* Pods-Bitron-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CF51879EE858F08F1A07575C4BD2E9B /* Pods-Bitron-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1DC1A132736C2C26790A53B5D646D1D /* Pods-Bitron-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CED187594BF196353623EFDC34E2B06F /* Pods-Bitron-dummy.m */; };
+		CB7521FEECB0B545F2D6839EF21C47FD /* Pods-Bitron-BitronUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ABDAC986350B535080974226929D1534 /* Pods-Bitron-BitronUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3BD612299583604A9BB67E8CD63DCC7 /* Pods-BitronTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5058B96735D9E7A579326943149E6EE /* Pods-BitronTests-dummy.m */; };
 		D3D8C379C6E4FB487E5ABD6800AD7B7E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054E3289D425225E24908BC783F5D9C /* DispatchQueue+Alamofire.swift */; };
 		D65C254F5ABF2CB5ECEE50FE8F8E1A80 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5899E26755903DE1613DAACBF2A5AD /* Response.swift */; };
 		E3747EC31FCCA97D75A81FC700CF7E24 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36028041B20EFE7106C68F263BDAB38C /* ResponseSerialization.swift */; };
 		F13F2AA7F2E6D95A181CAB99B900D531 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A42079014A2DB6F1AEA56102D710A4 /* ServerTrustPolicy.swift */; };
 		F7B74645E07C39771156A1FA413B98D4 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEDE9F9C1EEF1FB8989D40C9D2BAB30 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE08032AFCC05539772E582087169BAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		574FBB47698E0AADE118DAD7142855B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
-		};
-		669E4DACBFC37420181F4B146593D542 /* PBXContainerItemProxy */ = {
+		29AEE246FF051342D29A6BC78C76B966 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		733622417593B9CE74A77B651418A653 /* PBXContainerItemProxy */ = {
+		31749C0BE3CF570FCF16FD6F2AC726C2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		8AC0EADBEF9B2E5564D02B5A421B9B04 /* PBXContainerItemProxy */ = {
+		3A3D9E651D1A7BB7FD595BC8A7D7DE32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
 			remoteInfo = SwiftyJSON;
 		};
-		A7A343F80B8D769F65FBAF89A85039DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
-		};
-		BAA67820886A89254E44781CF2A4ED51 /* PBXContainerItemProxy */ = {
+		6C6A13BE834A49C6D5322EB435FD56F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EE587E40262732D706ABA2A3B58A3AF;
 			remoteInfo = "Pods-Bitron";
 		};
-		E6282BFBA255633A689EC44C1C8472F8 /* PBXContainerItemProxy */ = {
+		8781C588A817FFB2B990FD304DE773D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
-			remoteInfo = SideMenu;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
 		};
-		E8FBF35347DC7879722AB3AD2CB471D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
-			remoteInfo = SideMenu;
-		};
-		E96EFCE0E1A95B8FE832DB7340C84107 /* PBXContainerItemProxy */ = {
+		8F35E35ECB191814B983FA32B0694127 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
 			remoteInfo = SwiftyJSON;
+		};
+		C361387CFC71791FBA958043A474B1F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
+			remoteInfo = SideMenu;
+		};
+		C74D053F0B30D63D485E44AA1BB6E064 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
+			remoteInfo = SideMenu;
+		};
+		CE40E7E05F08E8A457E012E2AF66348A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -218,11 +218,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D343CEF6DB0076D7BD826D7048568BE /* Frameworks */ = {
+		254DDEA0047AADCB7DE16AC352450016 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A831003E47F1950ED6C87B4B80BD194D /* Foundation.framework in Frameworks */,
+				60A22926B7E3736DFCD3D045CE0B64C1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DC3B23569201B858DE5DBF43296B947 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65F6EEDFDA78F14913197080978752A1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,11 +242,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C57C29CBB2630D1CD8E28643E48B6DB6 /* Frameworks */ = {
+		CFBCCFAABAE35AFA2195A6E22A3164C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE08032AFCC05539772E582087169BAA /* Foundation.framework in Frameworks */,
+				84D23ADD153064E0FACAD1155EADD798 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,14 +255,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F28CE1A332A2E43551FBA7CC71337A /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E5C52BE5E01F43162EC478DED45C8213 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8EC61CEE77E6B9A36AB104CC62756861 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,14 +488,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1D8B9E065064C8B4673BAAFA3F9350E4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFA149AC56AF88BA01E51FAC31CC537C /* Pods-Bitron-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2582784E4FA6A1AC5D23FC53AC3F6EE2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,6 +504,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62AD820C33740254EDA182B56DD8601F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB7521FEECB0B545F2D6839EF21C47FD /* Pods-Bitron-BitronUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67A90D3D97B9C14F4D8305E4ADAF74E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806FB28E82AFF3777C9066595F38BE36 /* Pods-BitronTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86BC5A83E4625CFB2E083C2E0AE18AA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90692F371D41484755A20FC416EB45E6 /* Pods-Bitron-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DEBCF7F5A1F3E5393D3AEBE33CDD825 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,38 +536,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6A42D615EC565A39A8A338873FAA4A5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17F0EB041492B85FC968DDFAF2D1875B /* Pods-BitronTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8B14E0DBE6670EC38F90687DC948737 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94258D1B84DD5112BF11646CC3C42734 /* Pods-Bitron-BitronUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		034E0DA9ADEAD53B8EE2BCE3FC86E094 /* Pods-BitronTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E08C89DD925542DE72BA36F741B6E424 /* Build configuration list for PBXNativeTarget "Pods-BitronTests" */;
+			buildConfigurationList = C991C3A615DAB778771D77BC89AC3C32 /* Build configuration list for PBXNativeTarget "Pods-BitronTests" */;
 			buildPhases = (
-				D6A42D615EC565A39A8A338873FAA4A5 /* Headers */,
-				54DF1A8252DAC743C6D41A2739829C32 /* Sources */,
-				E5C52BE5E01F43162EC478DED45C8213 /* Frameworks */,
-				1821D6BD01ACD199F8FEAC7BCE70DA40 /* Resources */,
+				67A90D3D97B9C14F4D8305E4ADAF74E0 /* Headers */,
+				8194C5C2B637E498099FD37E774FE273 /* Sources */,
+				254DDEA0047AADCB7DE16AC352450016 /* Frameworks */,
+				9BEC5F3FD84428026EDAF0BE0326CFB5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				94E755D5C37AAC8474A4767DDD90A38A /* PBXTargetDependency */,
+				77A0100BB55F2D34B8E52C56064F1F57 /* PBXTargetDependency */,
 			);
 			name = "Pods-BitronTests";
 			productName = "Pods-BitronTests";
@@ -560,20 +560,20 @@
 		};
 		1EE587E40262732D706ABA2A3B58A3AF /* Pods-Bitron */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F1284278CA9CA89DF12809B8B1216CA /* Build configuration list for PBXNativeTarget "Pods-Bitron" */;
+			buildConfigurationList = EC96C5E2D80CE130E8243516AE395D66 /* Build configuration list for PBXNativeTarget "Pods-Bitron" */;
 			buildPhases = (
-				1D8B9E065064C8B4673BAAFA3F9350E4 /* Headers */,
-				6D9C9F6137CC468288D0DE9D5AEC36E7 /* Sources */,
-				C57C29CBB2630D1CD8E28643E48B6DB6 /* Frameworks */,
-				EC36129CCE8D57B70EABCB1BAC37A2FF /* Resources */,
+				86BC5A83E4625CFB2E083C2E0AE18AA3 /* Headers */,
+				DFB2518CC7BD8EFFF1D7296363F21123 /* Sources */,
+				5DC3B23569201B858DE5DBF43296B947 /* Frameworks */,
+				A6079A424C2BE04CDDFC8FE1A126733F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				142AC47982762C4D52B9A411A6C6C4ED /* PBXTargetDependency */,
-				AC26E293DE78D3474F7BB638D2D3E790 /* PBXTargetDependency */,
-				5A26D62483D060E7DF40ED227C5EC55A /* PBXTargetDependency */,
-				EE0405DEB760F8502BA45095857629C1 /* PBXTargetDependency */,
+				562572A4B2F92B808D47FB5CE7830D3B /* PBXTargetDependency */,
+				F20F41601C854090F7BC163C888F5E3A /* PBXTargetDependency */,
+				570FBAEBB5321B1D5A687CC882D721F6 /* PBXTargetDependency */,
+				BAC1FA1CD5598CC782058D63AA794419 /* PBXTargetDependency */,
 			);
 			name = "Pods-Bitron";
 			productName = "Pods-Bitron";
@@ -600,20 +600,20 @@
 		};
 		CFA9505986933C69037528C45EA10E39 /* Pods-Bitron-BitronUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B998227B46FA08D2AD12E4D795AF21E /* Build configuration list for PBXNativeTarget "Pods-Bitron-BitronUITests" */;
+			buildConfigurationList = 15192D561283172217BFE428A88D02FE /* Build configuration list for PBXNativeTarget "Pods-Bitron-BitronUITests" */;
 			buildPhases = (
-				D8B14E0DBE6670EC38F90687DC948737 /* Headers */,
-				199BA210FF8354FD6556D65F2F74CFA4 /* Sources */,
-				9D343CEF6DB0076D7BD826D7048568BE /* Frameworks */,
-				9D042DF1061CA488BFE31F36BE17AD9F /* Resources */,
+				62AD820C33740254EDA182B56DD8601F /* Headers */,
+				B939CB52A9F0FCFB5D175137D22693A9 /* Sources */,
+				CFBCCFAABAE35AFA2195A6E22A3164C3 /* Frameworks */,
+				82DCBD567510582E6288FBF0641F7D11 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AC49B9F54498A5B5D126F9E54F3508FF /* PBXTargetDependency */,
-				546F78B5D3C67968C66D76EB3C198DDE /* PBXTargetDependency */,
-				9BF45D66BCCE6718714FAFE92F6BEBA2 /* PBXTargetDependency */,
-				B0D31A08F693FE12725ECAC1ABA2BB0A /* PBXTargetDependency */,
+				9ADD35FBF8AECA1F0DAB2D9A4F339787 /* PBXTargetDependency */,
+				FD2FBF475678BB5EAEC5AEE4F37E8465 /* PBXTargetDependency */,
+				62177EB6A88EA399DFD9B7BCB97E374C /* PBXTargetDependency */,
+				50795F5C2DC508336C5157F1B1298C28 /* PBXTargetDependency */,
 			);
 			name = "Pods-Bitron-BitronUITests";
 			productName = "Pods-Bitron-BitronUITests";
@@ -690,13 +690,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1821D6BD01ACD199F8FEAC7BCE70DA40 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		473D3E892ABB6C798CFF290644259B34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -704,7 +697,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D042DF1061CA488BFE31F36BE17AD9F /* Resources */ = {
+		82DCBD567510582E6288FBF0641F7D11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BEC5F3FD84428026EDAF0BE0326CFB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6079A424C2BE04CDDFC8FE1A126733F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -725,13 +732,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC36129CCE8D57B70EABCB1BAC37A2FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -741,14 +741,6 @@
 			files = (
 				2BF6FBC0A64BF107C5D64C61F1397770 /* SwiftyJSON-dummy.m in Sources */,
 				7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		199BA210FF8354FD6556D65F2F74CFA4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04BF425D5D0EF7D383CD2DB1C29F2414 /* Pods-Bitron-BitronUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,19 +769,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		54DF1A8252DAC743C6D41A2739829C32 /* Sources */ = {
+		8194C5C2B637E498099FD37E774FE273 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EA5F4CF8E55A49EFC27705FD899F0EE /* Pods-BitronTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D9C9F6137CC468288D0DE9D5AEC36E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1DC1A132736C2C26790A53B5D646D1D /* Pods-Bitron-dummy.m in Sources */,
+				D3BD612299583604A9BB67E8CD63DCC7 /* Pods-BitronTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,62 +789,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B939CB52A9F0FCFB5D175137D22693A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A34DCBD8684C59B66549A0A29C120B /* Pods-Bitron-BitronUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFB2518CC7BD8EFFF1D7296363F21123 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AF7EF8FAFF50CEFA25AD4588462E0D6 /* Pods-Bitron-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		142AC47982762C4D52B9A411A6C6C4ED /* PBXTargetDependency */ = {
+		50795F5C2DC508336C5157F1B1298C28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = 8F35E35ECB191814B983FA32B0694127 /* PBXContainerItemProxy */;
+		};
+		562572A4B2F92B808D47FB5CE7830D3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 669E4DACBFC37420181F4B146593D542 /* PBXContainerItemProxy */;
+			targetProxy = 31749C0BE3CF570FCF16FD6F2AC726C2 /* PBXContainerItemProxy */;
 		};
-		546F78B5D3C67968C66D76EB3C198DDE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SideMenu;
-			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
-			targetProxy = E6282BFBA255633A689EC44C1C8472F8 /* PBXContainerItemProxy */;
-		};
-		5A26D62483D060E7DF40ED227C5EC55A /* PBXTargetDependency */ = {
+		570FBAEBB5321B1D5A687CC882D721F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 574FBB47698E0AADE118DAD7142855B8 /* PBXContainerItemProxy */;
+			targetProxy = 8781C588A817FFB2B990FD304DE773D0 /* PBXContainerItemProxy */;
 		};
-		94E755D5C37AAC8474A4767DDD90A38A /* PBXTargetDependency */ = {
+		62177EB6A88EA399DFD9B7BCB97E374C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = CE40E7E05F08E8A457E012E2AF66348A /* PBXContainerItemProxy */;
+		};
+		77A0100BB55F2D34B8E52C56064F1F57 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Bitron";
 			target = 1EE587E40262732D706ABA2A3B58A3AF /* Pods-Bitron */;
-			targetProxy = BAA67820886A89254E44781CF2A4ED51 /* PBXContainerItemProxy */;
+			targetProxy = 6C6A13BE834A49C6D5322EB435FD56F5 /* PBXContainerItemProxy */;
 		};
-		9BF45D66BCCE6718714FAFE92F6BEBA2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftLint;
-			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = A7A343F80B8D769F65FBAF89A85039DD /* PBXContainerItemProxy */;
-		};
-		AC26E293DE78D3474F7BB638D2D3E790 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SideMenu;
-			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
-			targetProxy = E8FBF35347DC7879722AB3AD2CB471D3 /* PBXContainerItemProxy */;
-		};
-		AC49B9F54498A5B5D126F9E54F3508FF /* PBXTargetDependency */ = {
+		9ADD35FBF8AECA1F0DAB2D9A4F339787 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 733622417593B9CE74A77B651418A653 /* PBXContainerItemProxy */;
+			targetProxy = 29AEE246FF051342D29A6BC78C76B966 /* PBXContainerItemProxy */;
 		};
-		B0D31A08F693FE12725ECAC1ABA2BB0A /* PBXTargetDependency */ = {
+		BAC1FA1CD5598CC782058D63AA794419 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
 			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
-			targetProxy = E96EFCE0E1A95B8FE832DB7340C84107 /* PBXContainerItemProxy */;
+			targetProxy = 3A3D9E651D1A7BB7FD595BC8A7D7DE32 /* PBXContainerItemProxy */;
 		};
-		EE0405DEB760F8502BA45095857629C1 /* PBXTargetDependency */ = {
+		F20F41601C854090F7BC163C888F5E3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftyJSON;
-			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
-			targetProxy = 8AC0EADBEF9B2E5564D02B5A421B9B04 /* PBXContainerItemProxy */;
+			name = SideMenu;
+			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
+			targetProxy = C361387CFC71791FBA958043A474B1F5 /* PBXContainerItemProxy */;
+		};
+		FD2FBF475678BB5EAEC5AEE4F37E8465 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SideMenu;
+			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
+			targetProxy = C74D053F0B30D63D485E44AA1BB6E064 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -972,6 +972,43 @@
 			};
 			name = Release;
 		};
+		15C3FE28D336549BA314B818DFEE7A66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A13116243D5AF5A7B671E97F5F13A027 /* Pods-BitronTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BitronTests/Pods-BitronTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BitronTests/Pods-BitronTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		3A0906DE54AE13657362B7935B5D6A92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1832688C815E951346989005211A8153 /* SideMenu.release.xcconfig */;
@@ -1059,43 +1096,6 @@
 			};
 			name = Debug;
 		};
-		4FF7CAF4957001890B4CCB64690FC5B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E32B16048AC02C7C3DA6E7C9B6B2947D /* Pods-Bitron-BitronUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		55DD740115BE746C8DBB7753806D85D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6765E0F127C62FED90874EB44C973E4A /* SwiftLint.release.xcconfig */;
@@ -1148,9 +1148,9 @@
 			};
 			name = Debug;
 		};
-		795653524FF255185DF07026376FA4B7 /* Debug */ = {
+		681BDB716FF9780AB3589A04470CDCD8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD7736CE36F4738FAE4BACC7B8783234 /* Pods-Bitron.debug.xcconfig */;
+			baseConfigurationReference = E97F0BC840942E27D05BFD5D4597232D /* Pods-Bitron.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1180,52 +1180,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		80382FDC6CD3FF79B1EB2AF2B4299BB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15152C76A90D8C8A5D214F56F58D946B /* Pods-Bitron-BitronUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		8ECA74B84942EFAACA8DC2D1F5631C97 /* Debug */ = {
+		821E61057999AB27F1ADFED7CB1E3C18 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A13116243D5AF5A7B671E97F5F13A027 /* Pods-BitronTests.debug.xcconfig */;
+			baseConfigurationReference = BD7736CE36F4738FAE4BACC7B8783234 /* Pods-Bitron.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1237,7 +1200,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-BitronTests/Pods-BitronTests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bitron/Pods-Bitron-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1246,7 +1209,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BitronTests/Pods-BitronTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Bitron/Pods-Bitron.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1384,7 +1347,82 @@
 			};
 			name = Debug;
 		};
-		C3205C73E85C6D27A7285B99796DB65B /* Release */ = {
+		992E1757428F0E302931D57694590385 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E32B16048AC02C7C3DA6E7C9B6B2947D /* Pods-Bitron-BitronUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A6F3218B33CB496E7BDBFA661B17AEED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15152C76A90D8C8A5D214F56F58D946B /* Pods-Bitron-BitronUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ACBEFB1357144266D34DC8838D271C83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F6068C53B6267AF923E32A6278EC957 /* Pods-BitronTests.release.xcconfig */;
 			buildSettings = {
@@ -1422,61 +1460,23 @@
 			};
 			name = Release;
 		};
-		EBF61B17BFF812F1159E40E8D5A065FD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E97F0BC840942E27D05BFD5D4597232D /* Pods-Bitron.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Bitron/Pods-Bitron-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Bitron/Pods-Bitron.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		15192D561283172217BFE428A88D02FE /* Build configuration list for PBXNativeTarget "Pods-Bitron-BitronUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				992E1757428F0E302931D57694590385 /* Debug */,
+				A6F3218B33CB496E7BDBFA661B17AEED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				916E0404255105F480DC4950B7625F7A /* Debug */,
 				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5B998227B46FA08D2AD12E4D795AF21E /* Build configuration list for PBXNativeTarget "Pods-Bitron-BitronUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4FF7CAF4957001890B4CCB64690FC5B6 /* Debug */,
-				80382FDC6CD3FF79B1EB2AF2B4299BB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1499,15 +1499,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F1284278CA9CA89DF12809B8B1216CA /* Build configuration list for PBXNativeTarget "Pods-Bitron" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				795653524FF255185DF07026376FA4B7 /* Debug */,
-				EBF61B17BFF812F1159E40E8D5A065FD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1517,11 +1508,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E08C89DD925542DE72BA36F741B6E424 /* Build configuration list for PBXNativeTarget "Pods-BitronTests" */ = {
+		C991C3A615DAB778771D77BC89AC3C32 /* Build configuration list for PBXNativeTarget "Pods-BitronTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8ECA74B84942EFAACA8DC2D1F5631C97 /* Debug */,
-				C3205C73E85C6D27A7285B99796DB65B /* Release */,
+				15C3FE28D336549BA314B818DFEE7A66 /* Debug */,
+				ACBEFB1357144266D34DC8838D271C83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1531,6 +1522,15 @@
 			buildConfigurations = (
 				3E34629840C593E821BBF4796F36D7BF /* Debug */,
 				0F7F2617CB9213807F3580F9D0E29112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC96C5E2D80CE130E8243516AE395D66 /* Build configuration list for PBXNativeTarget "Pods-Bitron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				821E61057999AB27F1ADFED7CB1E3C18 /* Debug */,
+				681BDB716FF9780AB3589A04470CDCD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

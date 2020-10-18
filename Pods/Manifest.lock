@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - SideMenu (5.0.1)
-  - SwiftLint (0.40.2)
+  - SwiftLint (0.40.3)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -20,7 +20,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
-  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
 PODFILE CHECKSUM: 491fc21ba680f9a4eefb575f8fcc34d834663c0c
