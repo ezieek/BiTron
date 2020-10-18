@@ -35,28 +35,6 @@ class FavoriteView: UIView {
         return tableView
     }()
     
-    lazy var bottomStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [pushNotificationButton, deleteButton])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    lazy var pushNotificationButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Push Enabled?", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var deleteButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Delete Crypto?", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -70,7 +48,7 @@ class FavoriteView: UIView {
     
     func createSubViews() {
         
-        [favouritesLabel, mainTableView, bottomStackView].forEach { addSubview($0) }
+        [favouritesLabel, mainTableView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             favouritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -78,11 +56,7 @@ class FavoriteView: UIView {
             mainTableView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: 0),
             mainTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             mainTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            mainTableView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor),
-            bottomStackView.topAnchor.constraint(equalTo: topAnchor, constant: 550),
-            bottomStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bottomStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            mainTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
