@@ -15,8 +15,9 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     private lazy var contentView = FavoriteView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var favoritesViewModel = FavoritesCryptocurrencyViewModel()
-    private let reuseIdentifier = "reuseCell"
-    private var timeInterval = 5.0
+    private lazy var reuseIdentifier = "reuseCell"
+    private lazy var timeInterval = 5.0
+    private lazy var refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,6 +47,8 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: contentView.menuBarButtonItem)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCryptoButtonPressed))
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(refreshingTable), for: .valueChanged)
     }
 
     private func contentViewActions() {
@@ -54,6 +57,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         contentView.mainTableView.dataSource = self
         contentView.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         contentView.menuBarButtonItem.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
+        contentView.mainTableView.addSubview(refreshControl)
     }
     
     private func dataViewModelActions() {
@@ -67,6 +71,13 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     }
 
     //MARK: - @objc selectors
+    @objc func refreshingTable() {
+        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+            self?.contentView.mainTableView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
     @objc private func settingsButtonPressed() {
         print("The setting button has been pressed")
     }
