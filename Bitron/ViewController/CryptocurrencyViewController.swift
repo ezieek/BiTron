@@ -51,7 +51,7 @@ class CryptocurrencyViewController: UIViewController {
     }
     
     @objc private func backButtonPressed() {
-        coordinator?.mainView()
+        coordinator?.favoritesView()
     }
 }
 
@@ -82,7 +82,7 @@ extension CryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
-        coordinator?.mainView()
+        coordinator?.favoritesView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
