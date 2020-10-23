@@ -10,6 +10,7 @@ import UIKit
 
 class FavoriteCell: UITableViewCell {
 
+    //MARK: - Properties
     let screen = UIScreen.main.bounds
     
     lazy var cryptoValueLabel: UILabel = {
@@ -35,6 +36,7 @@ class FavoriteCell: UITableViewCell {
         return image
     }()
     
+    // MARK: - init - deinit
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
@@ -42,6 +44,11 @@ class FavoriteCell: UITableViewCell {
         createSubViews()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -49,19 +56,14 @@ class FavoriteCell: UITableViewCell {
         detailTextLabel?.frame.origin.y = 54
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    // MARK: - internal
     func setupColors() {
-        
         textLabel?.textColor = .white
         detailTextLabel?.textColor = .gray
         backgroundColor = .clear
     }
     
     func createSubViews() {
-        
         [cryptoValueLabel, upArrowImage, cryptoSubValueLabel].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
@@ -74,11 +76,5 @@ class FavoriteCell: UITableViewCell {
             cryptoSubValueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 54),
             cryptoSubValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }

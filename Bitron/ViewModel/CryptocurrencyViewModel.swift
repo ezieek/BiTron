@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class CryptocurrencyViewModel {
     
+    //MARK: - Properties
     private var persistence = Persistence.shared
     private var storedCryptocurrencyCoreData: [String] = []
     private var filteredData: [String] = []
@@ -24,6 +25,7 @@ class CryptocurrencyViewModel {
     var cryptocurrencyPreviousRates: [String] = []
     var cryptocurrencyIcon: [String] = []
     
+    // MARK: - internal
     func getJSONUsingBitbayAPI(completion: @escaping () -> Void) {
         Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
            

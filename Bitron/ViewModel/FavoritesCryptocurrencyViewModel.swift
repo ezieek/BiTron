@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class FavoritesCryptocurrencyViewModel {
     
+    // MARK: - Properties
     weak var timer: Timer?
     private let persistence = Persistence.shared
     private var chosenCryptocurrencyNames: [String] = []
@@ -27,6 +28,7 @@ class FavoritesCryptocurrencyViewModel {
     var assignedCryptoRates: [String] = []
     var assignedCryptoPreviousRates: [String] = []
     
+    // MARK: - internal
     func getCurrentValueOfSavedCryptocurrenciesFirstLoadView(completion: @escaping () -> Void) {
         self.percentColors.removeAll()
         let retrivedCoreData =  self.persistence.retriveCoreData()
@@ -65,6 +67,11 @@ class FavoritesCryptocurrencyViewModel {
         })
     }
     
+    func turnOffTheCounter() {
+        timer?.invalidate()
+    }
+    
+    // MARK: - private
     private func responseJSON(value: Any, cryptocurrencyName: [String], cryptocurrencyImage: [String]) {
         let jsonValue = JSON(value)
         var arrayCryptocurrenyNames: [String] = []
@@ -120,10 +127,6 @@ class FavoritesCryptocurrencyViewModel {
         assignedCryptoRates.removeAll()
         assignedCryptoPreviousRates.removeAll()
         assignedCryptoIcon.removeAll()
-    }
-
-    func turnOffTheCounter() {
-        timer?.invalidate()
     }
 
     private func calculatingThePercentageDifference(rate: String, previousRate: String) -> String {

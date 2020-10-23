@@ -10,6 +10,7 @@ import UIKit
 
 class LoginView: UIView {
     
+    // MARK: - Properties
     lazy var appNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Bitron"
@@ -62,6 +63,7 @@ class LoginView: UIView {
         return button
     }()
     
+    // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -72,6 +74,7 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - internal
     func createSubViews() {
         
         [appNameLabel, emailLabel, emailTextField, passwordLabel, passwordTextField, signInButton, newAccountButton].forEach { addSubview($0) }
