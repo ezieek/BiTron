@@ -15,7 +15,6 @@ class FavoritesCryptocurrencyViewModel {
     
     weak var timer: Timer?
     private let persistence = Persistence.shared
-    private lazy var constants = Constants()
     private var chosenCryptocurrencyNames: [String] = []
     private var chosenCryptocurrencyRates: [String] = []
     private var chosenCryptocurrencyPreviousRates: [String] = []

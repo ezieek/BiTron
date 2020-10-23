@@ -45,6 +45,7 @@ class CryptocurrencyViewModel {
                     self.cryptocurrencyRates.append(cryptocurrency.rate ?? "")
                     self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
                 }
+                
                 completion()
             case .failure(let error):
                    print(error)
@@ -59,6 +60,7 @@ class CryptocurrencyViewModel {
         let icon = cryptocurrencyIcon[indexPath.row]
         let storedCryptocurrencyCoreData = self.persistence.retriveCoreData()
         let filterData = Array(NSOrderedSet(array: storedCryptocurrencyCoreData.name))
+        
         filteredData = filterData.map { ($0 as? String ?? "") }
             
         if !filteredData.contains(name) {
