@@ -10,12 +10,14 @@ import UIKit
 
 class CryptocurrencyViewController: UIViewController {
     
+    // MARK: - Properties
     weak var coordinator: ApplicationCoordinator?
     private lazy var contentView = CryptoView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var cryptocurrencyViewModel = CryptocurrencyViewModel()
-    private let reuseIdentifier = "reuseCell"
+    private lazy var reuseIdentifier = "reuseCell"
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,7 @@ class CryptocurrencyViewController: UIViewController {
         view = contentView
     }
     
+    // MARK: - private
     private func setupView() {
         navigationItem.title = "Bitron"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
@@ -50,11 +53,13 @@ class CryptocurrencyViewController: UIViewController {
         }
     }
     
+    // MARK: - @objc selectors
     @objc private func backButtonPressed() {
         coordinator?.favoritesView()
     }
 }
 
+    // MARK: - DataSource
 extension CryptocurrencyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +83,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
     }
 }
 
+    // MARK: - Delegate
 extension CryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
