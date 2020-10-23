@@ -24,7 +24,6 @@ class ApplicationCoordinator: Coordinator {
     }
     
     func start() {
-        
         /*let viewController = MainViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
@@ -35,28 +34,24 @@ class ApplicationCoordinator: Coordinator {
     }
     
     func loginView() {
-        
         let viewController = LoginViewController()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func mainView() {
-        
+    func favoritesView() {
         let viewController = FavoritesCryptocurrencyViewController()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
     func cryptoView() {
-        
         let viewController = CryptocurrencyViewController()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
     func detailView(name: String, subName: String, rate: String, previousRate: String) {
-        
         let viewController = DetailCryptocurrencyViewController()
         viewController.pushedCryptocurrencyName = name
         viewController.pushedCryptocurrencySubName = subName
