@@ -10,6 +10,7 @@ import UIKit
 
 class FavoritesCryptocurrencyViewController: UIViewController {
     
+    //MARK: - Properties
     weak var coordinator: ApplicationCoordinator?
     private lazy var contentView = FavoriteView()
     private lazy var settingBackgroundColor = Colors()
@@ -17,6 +18,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     private let reuseIdentifier = "reuseCell"
     private var timeInterval = 5.0
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         favoritesViewModel.turnOffTheCounter()
     }
     
+    // MARK: - private
     private func setupView() {
         navigationItem.title = "Bitron"
         navigationItem.setHidesBackButton(true, animated: true)
@@ -63,6 +66,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         }
     }
 
+    //MARK: - @objc selectors
     @objc private func settingsButtonPressed() {
         print("The setting button has been pressed")
     }
@@ -72,6 +76,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     }
 }
 
+    //MARK: - DataSource
 extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,6 +101,7 @@ extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
     }
 }
 
+    //MARK: - Delegate
 extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
