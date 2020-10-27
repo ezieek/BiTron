@@ -44,7 +44,9 @@ class CryptocurrencyViewModel {
                     var cryptocurrency = Cryptocurrency(json: json)
                     cryptocurrency.name = items
                     self.cryptocurrencyNames.append(Constants.settingMainNameOfCryptocurrency(getName: items))
-                    self.cryptocurrencyRates.append(cryptocurrency.rate ?? "")
+                    let fetchedCryptocurrencyRatesString = cryptocurrency.rate
+                    let fetchedCryptocurrencyRatesfloatValue = Float(fetchedCryptocurrencyRatesString ?? "")
+                    self.cryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesfloatValue ?? ""))            
                     self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
                 }
                 
