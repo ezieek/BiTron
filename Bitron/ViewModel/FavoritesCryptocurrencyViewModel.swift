@@ -107,7 +107,9 @@ class FavoritesCryptocurrencyViewModel {
     
             switch(arrayCryptocurrencyRates[i]) {
             case arrayCryptocurrencyRates[i]:
-                self.assignedCryptoRates.append(arrayCryptocurrencyRates[i])
+                let fetchedCryptocurrencyRatesString = arrayCryptocurrencyRates[i]
+                let fetchedCryptocurrencyRatesfloatValue = Float(fetchedCryptocurrencyRatesString)
+                self.assignedCryptoRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesfloatValue ?? ""))
             default:
                 print("There is a problem with the rates of the fetched cryptocurrencies!")
             }
