@@ -1,11 +1,15 @@
 PODS:
   - Alamofire (4.9.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - SideMenu (5.0.1)
   - SwiftLint (0.40.3)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Charts
   - SideMenu
   - SwiftLint
   - SwiftyJSON (~> 4.0)
@@ -13,16 +17,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - SideMenu
     - SwiftLint
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   SideMenu: 87efd943737bb83aedf0358884d09fcf5576636d
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 491fc21ba680f9a4eefb575f8fcc34d834663c0c
+PODFILE CHECKSUM: 857838dc0d49fc874c831799086a52e714f36f35
 
 COCOAPODS: 1.9.3
