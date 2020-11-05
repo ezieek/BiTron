@@ -28,7 +28,7 @@ class ApplicationCoordinator: Coordinator {
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()*/
-        let viewController = FavoritesCryptocurrencyViewController()
+        let viewController = MenuBarViewController()//FavoritesCryptocurrencyViewController()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }

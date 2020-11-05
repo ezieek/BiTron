@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // create the main navigation controller to be used for our up
-        let rootViewController = LoginViewController()
+        let rootViewController = MenuBarViewController()
         let navController = UINavigationController(rootViewController: rootViewController)
         
         // send that into our coordinator so that it can display vc
