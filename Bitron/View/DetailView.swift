@@ -16,6 +16,7 @@ import UIKit
 
 class DetailView: UIView {
 
+    // MARK: - Properties
     let screen = UIScreen.main.bounds
     
     lazy var cryptocurrencyNameLabel: UILabel = {
@@ -67,6 +68,7 @@ class DetailView: UIView {
         return button
     }()
     
+    // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -77,6 +79,7 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - internal
     func createSubViews() {
         [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, pushNotificationButton].forEach { addSubview($0) }
         

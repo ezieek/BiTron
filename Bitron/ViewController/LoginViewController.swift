@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     
     @objc func moveButtonPressed() {
         
-        coordinator?.mainView()
+        coordinator?.favoritesView()
     }
 
 }

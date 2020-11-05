@@ -10,6 +10,7 @@ pod 'SwiftLint'
 pod 'SideMenu'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Alamofire', '~> 4.4'
+pod 'Charts'
 
   target 'BitronTests' do
     inherit! :search_paths

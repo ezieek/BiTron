@@ -10,6 +10,7 @@ import UIKit
 
 class CryptoView: UIView {
     
+    // MARK: - Properties
     lazy var cryptoTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.separatorColor = .white
@@ -17,12 +18,8 @@ class CryptoView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-     
-    private lazy var refresher: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        return refreshControl
-    }()
     
+    // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,8 +30,8 @@ class CryptoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - internal
     func createSubViews() {
-        
         [cryptoTableView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SwiftyJSON
 
 struct DetailCryptocurrency {

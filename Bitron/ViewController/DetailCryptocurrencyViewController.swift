@@ -10,85 +10,58 @@ import UIKit
 import CoreData
 
 class DetailCryptocurrencyViewController: UIViewController {
-
+    
+    // MARK: - Properties
     weak var coordinator: ApplicationCoordinator?
-    let initObjects = DetailView()
-    let colors = Colors()
+    private lazy var contentView = DetailView()
+    private lazy var settingBackgroundColor = Colors()
+    private lazy var detailViewModel = DetailViewModel()
     let networking = Networking.shared
     let persistence = Persistence.shared
-    
     var pushedCryptocurrencyName: String = ""
     var pushedCryptocurrencySubName: String = ""
     var pushedCryptocurrencyRate: String = ""
     var pushedCryptocurrencyPreviousRate: String = ""
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
         setupView()
-       // retriveCoreData()
-       // parseJSONData()
+        contentViewActions()
+        detailViewModel.getJSON {
+            self.contentView.cryptocurrencyVolumeLabel.text = self.detailViewModel.detailCryptocurrencyVolumeValue
+        }
     }
     
     override func loadView() {
         super.loadView()
         
-        view = initObjects
+        view = contentView
     }
     
+    // MARK: - private
     private func setupView() {
-        
-        navigationItem.title = "\(pushedCryptocurrencyName) (\(pushedCryptocurrencySubName))"
-        initObjects.cryptocurrencyNameLabel.text = "\(pushedCryptocurrencySubName) / PLN"
-        initObjects.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
-        initObjects.cryptocurrencyPercentageRateLabel.text = "tak"
-        initObjects.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
-        view.layer.insertSublayer(colors.gradientColor, at: 0)
+        navigationItem.title = "\(detailViewModel.detailCryptocurrencyShortName) (\(pushedCryptocurrencySubName))"
+        view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
-        initObjects.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
     }
     
+    private func contentViewActions() {
+        contentView.cryptocurrencyNameLabel.text = "\(pushedCryptocurrencySubName) / PLN"
+        contentView.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
+        contentView.cryptocurrencyPercentageRateLabel.text = "tak"
+        contentView.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
+        contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc selectors
     @objc private func deleteDataButtonPressed() {
-        print(1)
-        
-           // deleteData()
+        //deleteData()
     }
     
     @objc private func backButtonPressed() {
-        
-        coordinator?.mainView()
+        coordinator?.favoritesView()
     }
-    
-    
-    /*  func deleteData(index: IndexPath) {
-                 
-          let context = persistence.context
-                 
-          let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-                 
-          fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptoNames[index.row])
-          fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptoRates[index.row])
-          fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptoPreviousRates[index.row])
-
-          do {
-              
-              if let result = try? context.fetch(fetchRequest) {
-                  for object in result {
-                      context.delete(object)
-                      chosenCryptoNames.remove(at: index.row)
-                      chosenCryptoRates.remove(at: index.row)
-                      chosenCryptoPreviousRates.remove(at: index.row)
-                      initObjects.mainTableView.deleteRows(at: [index], with: .middle)
-                      initObjects.mainTableView.reloadData()
-                  }
-              }
-
-              do {
-                  try context.save()
-              } catch {
-                  print(error)
-              }
-          }
-      }*/
-    
 }

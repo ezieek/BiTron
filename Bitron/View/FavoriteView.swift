@@ -10,6 +10,7 @@ import UIKit
 
 class FavoriteView: UIView {
 
+    // MARK: - Properties
     let screen = UIScreen.main.bounds
     
     lazy var menuBarButtonItem: UIButton = {
@@ -35,6 +36,7 @@ class FavoriteView: UIView {
         return tableView
     }()
     
+    // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -46,6 +48,7 @@ class FavoriteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - internal
     func createSubViews() {
         
         [favouritesLabel, mainTableView].forEach { addSubview($0) }
