@@ -14,15 +14,14 @@ class MenuTabBarController: UITabBarController {
     let screen = UIScreen.main.bounds
     let chosenCryptocurrency = ChosenCryptocurrencyCoordinator()
     let selectCryptocurrency = SelectCryptocurrencyCoordinator()
+    let settingUserProfile   = SettingsCoordinator()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupMenuBar()
-        chosenCryptocurrency.start()
-        selectCryptocurrency.start()
-        viewControllers = [chosenCryptocurrency.navigationController, selectCryptocurrency.navigationController]
+        enableCoordinatorPattern()
     }
     
     // MARK: - Private
@@ -32,5 +31,12 @@ class MenuTabBarController: UITabBarController {
         tabBar.tintColor = UIColor(red: 27/255, green: 183/255, blue: 233/255, alpha: 1)
         tabBar.barTintColor = UIColor(red: 53/255, green: 42/255, blue: 129/255, alpha: 1)
         navigationController?.navigationBar.barTintColor = UIColor(red: 53/255, green: 42/255, blue: 129/255, alpha: 1)
+    }
+    
+    private func enableCoordinatorPattern() {
+        chosenCryptocurrency.start()
+        selectCryptocurrency.start()
+        settingUserProfile.start()
+        viewControllers = [chosenCryptocurrency.navigationController, selectCryptocurrency.navigationController, settingUserProfile.navigationController]
     }
 }
