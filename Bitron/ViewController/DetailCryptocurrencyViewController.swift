@@ -12,7 +12,7 @@ import CoreData
 class DetailCryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
-    weak var coordinator: ApplicationCoordinator?
+    weak var coordinator: FavoritesCoordinator?
     private lazy var contentView = DetailView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var detailViewModel = DetailViewModel()
@@ -62,6 +62,7 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     @objc private func backButtonPressed() {
-        coordinator?.favoritesView()
+        navigationController?.pushViewController(FavoritesCryptocurrencyViewController(), animated: false)
+       // coordinator?.favoritesView()
     }
 }

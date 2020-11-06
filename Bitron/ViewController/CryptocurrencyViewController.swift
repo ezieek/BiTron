@@ -11,7 +11,7 @@ import UIKit
 class CryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
-    weak var coordinator: ApplicationCoordinator?
+    weak var coordinator: CryptocurrencyCoordinator?
     private lazy var contentView = CryptoView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var cryptocurrencyViewModel = CryptocurrencyViewModel()
@@ -30,6 +30,11 @@ class CryptocurrencyViewController: UIViewController {
         super.loadView()
             
         view = contentView
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+       // coordinator?.didFinishAction()
     }
     
     // MARK: - private
@@ -55,7 +60,8 @@ class CryptocurrencyViewController: UIViewController {
     
     // MARK: - @objc selectors
     @objc private func backButtonPressed() {
-        coordinator?.favoritesView()
+       // coordinator?.start()
+      // coordinator?.favoritesView()
     }
 }
 
@@ -88,11 +94,11 @@ extension CryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
-        coordinator?.favoritesView()
+        //coordinator?.favoritesView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        coordinator?.detailView(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row], subName: cryptocurrencyViewModel.cryptocurrencySubNames[indexPath.row], rate: cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row], previousRate: cryptocurrencyViewModel.cryptocurrencyPreviousRates[indexPath.row])
+        //coordinator?.detailView(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row], subName: cryptocurrencyViewModel.cryptocurrencySubNames[indexPath.row], rate: cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row], previousRate: cryptocurrencyViewModel.cryptocurrencyPreviousRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

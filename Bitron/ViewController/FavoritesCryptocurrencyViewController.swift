@@ -11,7 +11,7 @@ import UIKit
 class FavoritesCryptocurrencyViewController: UIViewController {
     
     //MARK: - Properties
-    weak var coordinator: ApplicationCoordinator?
+    weak var coordinator: FavoritesCoordinator?
     private lazy var contentView = FavoriteView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var favoritesViewModel = FavoritesCryptocurrencyViewModel()
@@ -22,7 +22,7 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         contentViewActions()
         dataViewModelActions()
@@ -34,10 +34,9 @@ class FavoritesCryptocurrencyViewController: UIViewController {
         view = contentView
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        favoritesViewModel.turnOffTheCounter()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        //coordinator?.didDismiss(self)
     }
     
     // MARK: - private
@@ -83,7 +82,6 @@ class FavoritesCryptocurrencyViewController: UIViewController {
     }
     
     @objc private func addCryptoButtonPressed() {
-        coordinator?.cryptoView()
     }
 }
 
@@ -116,7 +114,7 @@ extension FavoritesCryptocurrencyViewController: UITableViewDataSource {
 extension FavoritesCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.detailView(name: favoritesViewModel.assignedCryptoNames[indexPath.row], subName: favoritesViewModel.assignedCryptoSubNames[indexPath.row], rate: favoritesViewModel.assignedCryptoRates[indexPath.row], previousRate: favoritesViewModel.assignedCryptoPreviousRates[indexPath.row])
+        //coordinator?.detailView(name: favoritesViewModel.assignedCryptoNames[indexPath.row], subName: favoritesViewModel.assignedCryptoSubNames[indexPath.row], rate: favoritesViewModel.assignedCryptoRates[indexPath.row], previousRate: favoritesViewModel.assignedCryptoPreviousRates[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

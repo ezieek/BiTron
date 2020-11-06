@@ -29,8 +29,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func moveButtonPressed() {
-        
-        coordinator?.favoritesView()
+        navigationController?.pushViewController(FavoritesCryptocurrencyViewController(), animated: true)
+        //coordinator?.favoritesView()
     }
 
 }
