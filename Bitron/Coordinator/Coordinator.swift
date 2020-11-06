@@ -8,13 +8,19 @@
 
 import UIKit
 
-protocol Coordinator {
+class Coordinator: NSObject {
     
-    //a property to store any child coordinators
-    var childCoordinators: [Coordinator] { get set }
+    var childCoordinators = [Coordinator]()
+    var navigationController = UINavigationController()
 
-    //a property to store the nav controller thats being used to present VC
-    var navigationController: UINavigationController { get set }
-
-    func start()
+    func start() { }
+    
+    func didDismiss(_ child: Coordinator?) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
 }
