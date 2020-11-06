@@ -1,5 +1,5 @@
 //
-//  CryptoCell.swift
+//  SelectCryptocurrencyCell.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CryptoCell: UITableViewCell {
+class SelectCryptocurrencyCell: UITableViewCell {
 
     // MARK: - Properties
     let screen = UIScreen.main.bounds

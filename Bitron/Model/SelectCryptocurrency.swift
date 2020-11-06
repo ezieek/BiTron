@@ -1,5 +1,5 @@
 //
-//  Cryptocurrency.swift
+//  SelectCryptocurrency.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct Cryptocurrency {
+struct SelectCryptocurrency {
     
     var name: String?
     var time: String?
@@ -19,7 +19,7 @@ struct Cryptocurrency {
     var previousRate: String?
 }
 
-extension Cryptocurrency {
+extension SelectCryptocurrency {
     
     enum PropertyKey: String {
         case name, time, rate, lowestAsk, highestBid, previousRate

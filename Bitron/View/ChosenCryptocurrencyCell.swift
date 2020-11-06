@@ -1,5 +1,5 @@
 //
-//  FavoriteCell.swift
+//  ChosenCryptocurrencyCell.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteCell: UITableViewCell {
+class ChosenCryptocurrencyCell: UITableViewCell {
 
     //MARK: - Properties
     let screen = UIScreen.main.bounds

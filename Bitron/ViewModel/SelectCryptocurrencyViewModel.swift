@@ -1,5 +1,5 @@
 //
-//  CryptocurrencyViewModel.swift
+//  SelectCryptocurrencyViewModel.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 9/17/20.
@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class CryptocurrencyViewModel {
+class SelectCryptocurrencyViewModel {
     
     //MARK: - Properties
     private var persistence = Persistence.shared
@@ -41,7 +41,7 @@ class CryptocurrencyViewModel {
                 
                 for items in self.cryptocurrencySortedNames {
                     let json = JSON(jsonValue)["items"][items]
-                    var cryptocurrency = Cryptocurrency(json: json)
+                    var cryptocurrency = SelectCryptocurrency(json: json)
                     cryptocurrency.name = items
                     self.cryptocurrencyNames.append(Constants.settingMainNameOfCryptocurrency(getName: items))
                     let fetchedCryptocurrencyRatesString = cryptocurrency.rate

@@ -12,8 +12,8 @@ class MenuTabBarController: UITabBarController {
 
     // MARK: - Properties
     let screen = UIScreen.main.bounds
-    let chosenCryptocurrency = FavoritesCoordinator()
-    let selectCryptocurrency = CryptocurrencyCoordinator()
+    let chosenCryptocurrency = ChosenCryptocurrencyCoordinator()
+    let selectCryptocurrency = SelectCryptocurrencyCoordinator()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

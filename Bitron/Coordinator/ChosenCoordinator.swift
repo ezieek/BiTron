@@ -1,5 +1,5 @@
 //
-//  FavoritesCoordinator.swift
+//  ChosenCryptocurrencyCoordinator.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 11/5/20.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FavoritesCoordinator: Coordinator {
+class ChosenCryptocurrencyCoordinator: Coordinator {
     
     override func start() {
         super.start()
         
-        let controller = FavoritesCryptocurrencyViewController()
+        let controller = ChosenCryptocurrencyViewController()
         controller.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)

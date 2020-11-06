@@ -1,5 +1,5 @@
 //
-//  FavoriteView.swift
+//  ChosenCryptocurrencyView.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteView: UIView {
+class ChosenCryptocurrencyView: UIView {
 
     // MARK: - Properties
     let screen = UIScreen.main.bounds
@@ -44,13 +44,11 @@ class FavoriteView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - internal
     func createSubViews() {
-        
         [favouritesLabel, mainTableView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([

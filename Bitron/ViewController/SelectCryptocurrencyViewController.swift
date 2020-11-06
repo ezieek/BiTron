@@ -1,5 +1,5 @@
 //
-//  CryptocurrencyViewController.swift
+//  SelectCryptocurrencyViewController.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 04/08/2020.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CryptocurrencyViewController: UIViewController {
+class SelectCryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
-    weak var coordinator: CryptocurrencyCoordinator?
-    private lazy var contentView = CryptoView()
+    weak var coordinator: SelectCryptocurrencyCoordinator?
+    private lazy var contentView = SelectCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
-    private lazy var cryptocurrencyViewModel = CryptocurrencyViewModel()
+    private lazy var cryptocurrencyViewModel = SelectCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
 
     // MARK: - Lifecycle
@@ -40,13 +40,12 @@ class CryptocurrencyViewController: UIViewController {
     // MARK: - private
     private func setupView() {
         navigationItem.title = "Bitron"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.setHidesBackButton(true, animated: true)
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
     }
     
     private func contentViewActions() {
-        contentView.cryptoTableView.register(CryptoCell.self, forCellReuseIdentifier: reuseIdentifier)
+        contentView.cryptoTableView.register(SelectCryptocurrencyCell.self, forCellReuseIdentifier: reuseIdentifier)
         contentView.cryptoTableView.delegate = self
         contentView.cryptoTableView.dataSource = self
         contentView.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -57,23 +56,17 @@ class CryptocurrencyViewController: UIViewController {
             self?.contentView.cryptoTableView.reloadData()
         }
     }
-    
-    // MARK: - @objc selectors
-    @objc private func backButtonPressed() {
-       // coordinator?.start()
-      // coordinator?.favoritesView()
-    }
 }
 
     // MARK: - DataSource
-extension CryptocurrencyViewController: UITableViewDataSource {
+extension SelectCryptocurrencyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cryptocurrencyViewModel.cryptocurrencyNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = contentView.cryptoTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
+        guard let cell = contentView.cryptoTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SelectCryptocurrencyCell else { return UITableViewCell() }
             
         configureCell(cell: cell, indexPath: indexPath)
        
@@ -90,7 +83,7 @@ extension CryptocurrencyViewController: UITableViewDataSource {
 }
 
     // MARK: - Delegate
-extension CryptocurrencyViewController: UITableViewDelegate {
+extension SelectCryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)

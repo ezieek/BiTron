@@ -1,5 +1,5 @@
 //
-//  CryptoView.swift
+//  SelectCryptocurrencyView.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CryptoView: UIView {
+class SelectCryptocurrencyView: UIView {
     
     // MARK: - Properties
     lazy var cryptoTableView: UITableView = {

@@ -1,5 +1,5 @@
 //
-//  FavoritesCryptocurrencyViewModel.swift
+//  ChosenCryptocurrencyViewModel.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 9/18/20.
@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class FavoritesCryptocurrencyViewModel {
+class ChosenCryptocurrencyViewModel {
     
     // MARK: - Properties
     weak var timer: Timer?
@@ -81,7 +81,7 @@ class FavoritesCryptocurrencyViewModel {
         
         for names in cryptocurrencyName {
             let json = JSON(jsonValue)["items"][names]
-            let cryptocurrency = Cryptocurrency(json: json)
+            let cryptocurrency = SelectCryptocurrency(json: json)
             let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
             arrayCryptocurrenyNames.append(Constants.settingMainNameOfCryptocurrency(getName: names))
             arrayCryptocurrencySubNames.append(removingUselessString)

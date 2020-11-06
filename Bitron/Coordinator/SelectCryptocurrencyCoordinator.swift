@@ -1,5 +1,5 @@
 //
-//  CryptocurrencyCoordinator.swift
+//  SelectCryptocurrencyCoordinator.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 11/5/20.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CryptocurrencyCoordinator: Coordinator {
+class SelectCryptocurrencyCoordinator: Coordinator {
     
     override func start() {
         super.start()
-        let controller = CryptocurrencyViewController()
+        let controller = SelectCryptocurrencyViewController()
         controller.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)

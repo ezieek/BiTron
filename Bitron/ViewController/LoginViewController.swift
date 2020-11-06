@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    weak var coordinator: ApplicationCoordinator?
     let initObjects = LoginView()
     let colors = Colors()
 
@@ -29,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func moveButtonPressed() {
-        navigationController?.pushViewController(FavoritesCryptocurrencyViewController(), animated: true)
+        navigationController?.pushViewController(ChosenCryptocurrencyViewController(), animated: true)
         //coordinator?.favoritesView()
     }
 
