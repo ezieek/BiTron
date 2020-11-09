@@ -12,6 +12,7 @@ class SelectCryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
     weak var coordinator: SelectCryptocurrencyCoordinator?
+    weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     private lazy var contentView = SelectCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var cryptocurrencyViewModel = SelectCryptocurrencyViewModel()
@@ -30,11 +31,6 @@ class SelectCryptocurrencyViewController: UIViewController {
         super.loadView()
             
         view = contentView
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-       // coordinator?.didFinishAction()
     }
     
     // MARK: - private
@@ -87,11 +83,12 @@ extension SelectCryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
-        //coordinator?.favoritesView()
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //coordinator?.detailView(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row], subName: cryptocurrencyViewModel.cryptocurrencySubNames[indexPath.row], rate: cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row], previousRate: cryptocurrencyViewModel.cryptocurrencyPreviousRates[indexPath.row])
+        
+       (tabBarController as! MenuTabBarController).data = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
+        tabBarController?.selectedIndex = 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

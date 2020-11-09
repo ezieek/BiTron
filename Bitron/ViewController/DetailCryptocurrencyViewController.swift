@@ -12,6 +12,9 @@ import CoreData
 class DetailCryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
+    weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
+    weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
+    weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
     private lazy var contentView = DetailView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var detailViewModel = DetailViewModel()
@@ -23,10 +26,18 @@ class DetailCryptocurrencyViewController: UIViewController {
     var pushedCryptocurrencyPreviousRate: String = ""
     
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        (tabBarController as! MenuTabBarController).data = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
+        pushedCryptocurrencyName = (tabBarController as! MenuTabBarController).data
+        //detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
+        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencyName)
         setupView()
         contentViewActions()
         detailViewModel.getJSON {
@@ -39,7 +50,7 @@ class DetailCryptocurrencyViewController: UIViewController {
         
         view = contentView
     }
-    
+
     // MARK: - private
     private func setupView() {
         navigationItem.title = "\(detailViewModel.detailCryptocurrencyShortName) (\(pushedCryptocurrencySubName))"
@@ -52,16 +63,11 @@ class DetailCryptocurrencyViewController: UIViewController {
         contentView.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
         contentView.cryptocurrencyPercentageRateLabel.text = "tak"
         contentView.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
-        contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
+        //contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - @objc selectors
-    @objc private func deleteDataButtonPressed() {
-        //deleteData()
-    }
-    
     @objc private func backButtonPressed() {
-        navigationController?.pushViewController(ChosenCryptocurrencyViewController(), animated: false)
-       // coordinator?.favoritesView()
+        tabBarController?.selectedIndex = 0
     }
 }
