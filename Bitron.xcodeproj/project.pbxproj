@@ -22,6 +22,7 @@
 		9C95F556255591B800F68D31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95F555255591B800F68D31 /* SettingsViewController.swift */; };
 		9C95F55B255591EF00F68D31 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */; };
 		9CA6DF4324E5456900CD5757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6DF4224E5456900CD5757 /* Assets.xcassets */; };
+		9CB6C77F25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */; };
 		9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD72224E6B089006141CD /* LoginViewController.swift */; };
 		9CD59B6F24DAA0BF00566236 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B6E24DAA0BF00566236 /* Networking.swift */; };
 		9CD59B7124DAA0D700566236 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B7024DAA0D700566236 /* Persistence.swift */; };
@@ -79,6 +80,7 @@
 		9C95F555255591B800F68D31 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		9CA6DF4224E5456900CD5757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptocurrencyCoordinator.swift; sourceTree = "<group>"; };
 		9CBBD72224E6B089006141CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CD59B6E24DAA0BF00566236 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		9CD59B7024DAA0D700566236 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				9CD59B7E24DAA48300566236 /* Coordinator.swift */,
 				9C06384A25541F740022BFD0 /* ChosenCoordinator.swift */,
 				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
+				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
 				9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -542,6 +545,7 @@
 				9CD59B8724DAA8D200566236 /* DetailCryptocurrencyViewController.swift in Sources */,
 				9CD59B7924DAA21F00566236 /* SelectCryptocurrencyView.swift in Sources */,
 				9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */,
+				9CB6C77F25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift in Sources */,
 				9C06384B25541F740022BFD0 /* ChosenCoordinator.swift in Sources */,
 				9C81AF1B2514AD4200BE1ECA /* Constants.swift in Sources */,
 				9CD59B8324DAA5E800566236 /* SelectCryptocurrency.swift in Sources */,
