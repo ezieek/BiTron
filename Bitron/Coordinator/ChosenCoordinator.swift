@@ -12,12 +12,18 @@ class ChosenCryptocurrencyCoordinator: Coordinator {
     
     override func start() {
         super.start()
-        
         let controller = ChosenCryptocurrencyViewController()
         controller.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        controller.coordinator = self
+        controller.coordinatorChosen = self
         navigationController.pushViewController(controller, animated: true)
     }
+    
+    func pushToDetailViewController(name: String) {
+        let controller = DetailCryptocurrencyViewController()
+        controller.coordinatorChosen = self
+        controller.pushedCryptocurrencyName = name
+    }
+    
     /*
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
