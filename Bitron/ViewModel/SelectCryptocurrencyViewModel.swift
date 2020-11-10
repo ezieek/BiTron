@@ -57,7 +57,7 @@ class SelectCryptocurrencyViewModel {
         }
     }
     
-    func pushDataToFavoritesViewController(indexPath: NSIndexPath) {
+    func pushDataToChosenViewController(indexPath: NSIndexPath) {
         let name = cryptocurrencySortedNames[indexPath.row]
         let rate = cryptocurrencyRates[indexPath.row]
         let previousRate = cryptocurrencyPreviousRates[indexPath.row]

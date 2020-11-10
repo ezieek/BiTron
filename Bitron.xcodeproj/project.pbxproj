@@ -37,7 +37,7 @@
 		9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04C7024E2A2FE0072214F /* Colors.swift */; };
 		ED4DF6C325174DD300178535 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6C225174DD300178535 /* README.md */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
-		EDA6701C24D9F7870091BD4E /* ChosenFavoritesCryptocurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ChosenFavoritesCryptocurrencyViewController.swift */; };
+		EDA6701C24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */; };
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
 		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
@@ -98,7 +98,7 @@
 		ED4DF6C225174DD300178535 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDA6701B24D9F7870091BD4E /* ChosenFavoritesCryptocurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenFavoritesCryptocurrencyViewController.swift; sourceTree = "<group>"; };
+		EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCryptocurrencyViewController.swift; sourceTree = "<group>"; };
 		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
 		EDA6702624D9F78A0091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA6702824D9F78A0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,10 +259,10 @@
 			isa = PBXGroup;
 			children = (
 				9C06382225540E420022BFD0 /* MenuTabBarController.swift */,
-				EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */,
-				EDA6701B24D9F7870091BD4E /* ChosenFavoritesCryptocurrencyViewController.swift */,
-				9C95F555255591B800F68D31 /* SettingsViewController.swift */,
+				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
 				9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */,
+				EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */,
+				9C95F555255591B800F68D31 /* SettingsViewController.swift */,
 				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
 			);
 			path = ViewController;
@@ -538,7 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA6701C24D9F7870091BD4E /* ChosenFavoritesCryptocurrencyViewController.swift in Sources */,
+				EDA6701C24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift in Sources */,
 				9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */,
 				9C063853255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift in Sources */,
 				9C67CD8C25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift in Sources */,
