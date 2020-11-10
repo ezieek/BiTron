@@ -1,5 +1,5 @@
 //
-//  ChosenFavoritesCryptocurrencyViewController.swift
+//  ChosenCryptocurrencyViewController.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 04/08/2020.
@@ -23,7 +23,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
         contentViewActions()
         dataViewModelActions()
@@ -106,6 +106,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        (tabBarController as! MenuTabBarController).data = favoritesViewModel.assignedCryptoNames[indexPath.row]
         tabBarController?.selectedIndex = 1
     }
     
