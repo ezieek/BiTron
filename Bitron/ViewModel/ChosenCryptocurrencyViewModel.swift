@@ -47,11 +47,11 @@ class ChosenCryptocurrencyViewModel {
     }
     
     func getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: Double, completion: @escaping () -> Void) {
-        self.percentColors.removeAll()
-        let retrivedCoreData = self.persistence.retriveCoreData()
-        
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self] (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
+            
+            self.percentColors.removeAll()
+            let retrivedCoreData = self.persistence.retriveCoreData()
             
             Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
 
@@ -63,7 +63,7 @@ class ChosenCryptocurrencyViewModel {
                     print(error)
                 }
             }
-            self?.cleanAssignedCryptocurrencyData()
+            self.cleanAssignedCryptocurrencyData()
         })
     }
     
