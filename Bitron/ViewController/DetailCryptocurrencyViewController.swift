@@ -26,12 +26,6 @@ class DetailCryptocurrencyViewController: UIViewController {
     var pushedCryptocurrencyPreviousRate: String = ""
     
     // MARK: - Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        (tabBarController as! MenuTabBarController).data = ""
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +43,18 @@ class DetailCryptocurrencyViewController: UIViewController {
         super.loadView()
         
         view = contentView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //add code here
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        //add code here
     }
 
     // MARK: - private
