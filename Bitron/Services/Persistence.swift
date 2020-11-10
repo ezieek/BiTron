@@ -52,8 +52,9 @@ class Persistence {
         
         do {
             try context.save()
+            print("Dane poprawnie zapisane")
         } catch {
-            print("Saving error")
+            print("Problem z zapisem danych")
         }
     }
     
@@ -85,8 +86,9 @@ class Persistence {
                 guard let readImageName = result.image else { return emptyArrays }
                 images.append(readImageName)
             }
+            print("Dane poprawnie odczytane")
         } catch {
-            print("Could not retrive core data!")
+            print("Problem z odczytem danych")
         }
         
         return (names, rates, previousRates, images)
