@@ -9,7 +9,7 @@
 import UIKit
 
 class SelectCryptocurrencyViewController: UIViewController {
-    
+
     // MARK: - Properties
     weak var coordinator: SelectCryptocurrencyCoordinator?
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
@@ -82,12 +82,14 @@ extension SelectCryptocurrencyViewController: UITableViewDataSource {
 extension SelectCryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cryptocurrencyViewModel.pushDataToFavoritesViewController(indexPath: indexPath as NSIndexPath)
+        cryptocurrencyViewModel.pushDataToChosenViewController(indexPath: indexPath as NSIndexPath)
+        tabBarController?.selectedIndex = 0
+
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         
-       (tabBarController as! MenuTabBarController).data = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
+      // (tabBarController as! MenuTabBarController).data = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
         tabBarController?.selectedIndex = 1
     }
     
