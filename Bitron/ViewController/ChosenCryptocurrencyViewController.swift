@@ -15,7 +15,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
     weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
     private lazy var contentView = ChosenCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
-    private lazy var favoritesViewModel = ChosenCryptocurrencyViewModel()
+    private lazy var chosenViewModel = ChosenCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
     private lazy var timeInterval = 5.0
     private lazy var refreshControl = UIRefreshControl()
@@ -33,6 +33,16 @@ class ChosenCryptocurrencyViewController: UIViewController {
         super.loadView()
             
         view = contentView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        dataViewModelActions()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        chosenViewModel.timer?.invalidate()
     }
 
     // MARK: - private
@@ -55,18 +65,18 @@ class ChosenCryptocurrencyViewController: UIViewController {
     }
     
     private func dataViewModelActions() {
-        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
         }
 
-        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
             self?.contentView.mainTableView.reloadData()
         }
     }
 
     // MARK: - @objc selectors
     @objc func refreshingTable() {
-        self.favoritesViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
             self?.refreshControl.endRefreshing()
         }
@@ -81,7 +91,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
 extension ChosenCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritesViewModel.assignedCryptoNames.count
+        return chosenViewModel.assignedCryptoNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,12 +103,12 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
     }
     
     private func configureCell(cell: ChosenCryptocurrencyCell, indexPath: IndexPath) {
-        cell.textLabel?.text = favoritesViewModel.assignedCryptoNames[indexPath.row]
-        cell.detailTextLabel?.text = favoritesViewModel.assignedCryptoSubNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: favoritesViewModel.assignedCryptoIcon[indexPath.row])
-        cell.cryptoValueLabel.text = "\(favoritesViewModel.assignedCryptoRates[indexPath.row])  PLN"
-        cell.cryptoSubValueLabel.text = "\(favoritesViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
-        cell.cryptoSubValueLabel.textColor = favoritesViewModel.percentColors[indexPath.row]
+        cell.textLabel?.text = chosenViewModel.assignedCryptoNames[indexPath.row]
+        cell.detailTextLabel?.text = chosenViewModel.assignedCryptoSubNames[indexPath.row]
+        cell.imageView?.image = UIImage(named: chosenViewModel.assignedCryptoIcon[indexPath.row])
+        cell.cryptoValueLabel.text = "\(chosenViewModel.assignedCryptoRates[indexPath.row])  PLN"
+        cell.cryptoSubValueLabel.text = "\(chosenViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
+        cell.cryptoSubValueLabel.textColor = chosenViewModel.percentColors[indexPath.row]
     }
 }
 
@@ -106,7 +116,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        (tabBarController as! MenuTabBarController).data = favoritesViewModel.assignedCryptoNames[indexPath.row]
+       // (tabBarController as! MenuTabBarController).data = chosenViewModel.assignedCryptoNames[indexPath.row]
         tabBarController?.selectedIndex = 1
     }
     
