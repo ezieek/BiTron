@@ -11,7 +11,6 @@ import UIKit
 class MenuTabBarController: UITabBarController {
 
     // MARK: - Properties
-    var data = String()
     let chosenCryptocurrency = ChosenCryptocurrencyCoordinator()
     let selectCryptocurrency = SelectCryptocurrencyCoordinator()
     let detailCryptocurrency = DetailCryptocurrencyCoordinator()

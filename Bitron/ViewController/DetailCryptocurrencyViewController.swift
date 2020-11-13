@@ -24,13 +24,13 @@ class DetailCryptocurrencyViewController: UIViewController {
     var pushedCryptocurrencySubName: String = ""
     var pushedCryptocurrencyRate: String = ""
     var pushedCryptocurrencyPreviousRate: String = ""
+    var test: Int? = 0
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pushedCryptocurrencyName = (tabBarController as! MenuTabBarController).data
-        //detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
+
+        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
         detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencyName)
         setupView()
         contentViewActions()
@@ -47,13 +47,13 @@ class DetailCryptocurrencyViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+
         //add code here
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        
+
         //add code here
     }
 
