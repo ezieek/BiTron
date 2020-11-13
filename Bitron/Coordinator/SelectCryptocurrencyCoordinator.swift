@@ -14,7 +14,7 @@ class SelectCryptocurrencyCoordinator: Coordinator {
         super.start()
         
         let controller = SelectCryptocurrencyViewController()
-        controller.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+        controller.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), selectedImage: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.white))
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }

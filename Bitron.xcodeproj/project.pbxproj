@@ -273,8 +273,8 @@
 			children = (
 				9CD59B7E24DAA48300566236 /* Coordinator.swift */,
 				9C06384A25541F740022BFD0 /* ChosenCoordinator.swift */,
-				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
 				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
+				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
 				9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -292,9 +292,9 @@
 		EDA6705024D9F8180091BD4E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */,
 				9C81AF182514AB5800BE1ECA /* ChosenCryptocurrencyViewModel.swift */,
 				9C678C6E2539D3D900611202 /* DetailViewModel.swift */,
+				9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

@@ -13,7 +13,7 @@ class ChosenCryptocurrencyCoordinator: Coordinator {
     override func start() {
         super.start()
         let controller = ChosenCryptocurrencyViewController()
-        controller.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        controller.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), selectedImage: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.white))
         controller.coordinatorChosen = self
         navigationController.pushViewController(controller, animated: true)
     }
@@ -24,15 +24,15 @@ class ChosenCryptocurrencyCoordinator: Coordinator {
         controller.pushedCryptocurrencyName = name
     }
     
-    /*
+    
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
         if navigationController.viewControllers.contains(fromViewController) { return }
         
-       /* if let viewController = fromViewController as? CryptocurrencyViewController {
-            didDismiss(viewController.coordinator)
-        }*/
-    }*/
+        if let viewController = fromViewController as? ChosenCryptocurrencyViewController {
+            didDismiss(viewController.coordinatorChosen)
+        }
+    }
  
 }

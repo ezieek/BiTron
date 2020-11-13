@@ -14,7 +14,7 @@ class DetailCryptocurrencyCoordinator: Coordinator {
         super.start()
         
         let controller = DetailCryptocurrencyViewController()
-        controller.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        controller.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), selectedImage: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.white))
         controller.coordinatorDetail = self
         navigationController.pushViewController(controller, animated: true)
     }

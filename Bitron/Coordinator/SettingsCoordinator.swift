@@ -12,8 +12,9 @@ class SettingsCoordinator: Coordinator {
     
     override func start() {
         super.start()
+        
         let controller = SettingsViewController()
-        controller.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
+        controller.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), selectedImage: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.white))
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
