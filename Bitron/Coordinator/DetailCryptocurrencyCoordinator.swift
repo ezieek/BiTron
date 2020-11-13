@@ -18,10 +18,4 @@ class DetailCryptocurrencyCoordinator: Coordinator {
         controller.coordinatorDetail = self
         navigationController.pushViewController(controller, animated: true)
     }
-    
-    func pushToChosenViewController() {
-        let controller = ChosenCryptocurrencyViewController()
-        controller.coordinatorDetail = self
-        navigationController.pushViewController(controller, animated: true)
-    }
 }
