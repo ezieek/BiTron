@@ -19,6 +19,19 @@ class ChosenCryptocurrencyCoordinator: Coordinator {
         navigationController.pushViewController(controller, animated: true)
     }
     
+    func pushToDetailCryptocurrencyViewController(name: String) {
+        let controller = DetailCryptocurrencyViewController()
+        controller.pushedCryptocurrencyName = name
+        controller.coordinatorChosen = self
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func pushBackToChosenCryptocurrencyViewController() {
+        let controller = ChosenCryptocurrencyViewController()
+        controller.coordinatorChosen = self
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
     /*
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         

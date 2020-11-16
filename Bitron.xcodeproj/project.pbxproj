@@ -11,7 +11,7 @@
 		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
 		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
 		9C06382325540E420022BFD0 /* MenuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06382225540E420022BFD0 /* MenuTabBarController.swift */; };
-		9C06384B25541F740022BFD0 /* ChosenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06384A25541F740022BFD0 /* ChosenCoordinator.swift */; };
+		9C06384B25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */; };
 		9C063853255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */; };
 		9C678C6F2539D3D900611202 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C6E2539D3D900611202 /* DetailViewModel.swift */; };
 		9C678C742539D54F00611202 /* DetailCryptocurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C732539D54F00611202 /* DetailCryptocurrency.swift */; };
@@ -69,7 +69,7 @@
 		9033A16CFCC51E65DD83F87B /* Pods-Bitron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron.release.xcconfig"; path = "Target Support Files/Pods-Bitron/Pods-Bitron.release.xcconfig"; sourceTree = "<group>"; };
 		951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C06382225540E420022BFD0 /* MenuTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarController.swift; sourceTree = "<group>"; };
-		9C06384A25541F740022BFD0 /* ChosenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCoordinator.swift; sourceTree = "<group>"; };
+		9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCryptocurrencyCoordinator.swift; sourceTree = "<group>"; };
 		9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptocurrencyCoordinator.swift; sourceTree = "<group>"; };
 		9C678C6E2539D3D900611202 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		9C678C732539D54F00611202 /* DetailCryptocurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptocurrency.swift; sourceTree = "<group>"; };
@@ -260,9 +260,9 @@
 			children = (
 				9C06382225540E420022BFD0 /* MenuTabBarController.swift */,
 				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
-				9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */,
 				EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */,
 				9C95F555255591B800F68D31 /* SettingsViewController.swift */,
+				9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */,
 				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
 			);
 			path = ViewController;
@@ -272,10 +272,10 @@
 			isa = PBXGroup;
 			children = (
 				9CD59B7E24DAA48300566236 /* Coordinator.swift */,
-				9C06384A25541F740022BFD0 /* ChosenCoordinator.swift */,
-				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
+				9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */,
 				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
 				9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */,
+				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -293,8 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				9C81AF182514AB5800BE1ECA /* ChosenCryptocurrencyViewModel.swift */,
-				9C678C6E2539D3D900611202 /* DetailViewModel.swift */,
 				9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */,
+				9C678C6E2539D3D900611202 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -546,7 +546,7 @@
 				9CD59B7924DAA21F00566236 /* SelectCryptocurrencyView.swift in Sources */,
 				9CBBD72324E6B089006141CD /* LoginViewController.swift in Sources */,
 				9CB6C77F25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift in Sources */,
-				9C06384B25541F740022BFD0 /* ChosenCoordinator.swift in Sources */,
+				9C06384B25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift in Sources */,
 				9C81AF1B2514AD4200BE1ECA /* Constants.swift in Sources */,
 				9CD59B8324DAA5E800566236 /* SelectCryptocurrency.swift in Sources */,
 				9CD59B7F24DAA48300566236 /* Coordinator.swift in Sources */,

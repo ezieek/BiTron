@@ -15,7 +15,20 @@ class SelectCryptocurrencyCoordinator: Coordinator {
         
         let controller = SelectCryptocurrencyViewController()
         controller.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), selectedImage: UIImage(named: "home")?.withRenderingMode(.alwaysOriginal).withTintColor(.white))
-        controller.coordinator = self
+        controller.coordinatorSelect = self
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func pushToDetailCryptocurrencyViewController(name: String) {
+        let controller = DetailCryptocurrencyViewController()
+        controller.pushedCryptocurrencyName = name
+        controller.coordinatorSelect = self
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func pushBackToSelectCryptocurrencyViewController() {
+        let controller = SelectCryptocurrencyViewController()
+        controller.coordinatorSelect = self
         navigationController.pushViewController(controller, animated: true)
     }
 }
