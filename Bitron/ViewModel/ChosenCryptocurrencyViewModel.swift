@@ -46,7 +46,8 @@ class ChosenCryptocurrencyViewModel {
         self.cleanAssignedCryptocurrencyData()
     }
     
-    func getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: Double, completion: @escaping () -> Void) {
+    func getCurrentValueOfSavedCryptocurrenciesNextLoadView(completion: @escaping () -> Void) {
+        let timeInterval = 1.0
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
             
