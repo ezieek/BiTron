@@ -17,13 +17,12 @@ class ChosenCryptocurrencyViewController: UIViewController {
     private lazy var settingBackgroundColor = Colors()
     private lazy var chosenViewModel = ChosenCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
-    private lazy var timeInterval = 5.0
     private lazy var refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         contentViewActions()
         dataViewModelActions()
@@ -37,7 +36,8 @@ class ChosenCryptocurrencyViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        dataViewModelActions()
+        
+        dataViewModelActionsWithTimer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -68,8 +68,10 @@ class ChosenCryptocurrencyViewController: UIViewController {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
         }
-
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView(timeInterval: timeInterval) { [weak self] in
+    }
+    
+    private func dataViewModelActionsWithTimer() {
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
         }
     }
@@ -116,7 +118,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinatorChosen?.pushToDetailCryptocurrencyViewController(name: chosenViewModel.assignedCryptoNames[indexPath.row])
+        coordinatorChosen?.pushToDetailCryptocurrencyViewController(name: chosenViewModel.assignedCryptoNames[indexPath.row], rate: chosenViewModel.assignedCryptoRates[indexPath.row], previousRate: chosenViewModel.assignedCryptoPreviousRates[indexPath.row], image: chosenViewModel.assignedCryptoIcon[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
