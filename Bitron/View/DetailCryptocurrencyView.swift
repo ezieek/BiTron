@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  DetailCryptocurrencyView.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 8/5/20.
@@ -14,7 +14,7 @@
 
 import UIKit
 
-class DetailView: UIView {
+class DetailCryptocurrencyView: UIView {
 
     // MARK: - Properties
     let screen = UIScreen.main.bounds
@@ -92,10 +92,10 @@ class DetailView: UIView {
             cryptocurrencyPercentageRateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
             cryptocurrencyVolumeLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             cryptocurrencyVolumeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.8),
+            pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.7),
             pushNotificationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             pushNotificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80)
         ])
     }
 }
