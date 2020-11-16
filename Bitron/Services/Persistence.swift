@@ -127,26 +127,19 @@ class Persistence {
     }*/
     
     //MARK: - Delete
-    /*func deleteCoreData(indexPath: IndexPath, completion: @escaping () -> Void) {
-        let context = persistence.context
-        
+    func deleteCoreData(name: String, rate: String, previousRate: String, image: String) -> Void {
+        let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptocurrencyNames[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptocurrencyRates[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptocurrencyPreviousRates[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "image = %@", chosenCryptocurrencyImages[indexPath.row])
+        fetchRequest.predicate = NSPredicate(format: "title = %@", name)
+        fetchRequest.predicate = NSPredicate(format: "value = %@", rate)
+        fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate)
+        fetchRequest.predicate = NSPredicate(format: "image = %@", image)
 
         do {
             if let result = try? context.fetch(fetchRequest) {
             
                 for object in result {
                     context.delete(object)
-                    chosenCryptocurrencyNames.remove(at: indexPath.row)
-                    chosenCryptocurrencyRates.remove(at: indexPath.row)
-                    chosenCryptocurrencyPreviousRates.remove(at: indexPath.row)
-                    chosenCryptocurrencyImages.remove(at: indexPath.row)
-
-                    completion()
                 }
             }
 
@@ -156,5 +149,5 @@ class Persistence {
                 print(error)
             }
         }
-    }*/
+    }
 }
