@@ -116,7 +116,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tabBarController?.selectedIndex = 1
+        coordinatorChosen?.pushToDetailCryptocurrencyViewController(name: chosenViewModel.assignedCryptoNames[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -30,7 +30,7 @@ class DetailCryptocurrencyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
+        //detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
         detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencyName)
         setupView()
         contentViewActions()
@@ -74,6 +74,7 @@ class DetailCryptocurrencyViewController: UIViewController {
     
     // MARK: - @objc selectors
     @objc private func backButtonPressed() {
-        tabBarController?.selectedIndex = 0
+        coordinatorChosen?.pushBackToChosenCryptocurrencyViewController()
+        coordinatorSelect?.pushBackToSelectCryptocurrencyViewController()
     }
 }

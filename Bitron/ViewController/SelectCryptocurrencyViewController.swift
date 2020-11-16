@@ -11,7 +11,7 @@ import UIKit
 class SelectCryptocurrencyViewController: UIViewController {
 
     // MARK: - Properties
-    weak var coordinator: SelectCryptocurrencyCoordinator?
+    weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     private lazy var contentView = SelectCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
@@ -88,9 +88,7 @@ extension SelectCryptocurrencyViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-      // (tabBarController as! MenuTabBarController).data = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
-        tabBarController?.selectedIndex = 1
+        coordinatorSelect?.pushToDetailCryptocurrencyViewController(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
