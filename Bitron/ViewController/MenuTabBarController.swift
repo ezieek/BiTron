@@ -13,7 +13,6 @@ class MenuTabBarController: UITabBarController {
     // MARK: - Properties
     let chosenCryptocurrency = ChosenCryptocurrencyCoordinator()
     let selectCryptocurrency = SelectCryptocurrencyCoordinator()
-    let detailCryptocurrency = DetailCryptocurrencyCoordinator()
     let settingUserProfile   = SettingsCoordinator()
     
     // MARK: - Lifecycle
@@ -35,9 +34,8 @@ class MenuTabBarController: UITabBarController {
     
     private func enableCoordinatorPattern() {
         chosenCryptocurrency.start()
-        detailCryptocurrency.start()
         selectCryptocurrency.start()
         settingUserProfile.start()
-        viewControllers = [chosenCryptocurrency.navigationController, detailCryptocurrency.navigationController, selectCryptocurrency.navigationController, settingUserProfile.navigationController]
+        viewControllers = [chosenCryptocurrency.navigationController, selectCryptocurrency.navigationController, settingUserProfile.navigationController]
     }
 }
