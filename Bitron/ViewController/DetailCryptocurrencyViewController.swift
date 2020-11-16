@@ -15,15 +15,16 @@ class DetailCryptocurrencyViewController: UIViewController {
     weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
-    private lazy var contentView = DetailView()
+    private lazy var contentView = DetailCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
-    private lazy var detailViewModel = DetailViewModel()
+    private lazy var detailViewModel = DetailCryptocurrencyViewModel()
     let networking = Networking.shared
     let persistence = Persistence.shared
     var pushedCryptocurrencyName: String = ""
     var pushedCryptocurrencySubName: String = ""
     var pushedCryptocurrencyRate: String = ""
     var pushedCryptocurrencyPreviousRate: String = ""
+    var pushedCryptocurrencyImage: String = ""
     var test: Int? = 0
     
     // MARK: - Lifecycle
@@ -69,12 +70,17 @@ class DetailCryptocurrencyViewController: UIViewController {
         contentView.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
         contentView.cryptocurrencyPercentageRateLabel.text = "tak"
         contentView.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
-        //contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
+        contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - @objc selectors
     @objc private func backButtonPressed() {
         coordinatorChosen?.pushBackToChosenCryptocurrencyViewController()
         coordinatorSelect?.pushBackToSelectCryptocurrencyViewController()
+    }
+    
+    @objc private func deleteDataButtonPressed() {
+        persistence.deleteCoreData(name: pushedCryptocurrencyName, rate: pushedCryptocurrencyRate, previousRate: pushedCryptocurrencyPreviousRate, image: pushedCryptocurrencyImage)
+        coordinatorChosen?.pushBackToChosenCryptocurrencyViewController()
     }
 }
