@@ -1,5 +1,5 @@
 //
-//  DetailViewModel.swift
+//  DetailCryptocurrencyViewModel.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko 10/16/20.
@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-class DetailViewModel {
+class DetailCryptocurrencyViewModel {
     
     // MARK: - Properties
     lazy var detailCryptocurrencyShortName:   String = ""
