@@ -77,7 +77,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
     }
 
     // MARK: - @objc selectors
-    @objc func refreshingTable() {
+    @objc private func refreshingTable() {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
             self?.refreshControl.endRefreshing()
@@ -118,7 +118,12 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinatorChosen?.pushToDetailCryptocurrencyViewController(name: chosenViewModel.assignedCryptoNames[indexPath.row], rate: chosenViewModel.assignedCryptoRates[indexPath.row], previousRate: chosenViewModel.assignedCryptoPreviousRates[indexPath.row], image: chosenViewModel.assignedCryptoIcon[indexPath.row])
+        coordinatorChosen?.pushToDetailCryptocurrencyViewController(
+            name: chosenViewModel.assignedCryptoNames[indexPath.row],
+            subname: chosenViewModel.assignedCryptoSubNames[indexPath.row],
+            rate: chosenViewModel.assignedCryptoRates[indexPath.row],
+            previousRate: chosenViewModel.assignedCryptoPreviousRates[indexPath.row],
+            image: chosenViewModel.assignedCryptoIcon[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
