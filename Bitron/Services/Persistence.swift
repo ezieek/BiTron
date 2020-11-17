@@ -43,7 +43,6 @@ class Persistence {
     // MARK: - Create
     func createCoreData(title: String, value: String, previousRate: String, image: String) {
         guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptocurrencyModel", in: context) else { return }
-             
         let newValue = NSManagedObject(entity: userEntity, insertInto: context)
         newValue.setValue(title, forKey: "title")
         newValue.setValue(value, forKey: "value")
@@ -64,14 +63,11 @@ class Persistence {
         var rates: [String] = []
         var previousRates: [String] = []
         var images: [String] = []
-        
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
     
         do {
-            
             let results = try context.fetch(fetchRequest)
             let emptyArrays = ([""],[""],[""],[""])
-            
             for result in results {
                 
                 guard let readTitle = result.title else { return emptyArrays }
@@ -86,11 +82,9 @@ class Persistence {
                 guard let readImageName = result.image else { return emptyArrays }
                 images.append(readImageName)
             }
-            print("Dane poprawnie odczytane")
         } catch {
             print("Problem z odczytem danych")
         }
-        
         return (names, rates, previousRates, images)
     }
     
