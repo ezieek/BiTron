@@ -6,13 +6,8 @@
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
-//tutaj moze zrobic tak, ze on nie bedzie przesylac danych z FavoritesViewControllera tylko do razu bedzie pobierac z bitbay api aktualna wartosc
-//tak jak ja to widze to z lewej ma byc aktualna wartosc danej kryptowaluty a po prawej jej Wolumin
-//na srodku pod nimi moze byc procentowa zmiana aktualnej wartosci
-//lekko nizej jakos wydobyc wartosci by zrobic z tego wykres
-//na dole cos trzeba dodac
-
 import UIKit
+import Charts
 
 class DetailCryptocurrencyView: UIView {
 
@@ -59,6 +54,30 @@ class DetailCryptocurrencyView: UIView {
         return label
     }()
     
+    lazy var chartView: CandleStickChartView = {
+        let chartView = CandleStickChartView()
+       /*chartView.chartDescription?.enabled = false
+        chartView.dragEnabled = false
+        chartView.setScaleEnabled(true)
+        chartView.maxVisibleCount = 200
+        chartView.pinchZoomEnabled = true
+        chartView.legend.horizontalAlignment = .right
+        chartView.legend.verticalAlignment = .top
+        chartView.legend.orientation = .vertical
+        chartView.legend.drawInside = false
+        chartView.legend.font = UIFont(name: "HelveticaNeue-Light", size: 10)!
+        chartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
+        chartView.leftAxis.spaceTop = 0.3
+        chartView.leftAxis.spaceBottom = 0.3
+        chartView.leftAxis.axisMinimum = 0
+        chartView.rightAxis.enabled = false
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!*/
+        chartView.backgroundColor = .yellow
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        return chartView
+    }()
+    
     lazy var pushNotificationButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
@@ -81,7 +100,7 @@ class DetailCryptocurrencyView: UIView {
     
     // MARK: - internal
     func createSubViews() {
-        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, pushNotificationButton].forEach { addSubview($0) }
+        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView, pushNotificationButton].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             cryptocurrencyNameLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
@@ -92,6 +111,10 @@ class DetailCryptocurrencyView: UIView {
             cryptocurrencyPercentageRateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
             cryptocurrencyVolumeLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             cryptocurrencyVolumeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            chartView.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
             pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.7),
             pushNotificationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             pushNotificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
