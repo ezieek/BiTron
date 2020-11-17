@@ -20,11 +20,6 @@ class DetailCryptocurrencyViewModel {
     lazy var detailCryptocurrencyVolumeValue: String = ""
     
     // MARK: - internal
-    //i teraz to wrzucic w timer, niech sie zmienia?
-    //chociaz po co zmniejszac wydajnosc apki
-    //badz po co dorzucac nowa funkcjonalnosc, niech on sprawdza ta wartosc wtedy kiedy tu wejdzie
-    //przydaloby sie jeszcze dorzucic wartosci sprzed x czasu, ale to trzeba znalezc na bitbay api
-    //w celu wygenerowania wykresu
     func getJSON(completion: @escaping () -> Void) {
         Alamofire.request("https://api.bitbay.net/rest/trading/stats").responseJSON { (response) in
             switch response.result {
