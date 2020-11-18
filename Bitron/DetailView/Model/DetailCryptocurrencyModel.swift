@@ -1,5 +1,5 @@
 //
-//  DetailCryptocurrency.swift
+//  DetailCryptocurrencyModel.swift
 //  Bitron
 //
 //  Created by Maciej Wołejko on 10/16/20.
@@ -9,14 +9,14 @@
 import Foundation
 import SwiftyJSON
 
-struct DetailCryptocurrency {
+struct DetailCryptocurrencyModel {
     
     var h: String? //the highest value from 24h
     var l: String? //the lowest value from 24h
     var v: String? //volume from 24h
 }
 
-extension DetailCryptocurrency {
+extension DetailCryptocurrencyModel {
     
     enum PropertyKey: String {
         case h, l, v
