@@ -41,7 +41,7 @@ class SelectCryptocurrencyViewModel {
                 
                 for items in self.cryptocurrencySortedNames {
                     let json = JSON(jsonValue)["items"][items]
-                    var cryptocurrency = SelectCryptocurrency(json: json)
+                    var cryptocurrency = SelectCryptocurrencyModel(json: json)
                     cryptocurrency.name = items
                     self.cryptocurrencyNames.append(Constants.settingMainNameOfCryptocurrency(getName: items))
                     let fetchedCryptocurrencyRatesString = cryptocurrency.rate
@@ -49,7 +49,6 @@ class SelectCryptocurrencyViewModel {
                     self.cryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesfloatValue ?? ""))            
                     self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
                 }
-                
                 completion()
             case .failure(let error):
                    print(error)

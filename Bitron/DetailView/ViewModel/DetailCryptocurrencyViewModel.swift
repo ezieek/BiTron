@@ -27,7 +27,7 @@ class DetailCryptocurrencyViewModel {
                 let jsonValue = JSON(value)
                 self.detailCryptocurrencyShortName.append("-PLN")
                 let json = JSON(jsonValue)["items"][self.detailCryptocurrencyShortName]
-                let detailCryptocurrency = DetailCryptocurrency(json: json)
+                let detailCryptocurrency = DetailCryptocurrencyModel(json: json)
                 
                 self.detailCryptocurrencyHighValue = detailCryptocurrency.h ?? ""
                 self.detailCryptocurrencyLowValue = detailCryptocurrency.l ?? ""

@@ -57,7 +57,7 @@ class ChosenCryptocurrencyViewModel {
         
         for names in cryptocurrencyName {
             let json = JSON(jsonValue)["items"][names]
-            let cryptocurrency = SelectCryptocurrency(json: json)
+            let cryptocurrency = SelectCryptocurrencyModel(json: json)
             let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
             let fetchedCryptocurrencyRatesString = cryptocurrency.rate ?? ""
             let fetchedCryptocurrencyRatesFloatValue = Float(fetchedCryptocurrencyRatesString)
