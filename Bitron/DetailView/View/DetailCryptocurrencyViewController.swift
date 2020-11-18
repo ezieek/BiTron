@@ -35,7 +35,7 @@ class DetailCryptocurrencyViewController: UIViewController {
         setupView()
         contentViewActions()
         detailViewModel.getJSON {
-            print("HIGH: \(self.detailViewModel.detailCryptocurrencyHighValue), LOW: \(self.detailViewModel.detailCryptocurrencyLowValue) VOLUME: \(self.detailViewModel.detailCryptocurrencyVolumeValue)")
+            //print("HIGH: \(self.detailViewModel.detailCryptocurrencyHighValue), LOW: \(self.detailViewModel.detailCryptocurrencyLowValue) VOLUME: \(self.detailViewModel.detailCryptocurrencyVolumeValue)")
            // self.contentView.cryptocurrencyVolumeLabel.text = self.detailViewModel.detailCryptocurrencyVolumeValue
         }
         

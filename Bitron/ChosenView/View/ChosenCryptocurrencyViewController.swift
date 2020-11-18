@@ -118,6 +118,9 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("Name: \(chosenViewModel.assignedCryptoNames[indexPath.row]), Subname: \(chosenViewModel.assignedCryptoSubNames[indexPath.row]), Rate: \(chosenViewModel.assignedCryptoRates[indexPath.row]), PreviousRate: \(chosenViewModel.assignedCryptoPreviousRates[indexPath.row]), Image: \(chosenViewModel.assignedCryptoIcon[indexPath.row]), index: \(indexPath.row)")
+        
         coordinatorChosen?.pushToDetailCryptocurrencyViewController(
             name: chosenViewModel.assignedCryptoNames[indexPath.row],
             subname: chosenViewModel.assignedCryptoSubNames[indexPath.row],

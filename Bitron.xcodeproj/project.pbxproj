@@ -164,6 +164,222 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9C2EAEBE25651845007B6B69 /* ChosenView */ = {
+			isa = PBXGroup;
+			children = (
+				9C2EAEC1256518B3007B6B69 /* Model */,
+				9C2EAEC3256518C8007B6B69 /* View */,
+				9C2EAEC2256518BE007B6B69 /* ViewModel */,
+				9C2EAED725651BC7007B6B69 /* Coordinator */,
+			);
+			path = ChosenView;
+			sourceTree = "<group>";
+		};
+		9C2EAEBF25651869007B6B69 /* SelectView */ = {
+			isa = PBXGroup;
+			children = (
+				9C2EAEC6256518E6007B6B69 /* Model */,
+				9C2EAEC5256518E0007B6B69 /* View */,
+				9C2EAEC4256518DB007B6B69 /* ViewModel */,
+				9C2EAED825651BDD007B6B69 /* Coordinator */,
+			);
+			path = SelectView;
+			sourceTree = "<group>";
+		};
+		9C2EAEC025651873007B6B69 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				9C2EAEC925651975007B6B69 /* Model */,
+				9C2EAEC825651971007B6B69 /* View */,
+				9C2EAEC725651966007B6B69 /* ViewModel */,
+				9C2EAEDA25651C07007B6B69 /* Coordinator */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		9C2EAEC1256518B3007B6B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C2EAEC2256518BE007B6B69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C81AF182514AB5800BE1ECA /* ChosenCryptocurrencyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2EAEC3256518C8007B6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CD59B7224DAA1DF00566236 /* ChosenCryptocurrencyCell.swift */,
+				9CD59B7424DAA1F900566236 /* ChosenCryptocurrencyView.swift */,
+				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C2EAEC4256518DB007B6B69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2EAEC5256518E0007B6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CD59B7624DAA20B00566236 /* SelectCryptocurrencyCell.swift */,
+				9CD59B7824DAA21F00566236 /* SelectCryptocurrencyView.swift */,
+				EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C2EAEC6256518E6007B6B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CD59B8224DAA5E800566236 /* SelectCryptocurrency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C2EAEC725651966007B6B69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2EAEC825651971007B6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C95F555255591B800F68D31 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C2EAEC925651975007B6B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C2EAECA25651992007B6B69 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				9C2EAECD256519B0007B6B69 /* Model */,
+				9C2EAECC256519AA007B6B69 /* View */,
+				9C2EAECB256519A5007B6B69 /* ViewModel */,
+				9C2EAED925651BEB007B6B69 /* Coordinator */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		9C2EAECB256519A5007B6B69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C678C6E2539D3D900611202 /* DetailCryptocurrencyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2EAECC256519AA007B6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CD59B7A24DAA23200566236 /* DetailCryptocurrencyView.swift */,
+				9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C2EAECD256519B0007B6B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C678C732539D54F00611202 /* DetailCryptocurrency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C2EAECE25651A12007B6B69 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				9C06382225540E420022BFD0 /* MenuTabBarController.swift */,
+				9CD59B7E24DAA48300566236 /* Coordinator.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		9C2EAECF25651A20007B6B69 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9C2EAED225651A42007B6B69 /* Model */,
+				9C2EAED125651A3E007B6B69 /* View */,
+				9C2EAED025651A38007B6B69 /* ViewModel */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9C2EAED025651A38007B6B69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2EAED125651A3E007B6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C6836F42507B90E0041A814 /* LoginView.swift */,
+				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C2EAED225651A42007B6B69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C2EAED725651BC7007B6B69 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9C2EAED825651BDD007B6B69 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9C2EAED925651BEB007B6B69 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9C2EAEDA25651C07007B6B69 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		EDA6700B24D9F7870091BD4E = {
 			isa = PBXGroup;
 			children = (
@@ -190,11 +406,12 @@
 		EDA6701624D9F7870091BD4E /* Bitron */ = {
 			isa = PBXGroup;
 			children = (
-				EDA6704F24D9F8140091BD4E /* Model */,
-				EDA6704C24D9F7F40091BD4E /* View */,
-				EDA6705024D9F8180091BD4E /* ViewModel */,
-				EDA6704D24D9F8040091BD4E /* ViewController */,
-				EDA6704E24D9F80B0091BD4E /* Coordinator */,
+				9C2EAECE25651A12007B6B69 /* MainView */,
+				9C2EAECF25651A20007B6B69 /* LoginView */,
+				9C2EAEBE25651845007B6B69 /* ChosenView */,
+				9C2EAEBF25651869007B6B69 /* SelectView */,
+				9C2EAECA25651992007B6B69 /* DetailView */,
+				9C2EAEC025651873007B6B69 /* SettingsView */,
 				EDA6704B24D9F7D70091BD4E /* Services */,
 				EDA6704A24D9F7C80091BD4E /* Supporting */,
 				EDA6701724D9F7870091BD4E /* AppDelegate.swift */,
@@ -240,63 +457,6 @@
 				9CD59B7024DAA0D700566236 /* Persistence.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		EDA6704C24D9F7F40091BD4E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9CD59B7624DAA20B00566236 /* SelectCryptocurrencyCell.swift */,
-				9CD59B7824DAA21F00566236 /* SelectCryptocurrencyView.swift */,
-				9CD59B7224DAA1DF00566236 /* ChosenCryptocurrencyCell.swift */,
-				9CD59B7424DAA1F900566236 /* ChosenCryptocurrencyView.swift */,
-				9CD59B7A24DAA23200566236 /* DetailCryptocurrencyView.swift */,
-				9C6836F42507B90E0041A814 /* LoginView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EDA6704D24D9F8040091BD4E /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9C06382225540E420022BFD0 /* MenuTabBarController.swift */,
-				EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */,
-				EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */,
-				9C95F555255591B800F68D31 /* SettingsViewController.swift */,
-				9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */,
-				9CBBD72224E6B089006141CD /* LoginViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EDA6704E24D9F80B0091BD4E /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				9CD59B7E24DAA48300566236 /* Coordinator.swift */,
-				9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */,
-				9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */,
-				9C95F55A255591EF00F68D31 /* SettingsCoordinator.swift */,
-				9CB6C77E25593A540010FDF6 /* DetailCryptocurrencyCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		EDA6704F24D9F8140091BD4E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9CD59B8224DAA5E800566236 /* SelectCryptocurrency.swift */,
-				9C678C732539D54F00611202 /* DetailCryptocurrency.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EDA6705024D9F8180091BD4E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9C81AF182514AB5800BE1ECA /* ChosenCryptocurrencyViewModel.swift */,
-				9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */,
-				9C678C6E2539D3D900611202 /* DetailCryptocurrencyViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
