@@ -25,7 +25,6 @@ class ChosenCryptocurrencyViewController: UIViewController {
 
         setupView()
         contentViewActions()
-        dataViewModelActions()
     }
         
     override func loadView() {
@@ -64,21 +63,16 @@ class ChosenCryptocurrencyViewController: UIViewController {
         contentView.mainTableView.addSubview(refreshControl)
     }
     
-    private func dataViewModelActions() {
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
-            self?.contentView.mainTableView.reloadData()
-        }
-    }
-    
     private func dataViewModelActionsWithTimer() {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
+            print("Parse")
             self?.contentView.mainTableView.reloadData()
         }
     }
 
     // MARK: - @objc selectors
     @objc private func refreshingTable() {
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
             self?.refreshControl.endRefreshing()
         }
@@ -93,7 +87,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
 extension ChosenCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chosenViewModel.assignedCryptoNames.count
+        return chosenViewModel.chosenCryptocurrencyNames.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,11 +99,11 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
     }
     
     private func configureCell(cell: ChosenCryptocurrencyCell, indexPath: IndexPath) {
-        cell.textLabel?.text = chosenViewModel.assignedCryptoNames[indexPath.row]
-        cell.detailTextLabel?.text = chosenViewModel.assignedCryptoSubNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: chosenViewModel.assignedCryptoIcon[indexPath.row])
-        cell.cryptoValueLabel.text = "\(chosenViewModel.assignedCryptoRates[indexPath.row])  PLN"
-        cell.cryptoSubValueLabel.text = "\(chosenViewModel.assignedCryptoPreviousRates[indexPath.row]) %"
+        cell.textLabel?.text = chosenViewModel.chosenCryptocurrencyNames[indexPath.row]
+        cell.detailTextLabel?.text = chosenViewModel.chosenCryptocurrencySubNames[indexPath.row]
+        cell.imageView?.image = UIImage(named: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])
+        cell.cryptoValueLabel.text = "\(chosenViewModel.chosenCryptocurrencyRates[indexPath.row])  PLN"
+        cell.cryptoSubValueLabel.text = "\(chosenViewModel.chosenCryptocurrencyPreviousRates[indexPath.row]) %"
         cell.cryptoSubValueLabel.textColor = chosenViewModel.percentColors[indexPath.row]
     }
 }
@@ -118,15 +112,12 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Name: \(chosenViewModel.assignedCryptoNames[indexPath.row]), Subname: \(chosenViewModel.assignedCryptoSubNames[indexPath.row]), Rate: \(chosenViewModel.assignedCryptoRates[indexPath.row]), PreviousRate: \(chosenViewModel.assignedCryptoPreviousRates[indexPath.row]), Image: \(chosenViewModel.assignedCryptoIcon[indexPath.row]), index: \(indexPath.row)")
-        
         coordinatorChosen?.pushToDetailCryptocurrencyViewController(
-            name: chosenViewModel.assignedCryptoNames[indexPath.row],
-            subname: chosenViewModel.assignedCryptoSubNames[indexPath.row],
-            rate: chosenViewModel.assignedCryptoRates[indexPath.row],
-            previousRate: chosenViewModel.assignedCryptoPreviousRates[indexPath.row],
-            image: chosenViewModel.assignedCryptoIcon[indexPath.row])
+            name: chosenViewModel.chosenCryptocurrencyNames[indexPath.row],
+            subname: chosenViewModel.chosenCryptocurrencySubNames[indexPath.row],
+            rate: chosenViewModel.chosenCryptocurrencyRates[indexPath.row],
+            previousRate: chosenViewModel.chosenCryptocurrencyPreviousRates[indexPath.row],
+            image: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
