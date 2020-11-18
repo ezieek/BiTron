@@ -41,11 +41,11 @@ class Persistence {
     }
     
     // MARK: - Create
-    func createCoreData(title: String, value: String, previousRate: String, image: String) {
+    func createCoreData(name: String, rate: String, previousRate: String, image: String) {
         guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptocurrencyModel", in: context) else { return }
         let newValue = NSManagedObject(entity: userEntity, insertInto: context)
-        newValue.setValue(title, forKey: "title")
-        newValue.setValue(value, forKey: "value")
+        newValue.setValue(name, forKey: "name")
+        newValue.setValue(rate, forKey: "rate")
         newValue.setValue(previousRate, forKey: "previous")
         newValue.setValue(image, forKey: "image")
         
@@ -70,10 +70,10 @@ class Persistence {
             let emptyArrays = ([""],[""],[""],[""])
             for result in results {
                 
-                guard let readTitle = result.title else { return emptyArrays }
+                guard let readTitle = result.name else { return emptyArrays }
                 names.append(readTitle)
                 
-                guard let readValue = result.value else { return emptyArrays }
+                guard let readValue = result.rate else { return emptyArrays }
                 rates.append(readValue)
                 
                 guard let readPreviousRates = result.previous else { return emptyArrays }
@@ -124,8 +124,8 @@ class Persistence {
     func deleteCoreData(name: String, rate: String, previousRate: String, image: String) -> Void {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-        fetchRequest.predicate = NSPredicate(format: "title = %@", name)
-        fetchRequest.predicate = NSPredicate(format: "value = %@", rate)
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        fetchRequest.predicate = NSPredicate(format: "rate = %@", rate)
         fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate)
         fetchRequest.predicate = NSPredicate(format: "image = %@", image)
 
