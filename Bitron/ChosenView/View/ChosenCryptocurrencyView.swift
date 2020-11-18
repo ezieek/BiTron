@@ -47,8 +47,8 @@ class ChosenCryptocurrencyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - internal
-    func createSubViews() {
+    // MARK: - private
+    private func createSubViews() {
         [favouritesLabel, mainTableView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([

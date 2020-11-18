@@ -50,14 +50,14 @@ class ChosenCryptocurrencyCell: UITableViewCell {
         detailTextLabel?.frame.origin.y = 54
     }
     
-    // MARK: - internal
-    func setupColors() {
+    // MARK: - private
+    private func setupColors() {
         textLabel?.textColor = .white
         detailTextLabel?.textColor = .gray
         backgroundColor = .clear
     }
     
-    func createSubViews() {
+    private func createSubViews() {
         [cryptoValueLabel, cryptoSubValueLabel].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
