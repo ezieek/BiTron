@@ -7,7 +7,6 @@ target 'Bitron' do
 
   # Pods for Bitron
 pod 'SwiftLint'
-pod 'SideMenu'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Alamofire', '~> 4.4'
 pod 'Charts'
