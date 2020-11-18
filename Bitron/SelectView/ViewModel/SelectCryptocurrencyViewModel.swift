@@ -68,7 +68,7 @@ class SelectCryptocurrencyViewModel {
         filteredData = filterData.map { ($0 as? String ?? "") }
             
         if !filteredData.contains(name) {
-            persistence.createCoreData(title: name, value: rate, previousRate: previousRate, image: icon)
+            persistence.createCoreData(name: name, rate: rate, previousRate: previousRate, image: icon)
         }
     }
 }
