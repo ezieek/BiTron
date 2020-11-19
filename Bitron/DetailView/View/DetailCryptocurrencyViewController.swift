@@ -31,17 +31,22 @@ class DetailCryptocurrencyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
+       // detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
         setupView()
         contentViewActions()
-        detailViewModel.getJSON {
+
+        // detailViewModel.getJSON {
             //print("HIGH: \(self.detailViewModel.detailCryptocurrencyHighValue), LOW: \(self.detailViewModel.detailCryptocurrencyLowValue) VOLUME: \(self.detailViewModel.detailCryptocurrencyVolumeValue)")
            // self.contentView.cryptocurrencyVolumeLabel.text = self.detailViewModel.detailCryptocurrencyVolumeValue
-        }
+      //  }
+      /*  detailViewModel.getJSONChartData(cryptocurrencyName: "BTC-PLN", resolution: "86400", actualTimestamp: String(timestamp)) {
+            
+            let data = CandleChartData(dataSet: self.detailViewModel.set1)
+            self.contentView.chartView.data = data
+
+        }*/
         
         contentView.chartView.delegate = self
-        
-        setDataCount(Int(3), range: Int(10))
     }
     
     override func loadView() {
@@ -62,33 +67,6 @@ class DetailCryptocurrencyViewController: UIViewController {
         //add code here
     }
     
-
-    func setDataCount(_ count: Int, range: Int) {
-        let yVals1 = (0..<count).map { (i) -> CandleChartDataEntry in
-            let high = [36155.44, 35448.5, 34400.0]
-            let low = [33650.0, 33400.0, 32431.67]
-            let open = [36104.08, 34217.79, 34358.5]
-            let close = [34161.41, 34275.86, 34275.86]
-            
-            return CandleChartDataEntry(x: Double(i), shadowH: high[i], shadowL: low[i], open: open[i], close: close[i])
-        }
-        
-        let set1 = CandleChartDataSet(entries: yVals1, label: "Data Set")
-        set1.axisDependency = .left
-        set1.setColor(UIColor(white: 80/255, alpha: 1))
-        set1.drawIconsEnabled = false
-        set1.shadowColor = .darkGray
-        set1.shadowWidth = 0.7
-        set1.decreasingColor = .red
-        set1.decreasingFilled = true
-        set1.increasingColor = UIColor(red: 122/255, green: 242/255, blue: 84/255, alpha: 1)
-        set1.increasingFilled = false
-        set1.neutralColor = .green
-        set1.valueTextColor = .white
-        
-        let data = CandleChartData(dataSet: set1)
-        contentView.chartView.data = data
-    }
     // MARK: - private
     private func setupView() {
         navigationItem.title = "\(pushedCryptocurrencyName) (\(pushedCryptocurrencySubName))"
