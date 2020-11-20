@@ -25,6 +25,23 @@ class ChosenCryptocurrencyViewModel {
     var percentColors: [UIColor] = []
     
     // MARK: - internal
+    func getCurrentValueOfSavedCryptocurrenciesFirstLoadView(completion: @escaping () -> Void) {
+        self.percentColors.removeAll()
+        let retrivedCoreData = self.persistence.retriveCoreData()
+    
+        AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+
+            switch response.result {
+            case .success(let value):
+                self?.responseJSON(value: value, cryptocurrencyName: retrivedCoreData.name, cryptocurrencyImage: retrivedCoreData.image)
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        self.cleanChosenCryptocurrencyData()
+    }
+
     func getCurrentValueOfSavedCryptocurrenciesNextLoadView(completion: @escaping () -> Void) {
         let timeInterval = 1.0
         timer?.invalidate()
@@ -33,7 +50,7 @@ class ChosenCryptocurrencyViewModel {
             self.percentColors.removeAll()
             let retrivedCoreData = self.persistence.retriveCoreData()
             
-            Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+            AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
 
                 switch response.result {
                 case .success(let value):

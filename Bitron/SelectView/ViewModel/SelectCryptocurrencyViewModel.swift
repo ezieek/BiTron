@@ -27,7 +27,7 @@ class SelectCryptocurrencyViewModel {
     
     // MARK: - internal
     func getJSONUsingBitbayAPI(completion: @escaping () -> Void) {
-        Alamofire.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
+        AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
            
             switch response.result {
             case .success(let value):
