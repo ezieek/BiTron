@@ -43,15 +43,15 @@ class ChosenCryptocurrencyViewModel {
     }
 
     func getCurrentValueOfSavedCryptocurrenciesNextLoadView(completion: @escaping () -> Void) {
-        let timeInterval = 1.0
+        let timeInterval = 2.0
+            
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
             
             self.percentColors.removeAll()
             let retrivedCoreData = self.persistence.retriveCoreData()
-            
-            AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
 
+            AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
                 switch response.result {
                 case .success(let value):
                     self?.responseJSON(value: value, cryptocurrencyName: retrivedCoreData.name, cryptocurrencyImage: retrivedCoreData.image)
@@ -71,7 +71,6 @@ class ChosenCryptocurrencyViewModel {
     // MARK: - private
     private func responseJSON(value: Any, cryptocurrencyName: [String], cryptocurrencyImage: [String]) {
         let jsonValue = JSON(value)
-        
         for names in cryptocurrencyName {
             let json = JSON(jsonValue)["items"][names]
             let cryptocurrency = SelectCryptocurrencyModel(json: json)
