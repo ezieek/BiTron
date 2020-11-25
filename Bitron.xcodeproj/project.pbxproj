@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBC8263A049EB6053860B4 /* Pods_Bitron.framework */; };
-		34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */; };
-		8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABDBDEA6C31453BC5A51BE4 /* Pods_Bitron_BitronUITests.framework */; };
 		9C06382325540E420022BFD0 /* MenuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06382225540E420022BFD0 /* MenuTabBarController.swift */; };
 		9C06384B25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */; };
 		9C063853255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */; };
+		9C264657256D4654004379A5 /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C264656256D4654004379A5 /* BitronUITests.swift */; };
 		9C678C6F2539D3D900611202 /* DetailCryptocurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C6E2539D3D900611202 /* DetailCryptocurrencyViewModel.swift */; };
 		9C678C742539D54F00611202 /* DetailCryptocurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C678C732539D54F00611202 /* DetailCryptocurrencyModel.swift */; };
 		9C67CD8C25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */; };
@@ -36,24 +35,24 @@
 		9CD59B8724DAA8D200566236 /* DetailCryptocurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD59B8624DAA8D200566236 /* DetailCryptocurrencyViewController.swift */; };
 		9CE04C7124E2A2FE0072214F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04C7024E2A2FE0072214F /* Colors.swift */; };
 		ED4DF6C325174DD300178535 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6C225174DD300178535 /* README.md */; };
+		ED95A558256D85550009F11C /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95A557256D85550009F11C /* BitronTests.swift */; };
+		ED95A57A256D9D9F0009F11C /* ChosenCryptocurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95A579256D9D9F0009F11C /* ChosenCryptocurrencyModel.swift */; };
 		EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701724D9F7870091BD4E /* AppDelegate.swift */; };
 		EDA6701C24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */; };
 		EDA6702224D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDA6702024D9F7870091BD4E /* CryptocurrencyModel.xcdatamodeld */; };
 		EDA6702724D9F78A0091BD4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6702524D9F78A0091BD4E /* LaunchScreen.storyboard */; };
-		EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703124D9F78B0091BD4E /* BitronTests.swift */; };
-		EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */; };
 		EDA6705224D9F8690091BD4E /* SelectCryptocurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EDA6702E24D9F78B0091BD4E /* PBXContainerItemProxy */ = {
+		9C264659256D4654004379A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDA6700C24D9F7870091BD4E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EDA6701324D9F7870091BD4E;
 			remoteInfo = Bitron;
 		};
-		EDA6703924D9F78B0091BD4E /* PBXContainerItemProxy */ = {
+		ED95A55A256D85550009F11C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDA6700C24D9F7870091BD4E /* Project object */;
 			proxyType = 1;
@@ -71,6 +70,9 @@
 		9C06382225540E420022BFD0 /* MenuTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarController.swift; sourceTree = "<group>"; };
 		9C06384A25541F740022BFD0 /* ChosenCryptocurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCryptocurrencyCoordinator.swift; sourceTree = "<group>"; };
 		9C063852255423FC0022BFD0 /* SelectCryptocurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptocurrencyCoordinator.swift; sourceTree = "<group>"; };
+		9C264654256D4654004379A5 /* BitronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C264656256D4654004379A5 /* BitronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronUITests.swift; sourceTree = "<group>"; };
+		9C264658256D4654004379A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C678C6E2539D3D900611202 /* DetailCryptocurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptocurrencyViewModel.swift; sourceTree = "<group>"; };
 		9C678C732539D54F00611202 /* DetailCryptocurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptocurrencyModel.swift; sourceTree = "<group>"; };
 		9C67CD8B25134F1100ECC938 /* SelectCryptocurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptocurrencyViewModel.swift; sourceTree = "<group>"; };
@@ -96,45 +98,41 @@
 		CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.debug.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitron-BitronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED4DF6C225174DD300178535 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED95A555256D85550009F11C /* BitronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED95A557256D85550009F11C /* BitronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronTests.swift; sourceTree = "<group>"; };
+		ED95A559256D85550009F11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED95A579256D9D9F0009F11C /* ChosenCryptocurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCryptocurrencyModel.swift; sourceTree = "<group>"; };
 		EDA6701424D9F7870091BD4E /* Bitron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA6701724D9F7870091BD4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA6701B24D9F7870091BD4E /* ChosenCryptocurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenCryptocurrencyViewController.swift; sourceTree = "<group>"; };
 		EDA6702124D9F7870091BD4E /* Bitron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bitron.xcdatamodel; sourceTree = "<group>"; };
 		EDA6702624D9F78A0091BD4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA6702824D9F78A0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDA6703124D9F78B0091BD4E /* BitronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronTests.swift; sourceTree = "<group>"; };
-		EDA6703324D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitronUITests.swift; sourceTree = "<group>"; };
-		EDA6703E24D9F78B0091BD4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA6705124D9F8690091BD4E /* SelectCryptocurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptocurrencyViewController.swift; sourceTree = "<group>"; };
 		F820F1D1317BF0CD425C84DD /* Pods_BitronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitronTests.release.xcconfig"; path = "Target Support Files/Pods-BitronTests/Pods-BitronTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9C264651256D4654004379A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED95A552256D85550009F11C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA6701124D9F7870091BD4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2D49477B7C739EA84A510234 /* Pods_Bitron.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDA6702A24D9F78B0091BD4E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				34106B390731B4FCF886365C /* Pods_BitronTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDA6703524D9F78B0091BD4E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8944DE7A33DC8B465CE27711 /* Pods_Bitron_BitronUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +160,15 @@
 				FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9C264655256D4654004379A5 /* BitronUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9C264656256D4654004379A5 /* BitronUITests.swift */,
+				9C264658256D4654004379A5 /* Info.plist */,
+			);
+			path = BitronUITests;
 			sourceTree = "<group>";
 		};
 		9C2EAEBE25651845007B6B69 /* ChosenView */ = {
@@ -200,6 +207,7 @@
 		9C2EAEC1256518B3007B6B69 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED95A579256D9D9F0009F11C /* ChosenCryptocurrencyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,13 +388,22 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		ED95A556256D85550009F11C /* BitronTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED95A557256D85550009F11C /* BitronTests.swift */,
+				ED95A559256D85550009F11C /* Info.plist */,
+			);
+			path = BitronTests;
+			sourceTree = "<group>";
+		};
 		EDA6700B24D9F7870091BD4E = {
 			isa = PBXGroup;
 			children = (
 				ED4DF6C225174DD300178535 /* README.md */,
 				EDA6701624D9F7870091BD4E /* Bitron */,
-				EDA6703024D9F78B0091BD4E /* BitronTests */,
-				EDA6703B24D9F78B0091BD4E /* BitronUITests */,
+				9C264655256D4654004379A5 /* BitronUITests */,
+				ED95A556256D85550009F11C /* BitronTests */,
 				EDA6701524D9F7870091BD4E /* Products */,
 				7D8DA2C54CA94DBD4541A2AB /* Pods */,
 				3BB2B2BFB8084AE483F1D1C3 /* Frameworks */,
@@ -397,8 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				EDA6701424D9F7870091BD4E /* Bitron.app */,
-				EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */,
-				EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */,
+				9C264654256D4654004379A5 /* BitronUITests.xctest */,
+				ED95A555256D85550009F11C /* BitronTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -423,24 +440,6 @@
 			path = Bitron;
 			sourceTree = "<group>";
 		};
-		EDA6703024D9F78B0091BD4E /* BitronTests */ = {
-			isa = PBXGroup;
-			children = (
-				EDA6703124D9F78B0091BD4E /* BitronTests.swift */,
-				EDA6703324D9F78B0091BD4E /* Info.plist */,
-			);
-			path = BitronTests;
-			sourceTree = "<group>";
-		};
-		EDA6703B24D9F78B0091BD4E /* BitronUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EDA6703C24D9F78B0091BD4E /* BitronUITests.swift */,
-				EDA6703E24D9F78B0091BD4E /* Info.plist */,
-			);
-			path = BitronUITests;
-			sourceTree = "<group>";
-		};
 		EDA6704A24D9F7C80091BD4E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +461,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9C264653256D4654004379A5 /* BitronUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C26465B256D4654004379A5 /* Build configuration list for PBXNativeTarget "BitronUITests" */;
+			buildPhases = (
+				9C264650256D4654004379A5 /* Sources */,
+				9C264651256D4654004379A5 /* Frameworks */,
+				9C264652256D4654004379A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C26465A256D4654004379A5 /* PBXTargetDependency */,
+			);
+			name = BitronUITests;
+			productName = BitronUITests;
+			productReference = 9C264654256D4654004379A5 /* BitronUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		ED95A554256D85550009F11C /* BitronTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED95A55C256D85550009F11C /* Build configuration list for PBXNativeTarget "BitronTests" */;
+			buildPhases = (
+				ED95A551256D85550009F11C /* Sources */,
+				ED95A552256D85550009F11C /* Frameworks */,
+				ED95A553256D85550009F11C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED95A55B256D85550009F11C /* PBXTargetDependency */,
+			);
+			name = BitronTests;
+			productName = BitronTests;
+			productReference = ED95A555256D85550009F11C /* BitronTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EDA6701324D9F7870091BD4E /* Bitron */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA6704124D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "Bitron" */;
@@ -481,65 +516,26 @@
 			productReference = EDA6701424D9F7870091BD4E /* Bitron.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EDA6702C24D9F78B0091BD4E /* BitronTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDA6704424D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronTests" */;
-			buildPhases = (
-				229A3F7B0AC1965C2E3CEACC /* [CP] Check Pods Manifest.lock */,
-				EDA6702924D9F78B0091BD4E /* Sources */,
-				EDA6702A24D9F78B0091BD4E /* Frameworks */,
-				EDA6702B24D9F78B0091BD4E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDA6702F24D9F78B0091BD4E /* PBXTargetDependency */,
-			);
-			name = BitronTests;
-			productName = BitronTests;
-			productReference = EDA6702D24D9F78B0091BD4E /* BitronTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EDA6703724D9F78B0091BD4E /* BitronUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDA6704724D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronUITests" */;
-			buildPhases = (
-				4F525217148A3CD3AC4A5EDB /* [CP] Check Pods Manifest.lock */,
-				EDA6703424D9F78B0091BD4E /* Sources */,
-				EDA6703524D9F78B0091BD4E /* Frameworks */,
-				EDA6703624D9F78B0091BD4E /* Resources */,
-				9FF909F250E4A7EF1A09D0F0 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDA6703A24D9F78B0091BD4E /* PBXTargetDependency */,
-			);
-			name = BitronUITests;
-			productName = BitronUITests;
-			productReference = EDA6703824D9F78B0091BD4E /* BitronUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		EDA6700C24D9F7870091BD4E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Maciej Wołejko";
 				TargetAttributes = {
+					9C264653256D4654004379A5 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = EDA6701324D9F7870091BD4E;
+					};
+					ED95A554256D85550009F11C = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = EDA6701324D9F7870091BD4E;
+					};
 					EDA6701324D9F7870091BD4E = {
 						CreatedOnToolsVersion = 11.6;
-					};
-					EDA6702C24D9F78B0091BD4E = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = EDA6701324D9F7870091BD4E;
-					};
-					EDA6703724D9F78B0091BD4E = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = EDA6701324D9F7870091BD4E;
 					};
 				};
 			};
@@ -557,13 +553,27 @@
 			projectRoot = "";
 			targets = (
 				EDA6701324D9F7870091BD4E /* Bitron */,
-				EDA6702C24D9F78B0091BD4E /* BitronTests */,
-				EDA6703724D9F78B0091BD4E /* BitronUITests */,
+				9C264653256D4654004379A5 /* BitronUITests */,
+				ED95A554256D85550009F11C /* BitronTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9C264652256D4654004379A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED95A553256D85550009F11C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA6701224D9F7870091BD4E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -574,67 +584,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDA6702B24D9F78B0091BD4E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDA6703624D9F78B0091BD4E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		229A3F7B0AC1965C2E3CEACC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BitronTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4F525217148A3CD3AC4A5EDB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Bitron-BitronUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5119661E0ADC5E8A85177AD0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -674,26 +626,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitron/Pods-Bitron-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FF909F250E4A7EF1A09D0F0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitron-BitronUITests/Pods-Bitron-BitronUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9C264650256D4654004379A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C264657256D4654004379A5 /* BitronUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED95A551256D85550009F11C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED95A558256D85550009F11C /* BitronTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA6701024D9F7870091BD4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,40 +674,25 @@
 				EDA6701824D9F7870091BD4E /* AppDelegate.swift in Sources */,
 				9C95F55B255591EF00F68D31 /* SettingsCoordinator.swift in Sources */,
 				EDA6705224D9F8690091BD4E /* SelectCryptocurrencyViewController.swift in Sources */,
+				ED95A57A256D9D9F0009F11C /* ChosenCryptocurrencyModel.swift in Sources */,
 				9C95F556255591B800F68D31 /* SettingsViewController.swift in Sources */,
 				9C6836F52507B90E0041A814 /* LoginView.swift in Sources */,
 				9C678C742539D54F00611202 /* DetailCryptocurrencyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDA6702924D9F78B0091BD4E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDA6703224D9F78B0091BD4E /* BitronTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDA6703424D9F78B0091BD4E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDA6703D24D9F78B0091BD4E /* BitronUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EDA6702F24D9F78B0091BD4E /* PBXTargetDependency */ = {
+		9C26465A256D4654004379A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDA6701324D9F7870091BD4E /* Bitron */;
-			targetProxy = EDA6702E24D9F78B0091BD4E /* PBXContainerItemProxy */;
+			targetProxy = 9C264659256D4654004379A5 /* PBXContainerItemProxy */;
 		};
-		EDA6703A24D9F78B0091BD4E /* PBXTargetDependency */ = {
+		ED95A55B256D85550009F11C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDA6701324D9F7870091BD4E /* Bitron */;
-			targetProxy = EDA6703924D9F78B0091BD4E /* PBXContainerItemProxy */;
+			targetProxy = ED95A55A256D85550009F11C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -772,6 +708,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9C26465C256D4654004379A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maciejwolejko.BitronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitron;
+			};
+			name = Debug;
+		};
+		9C26465D256D4654004379A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maciejwolejko.BitronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitron;
+			};
+			name = Release;
+		};
+		ED95A55D256D85550009F11C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
+			};
+			name = Debug;
+		};
+		ED95A55E256D85550009F11C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4S98Y6A4W2;
+				INFOPLIST_FILE = BitronTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
+			};
+			name = Release;
+		};
 		EDA6703F24D9F78B0091BD4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -896,7 +912,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,7 +932,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S98Y6A4W2;
 				INFOPLIST_FILE = Bitron/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -928,97 +944,27 @@
 			};
 			name = Release;
 		};
-		EDA6704524D9F78B0091BD4E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC3E2EB0A9B3D93D9C27E396 /* Pods-BitronTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S98Y6A4W2;
-				INFOPLIST_FILE = BitronTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
-			};
-			name = Debug;
-		};
-		EDA6704624D9F78B0091BD4E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF49F41F653B7FFB9BEE41B7 /* Pods-BitronTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S98Y6A4W2;
-				INFOPLIST_FILE = BitronTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = t.BitronTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitron.app/Bitron";
-			};
-			name = Release;
-		};
-		EDA6704824D9F78B0091BD4E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2254D008597A5EB310158E4 /* Pods-Bitron-BitronUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S98Y6A4W2;
-				INFOPLIST_FILE = BitronUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = t.BitronUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bitron;
-			};
-			name = Debug;
-		};
-		EDA6704924D9F78B0091BD4E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 951C564944C2150C95C4452D /* Pods-Bitron-BitronUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S98Y6A4W2;
-				INFOPLIST_FILE = BitronUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = t.BitronUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bitron;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9C26465B256D4654004379A5 /* Build configuration list for PBXNativeTarget "BitronUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C26465C256D4654004379A5 /* Debug */,
+				9C26465D256D4654004379A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED95A55C256D85550009F11C /* Build configuration list for PBXNativeTarget "BitronTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED95A55D256D85550009F11C /* Debug */,
+				ED95A55E256D85550009F11C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDA6700F24D9F7870091BD4E /* Build configuration list for PBXProject "Bitron" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1033,24 +979,6 @@
 			buildConfigurations = (
 				EDA6704224D9F78B0091BD4E /* Debug */,
 				EDA6704324D9F78B0091BD4E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDA6704424D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDA6704524D9F78B0091BD4E /* Debug */,
-				EDA6704624D9F78B0091BD4E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDA6704724D9F78B0091BD4E /* Build configuration list for PBXNativeTarget "BitronUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDA6704824D9F78B0091BD4E /* Debug */,
-				EDA6704924D9F78B0091BD4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

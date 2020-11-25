@@ -2,12 +2,11 @@
 //  BitronTests.swift
 //  BitronTests
 //
-//  Created by Maciej Wołejko on 04/08/2020.
+//  Created by Maciej Wołejko on 24/11/2020.
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
 import XCTest
-@testable import Bitron
 
 class BitronTests: XCTestCase {
 
@@ -26,7 +25,7 @@ class BitronTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
