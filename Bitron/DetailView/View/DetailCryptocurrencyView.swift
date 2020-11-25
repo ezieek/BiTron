@@ -78,15 +78,6 @@ class DetailCryptocurrencyView: UIView {
         return chartView
     }()
     
-    lazy var pushNotificationButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .red
-        button.setTitle("Push Notifications Enabled", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,7 +91,7 @@ class DetailCryptocurrencyView: UIView {
     
     // MARK: - private
     private func createSubViews() {
-        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView, pushNotificationButton].forEach { addSubview($0) }
+        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             cryptocurrencyNameLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
@@ -111,14 +102,10 @@ class DetailCryptocurrencyView: UIView {
             cryptocurrencyPercentageRateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
             cryptocurrencyVolumeLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             cryptocurrencyVolumeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            chartView.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            chartView.topAnchor.constraint(equalTo: topAnchor, constant: 140),
             chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
-            pushNotificationButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: screen.height * 0.7),
-            pushNotificationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            pushNotificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            pushNotificationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80)
+            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60)
         ])
     }
 }
