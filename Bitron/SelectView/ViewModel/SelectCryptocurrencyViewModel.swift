@@ -15,6 +15,7 @@ class SelectCryptocurrencyViewModel {
     
     //MARK: - Properties
     private var persistence = Persistence.shared
+    private lazy var constants = Constants.shared
     private var storedCryptocurrencyCoreData: [String] = []
     private var filteredData: [String] = []
     var cryptocurrencyShortNames: [String] = []
@@ -43,7 +44,7 @@ class SelectCryptocurrencyViewModel {
                     let json = JSON(jsonValue)["items"][items]
                     var cryptocurrency = SelectCryptocurrencyModel(json: json)
                     cryptocurrency.name = items
-                    self.cryptocurrencyNames.append(Constants.settingMainNameOfCryptocurrency(getName: items))
+                    self.cryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: items))
                     let fetchedCryptocurrencyRatesString = cryptocurrency.rate
                     let fetchedCryptocurrencyRatesfloatValue = Float(fetchedCryptocurrencyRatesString ?? "")
                     self.cryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesfloatValue ?? ""))            
