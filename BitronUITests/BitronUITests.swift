@@ -2,7 +2,7 @@
 //  BitronUITests.swift
 //  BitronUITests
 //
-//  Created by Maciej Wołejko on 04/08/2020.
+//  Created by Maciej Wołejko on 11/24/20.
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
@@ -35,7 +35,7 @@ class BitronUITests: XCTestCase {
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
         }
