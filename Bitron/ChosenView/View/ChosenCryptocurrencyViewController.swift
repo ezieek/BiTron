@@ -13,13 +13,14 @@ class ChosenCryptocurrencyViewController: UIViewController {
     //MARK: - Properties
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
+    private lazy var model: [ChosenCryptocurrencyModel] = [ChosenCryptocurrencyModel]()
     private lazy var contentView = ChosenCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var chosenViewModel = ChosenCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
     private lazy var refreshControl = UIRefreshControl()
     weak var timer: Timer?
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,19 @@ class ChosenCryptocurrencyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        dataViewModelActionsWithTimer()
+        chosenViewModel.getCoreData { (model) in
+            DispatchQueue.main.async {
+                self.model.append(contentsOf: model)
+                self.contentView.mainTableView.reloadData()
+            }
+        }
+        //dataViewModelActionsWithTimer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
-        chosenViewModel.timer?.invalidate()
+        //chosenViewModel.timer?.invalidate()
     }
 
     // MARK: - private
@@ -53,7 +60,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: contentView.menuBarButtonItem)
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
         refreshControl.tintColor = .white
-        refreshControl.addTarget(self, action: #selector(refreshingTable), for: .valueChanged)
+        //refreshControl.addTarget(self, action: #selector(refreshingTable), for: .valueChanged)
     }
 
     private func contentViewActions() {
@@ -65,28 +72,37 @@ class ChosenCryptocurrencyViewController: UIViewController {
         contentView.mainTableView.addSubview(refreshControl)
     }
     
+    /*private func dataViewModelActionsWithoutTimer() {
+        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
+            self?.contentView.mainTableView.reloadData()
+        }
+    }
     private func dataViewModelActionsWithTimer() {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
+            print(self?.chosenViewModel.chosenCryptocurrencyImages as Any)
             self?.contentView.mainTableView.reloadData()
         }
     }
     
     private func pushToDetailViewController(indexPath: IndexPath) {
-        coordinatorChosen?.pushToDetailCryptocurrencyViewController(
+        print(self.chosenViewModel.chosenCryptocurrencyNames[indexPath.row])
+        //print(self.chosenViewModel.chosenCryptocurrencyImages as Any)
+        //print(chosenViewModel.chosenCryptocurrencyNames[indexPath.row])
+        /*coordinatorChosen?.pushToDetailCryptocurrencyViewController(
             name: chosenViewModel.chosenCryptocurrencyNames[indexPath.row],
             subname: chosenViewModel.chosenCryptocurrencySubNames[indexPath.row],
             rate: chosenViewModel.chosenCryptocurrencyRates[indexPath.row],
             previousRate: chosenViewModel.chosenCryptocurrencyPreviousRates[indexPath.row],
-            image: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])
+            image: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])*/
     }
-
+    
     // MARK: - @objc selectors
     @objc private func refreshingTable() {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
             self?.contentView.mainTableView.reloadData()
             self?.refreshControl.endRefreshing()
         }
-    }
+    }*/
     
     @objc private func settingsButtonPressed() {
         print("The setting button has been pressed")
@@ -97,7 +113,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
 extension ChosenCryptocurrencyViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chosenViewModel.chosenCryptocurrencyNames.count
+        return model.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,12 +125,15 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
     }
     
     private func configureCell(cell: ChosenCryptocurrencyCell, indexPath: IndexPath) {
-        cell.textLabel?.text = chosenViewModel.chosenCryptocurrencyNames[indexPath.row]
-        cell.detailTextLabel?.text = chosenViewModel.chosenCryptocurrencySubNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])
-        cell.cryptoValueLabel.text = "\(chosenViewModel.chosenCryptocurrencyRates[indexPath.row])  PLN"
-        cell.cryptoSubValueLabel.text = "\(chosenViewModel.chosenCryptocurrencyPreviousRates[indexPath.row]) %"
-        cell.cryptoSubValueLabel.textColor = chosenViewModel.percentColors[indexPath.row]
+        
+        let model = self.model[indexPath.row]
+    
+        cell.textLabel?.text = model.name
+        cell.detailTextLabel?.text = model.subName
+        cell.imageView?.image = UIImage(named: model.image)
+        cell.cryptoValueLabel.text = model.rate
+        cell.cryptoSubValueLabel.text = model.previousRate
+        cell.cryptoSubValueLabel.textColor = model.color
         cell.selectionStyle = .none
     }
 }
@@ -123,15 +142,10 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         if !chosenViewModel.chosenCryptocurrencyNames.isEmpty {
-            DispatchQueue.main.async {
-                self.pushToDetailViewController(indexPath: indexPath)
-            }
+        if !model.isEmpty {
+            print(model[indexPath.row].name)
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                print("Empty")
-                self.pushToDetailViewController(indexPath: indexPath)
-            }
+            print("----------Empty")
         }
     }
     
