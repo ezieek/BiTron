@@ -21,7 +21,7 @@ class SelectCryptocurrencyCoordinator: Coordinator {
     
     func pushToDetailCryptocurrencyViewController(name: String) {
         let controller = DetailCryptocurrencyViewController()
-        controller.pushedCryptocurrencyName = name
+        controller.pushedCryptocurrencyName.append(name)
         controller.coordinatorSelect = self
         navigationController.pushViewController(controller, animated: true)
     }
