@@ -19,7 +19,6 @@ class ChosenCryptocurrencyViewController: UIViewController {
     private lazy var chosenViewModel = ChosenCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
     private lazy var refreshControl = UIRefreshControl()
-    weak var timer: Timer?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -35,22 +34,15 @@ class ChosenCryptocurrencyViewController: UIViewController {
         view = contentView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
-        chosenViewModel.getCoreData { (model) in
+        chosenViewModel.getCurrentValue { (model) in
             DispatchQueue.main.async {
-                self.model.append(contentsOf: model)
+                self.model = model
                 self.contentView.mainTableView.reloadData()
             }
         }
-        //dataViewModelActionsWithTimer()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        //chosenViewModel.timer?.invalidate()
     }
 
     // MARK: - private
@@ -72,30 +64,17 @@ class ChosenCryptocurrencyViewController: UIViewController {
         contentView.mainTableView.addSubview(refreshControl)
     }
     
-    /*private func dataViewModelActionsWithoutTimer() {
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesFirstLoadView { [weak self] in
-            self?.contentView.mainTableView.reloadData()
-        }
-    }
-    private func dataViewModelActionsWithTimer() {
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
-            print(self?.chosenViewModel.chosenCryptocurrencyImages as Any)
-            self?.contentView.mainTableView.reloadData()
-        }
-    }
-    
     private func pushToDetailViewController(indexPath: IndexPath) {
-        print(self.chosenViewModel.chosenCryptocurrencyNames[indexPath.row])
-        //print(self.chosenViewModel.chosenCryptocurrencyImages as Any)
-        //print(chosenViewModel.chosenCryptocurrencyNames[indexPath.row])
-        /*coordinatorChosen?.pushToDetailCryptocurrencyViewController(
-            name: chosenViewModel.chosenCryptocurrencyNames[indexPath.row],
-            subname: chosenViewModel.chosenCryptocurrencySubNames[indexPath.row],
-            rate: chosenViewModel.chosenCryptocurrencyRates[indexPath.row],
-            previousRate: chosenViewModel.chosenCryptocurrencyPreviousRates[indexPath.row],
-            image: chosenViewModel.chosenCryptocurrencyImages[indexPath.row])*/
+        let model = self.model[indexPath.row]
+        coordinatorChosen?.pushToDetailCryptocurrencyViewController(
+            name: model.name,
+            subname: model.subName,
+            rate: model.rate,
+            previousRate: model.previousRate,
+            image: model.image)
     }
     
+    /*
     // MARK: - @objc selectors
     @objc private func refreshingTable() {
         self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
@@ -143,9 +122,9 @@ extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !model.isEmpty {
-            print(model[indexPath.row].name)
+            pushToDetailViewController(indexPath: indexPath)
         } else {
-            print("----------Empty")
+            print("An error occured. Model is empty!")
         }
     }
     

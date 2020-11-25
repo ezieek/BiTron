@@ -15,52 +15,46 @@ class ChosenCryptocurrencyViewModel {
     
     // MARK: - Properties
     weak var timer: Timer?
+    private lazy var model: [ChosenCryptocurrencyModel] = [ChosenCryptocurrencyModel]()
     private let persistence = Persistence.shared
-    var chosenCryptocurrencyNames: [String] = []
-    var chosenCryptocurrencySubNames: [String] = []
-    var chosenCryptocurrencyRates: [String] = []
-    var chosenCryptocurrencyPreviousRates: [String] = []
-    var chosenCryptocurrencyImages: [String] = []
-    var percentResult = 0.0
-    var percentColors: [UIColor] = []
+    private let constants = Constants.shared
+    private lazy var chosenCryptocurrencyNames: [String] = []
+    private lazy var chosenCryptocurrencySubNames: [String] = []
+    private lazy var chosenCryptocurrencyRates: [String] = []
+    private lazy var chosenCryptocurrencyPreviousRates: [String] = []
+    private lazy var percentResult = 0.0
+    private lazy var percentColors: [UIColor] = []
+    private lazy var rate: [String] = []
+    private lazy var previousRate: [String] = []
     
     // MARK: - internal
-    func getCurrentValueOfSavedCryptocurrenciesFirstLoadView(completion: @escaping () -> Void) {
-        self.percentColors.removeAll()
+    func getCurrentValue(completion: @escaping([ChosenCryptocurrencyModel]) -> ()) {
         let retrivedCoreData = self.persistence.retriveCoreData()
-    
-        AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
-
-            switch response.result {
-            case .success(let value):
-                self?.responseJSON(value: value, cryptocurrencyName: retrivedCoreData.name, cryptocurrencyImage: retrivedCoreData.image)
-                completion()
-            case .failure(let error):
-                print(error)
-            }
-        }
-        self.cleanChosenCryptocurrencyData()
-    }
-
-    func getCurrentValueOfSavedCryptocurrenciesNextLoadView(completion: @escaping () -> Void) {
         let timeInterval = 2.0
-            
+        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
-            
-            self.percentColors.removeAll()
-            let retrivedCoreData = self.persistence.retriveCoreData()
-
             AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
                 switch response.result {
+                
                 case .success(let value):
-                    self?.responseJSON(value: value, cryptocurrencyName: retrivedCoreData.name, cryptocurrencyImage: retrivedCoreData.image)
-                    completion()
+                    let jsonValue = JSON(value)
+                    
+                    for names in retrivedCoreData.name {
+                        let json = JSON(jsonValue)["items"][names]
+                        self?.rate.append(json["rate"].stringValue)
+                        self?.previousRate.append(json["previousRate"].stringValue)
+                    }
+                    
+                    self?.getCoreData()
+                    
                 case .failure(let error):
                     print(error)
                 }
+                
+                completion(self?.model ?? [])
+                self?.cleanChosenCryptocurrencyData()
             }
-            self.cleanChosenCryptocurrencyData()
         })
     }
     
@@ -69,29 +63,39 @@ class ChosenCryptocurrencyViewModel {
     }
     
     // MARK: - private
-    private func responseJSON(value: Any, cryptocurrencyName: [String], cryptocurrencyImage: [String]) {
-        let jsonValue = JSON(value)
-        for names in cryptocurrencyName {
-            let json = JSON(jsonValue)["items"][names]
-            let cryptocurrency = SelectCryptocurrencyModel(json: json)
-            let removingUselessString = names.replacingOccurrences(of: "-PLN", with: "")
-            let fetchedCryptocurrencyRatesString = cryptocurrency.rate ?? ""
-            let fetchedCryptocurrencyRatesFloatValue = Float(fetchedCryptocurrencyRatesString)
+    private func getCoreData() {
+        let retrivedCoreData = self.persistence.retriveCoreData()
+        for i in 0..<retrivedCoreData.name.count {
+            self.chosenCryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: retrivedCoreData.name[i]) )
             
-            chosenCryptocurrencyNames.append(Constants.settingMainNameOfCryptocurrency(getName: names))
-            chosenCryptocurrencySubNames.append(removingUselessString)
-            chosenCryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesFloatValue ?? ""))
-            chosenCryptocurrencyPreviousRates.append(self.calculatingThePercentageDifference(rate: cryptocurrency.rate ?? "", previousRate: cryptocurrency.previousRate ?? ""))
-            chosenCryptocurrencyImages.append(contentsOf: cryptocurrencyImage)
+            self.chosenCryptocurrencySubNames.append(retrivedCoreData.name[i].replacingOccurrences(of: "-PLN", with: ""))
+            
+            let fetchedCryptocurrencyRate = Float(self.rate[i]) ?? 0.0
+            self.chosenCryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRate))
+            
+            self.chosenCryptocurrencyPreviousRates.append(self.calculatingThePercentageDifference(
+                rate: self.rate[i],
+                previousRate: self.previousRate[i]))
+            
+            self.model.append(ChosenCryptocurrencyModel(
+                name: self.chosenCryptocurrencyNames[i],
+                subName: self.chosenCryptocurrencySubNames[i],
+                rate: self.chosenCryptocurrencyRates[i],
+                previousRate: self.chosenCryptocurrencyPreviousRates[i],
+                image: retrivedCoreData.image[i],
+                color: self.percentColors[i]))
         }
     }
     
     private func cleanChosenCryptocurrencyData() {
-        chosenCryptocurrencyNames.removeAll()
-        chosenCryptocurrencySubNames.removeAll()
-        chosenCryptocurrencyRates.removeAll()
-        chosenCryptocurrencyPreviousRates.removeAll()
-        chosenCryptocurrencyImages.removeAll()
+        self.rate.removeAll()
+        self.previousRate.removeAll()
+        self.model.removeAll()
+        self.chosenCryptocurrencyNames.removeAll()
+        self.chosenCryptocurrencySubNames.removeAll()
+        self.chosenCryptocurrencyRates.removeAll()
+        self.chosenCryptocurrencyPreviousRates.removeAll()
+        self.percentColors.removeAll()
     }
 
     private func calculatingThePercentageDifference(rate: String, previousRate: String) -> String {
