@@ -10,11 +10,13 @@ import Foundation
 
 struct Constants {
     
+    private init () {}
+    static let shared = Constants()
+    
     static let sqlBasePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
-    static func settingMainNameOfCryptocurrency(getName: String) -> String {
+    func settingMainNameOfCryptocurrency(getName: String) -> String {
         var nameReceived: String = ""
-        
         switch(getName) {
         case "XLM-PLN":  nameReceived = "Stellar"
         case "BTC-PLN":  nameReceived = "Bitcoin"
@@ -47,7 +49,6 @@ struct Constants {
         case "REP-PLN":  nameReceived = "Augur"
         default:         nameReceived = "Error!"
         }
-        
         return nameReceived
     }
 }
