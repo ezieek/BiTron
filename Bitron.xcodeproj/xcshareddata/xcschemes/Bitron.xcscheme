@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDA6702C24D9F78B0091BD4E"
+               BlueprintIdentifier = "ED95A554256D85550009F11C"
                BuildableName = "BitronTests.xctest"
                BlueprintName = "BitronTests"
                ReferencedContainer = "container:Bitron.xcodeproj">
@@ -42,11 +42,16 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDA6703724D9F78B0091BD4E"
+               BlueprintIdentifier = "9C264653256D4654004379A5"
                BuildableName = "BitronUITests.xctest"
                BlueprintName = "BitronUITests"
                ReferencedContainer = "container:Bitron.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BitronUITests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

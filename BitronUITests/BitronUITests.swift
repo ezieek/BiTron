@@ -12,17 +12,18 @@ class BitronUITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
+        XCUIApplication().activate()
     }
 
     override func tearDownWithError() throws {
         // put code here
     }
 
-    func testValidateDataModelInitialization() throws {
+    func testCheckingApplicationDoesNotCrushWhenCellIsTapped() throws {
         let app = XCUIApplication()
-        app.launch()
+    
         let names = ["Algory", "Augur", "Basic Attention Token", "Bitcoin", "Bob's Repair", "0x", "Chainlink"]
-
+        
         while(true) {
             for i in names {
                 app.tables.staticTexts[i].tap()
