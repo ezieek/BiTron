@@ -14,54 +14,64 @@ import SwiftyJSON
 class SelectCryptocurrencyViewModel {
     
     //MARK: - Properties
-    private var persistence = Persistence.shared
+    private lazy var persistence = Persistence.shared
     private lazy var constants = Constants.shared
-    private var storedCryptocurrencyCoreData: [String] = []
-    private var filteredData: [String] = []
-    var cryptocurrencyShortNames: [String] = []
-    var cryptocurrencyNames: [String] = []
-    var cryptocurrencySortedNames: [String] = []
-    var cryptocurrencySubNames : [String] = []
-    var cryptocurrencyRates: [String] = []
-    var cryptocurrencyPreviousRates: [String] = []
-    var cryptocurrencyIcon: [String] = []
+    private lazy var model: [SelectCryptocurrencyModel] = [SelectCryptocurrencyModel]()
+    private lazy var selectCryptocurrencyName: [String] = []
+    private lazy var selectCryptocurrencyShortName: [String] = []
+    private lazy var selectCryptocurrencyRate: [String] = []
+    private lazy var selectCryptocurrencyPreviousRate: [String] = []
+    private lazy var rate: [String] = []
+    private lazy var previousRate: [String] = []
+    private lazy var filteredData: [String] = []
+    private lazy var storedCryptocurrencyCoreData: [String] = []
+
+    private lazy var selectCryptocurrencySortedName = ["ZRX-PLN", "ALG-PLN", "AMLT-PLN", "REP-PLN", "BAT-PLN", "BTC-PLN", "BCC-PLN", "BTG-PLN", "BSV-PLN", "BCP-PLN", "BOB-PLN", "LINK-PLN", "DASH-PLN", "ETH-PLN", "EXY-PLN", "GAME-PLN", "GNT-PLN", "XIN-PLN", "LSK-PLN", "LML-PLN", "LTC-PLN", "MKR-PLN", "NEU-PLN", "OMG-PLN", "XRP-PLN", "XLM-PLN", "PAY-PLN", "TRX-PLN", "ZEC-PLN"]
+    
+    private lazy var selectCryptocurrencyImage = ["zrx", "btc", "amlt", "rep", "bat", "btc-1", "bcc", "btg", "bsv", "btc-2", "bob", "link", "dash", "eth", "btc-3", "game", "gnt", "xin", "lsk", "btc-4", "ltc", "mkr", "neu", "omg", "xrp", "btc-5", "pay", "trx", "zec"]
     
     // MARK: - internal
-    func getJSONUsingBitbayAPI(completion: @escaping () -> Void) {
+    func getJSON(completion: @escaping([SelectCryptocurrencyModel]) -> ()) {
         AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
-           
             switch response.result {
+            
             case .success(let value):
                 let jsonValue = JSON(value)
-
-                self.cryptocurrencySortedNames = ["ZRX-PLN", "ALG-PLN", "AMLT-PLN", "REP-PLN", "BAT-PLN", "BTC-PLN", "BCC-PLN", "BTG-PLN", "BSV-PLN", "BCP-PLN", "BOB-PLN", "LINK-PLN", "DASH-PLN", "ETH-PLN", "EXY-PLN", "GAME-PLN", "GNT-PLN", "XIN-PLN", "LSK-PLN", "LML-PLN", "LTC-PLN", "MKR-PLN", "NEU-PLN", "OMG-PLN", "XRP-PLN", "XLM-PLN", "PAY-PLN", "TRX-PLN", "ZEC-PLN"]
-
-                self.cryptocurrencySubNames = ["ZRX", "ALG", "AMLT", "REP", "BAT", "BTC", "BCC", "BTG", "BSV", "BCP", "BOB", "LINK", "DASH", "ETH", "EXY", "GAME", "GNT", "XIN", "LSK", "LML", "LTC", "MKR", "NEU", "OMG", "XRP", "XLM", "PAY", "TRX", "ZEC"]
                 
-                self.cryptocurrencyIcon = ["zrx", "btc", "amlt", "rep", "bat", "btc", "bcc", "btg", "bsv", "btc", "bob", "link", "dash", "eth", "btc", "game", "gnt", "xin", "lsk", "btc", "ltc", "mkr", "neu", "omg", "xrp", "btc", "pay", "trx", "zec"]
-                
-                for items in self.cryptocurrencySortedNames {
-                    let json = JSON(jsonValue)["items"][items]
-                    var cryptocurrency = SelectCryptocurrencyModel(json: json)
-                    cryptocurrency.name = items
-                    self.cryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: items))
-                    let fetchedCryptocurrencyRatesString = cryptocurrency.rate
-                    let fetchedCryptocurrencyRatesfloatValue = Float(fetchedCryptocurrencyRatesString ?? "")
-                    self.cryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRatesfloatValue ?? ""))            
-                    self.cryptocurrencyPreviousRates.append(cryptocurrency.previousRate ?? "")
+                for names in self.selectCryptocurrencySortedName {
+                    let json = JSON(jsonValue)["items"][names]
+                    self.rate.append(json["rate"].stringValue)
+                    self.previousRate.append(json["previousRate"].stringValue)
                 }
-                completion()
+                    
+                for i in 0..<self.selectCryptocurrencySortedName.count {
+                    self.selectCryptocurrencyName.append(self.constants.settingMainNameOfCryptocurrency(getName: self.selectCryptocurrencySortedName[i]))
+                   
+                    let fetchedCryptocurrencyRate = Float(self.rate[i]) ?? 0.0
+                    self.selectCryptocurrencyRate.append(String(format: "%.2f", fetchedCryptocurrencyRate))
+
+                    self.selectCryptocurrencyPreviousRate.append(self.previousRate[i])
+
+                    self.model.append(SelectCryptocurrencyModel(
+                        name: self.selectCryptocurrencyName[i],
+                        rate: self.selectCryptocurrencyRate[i],
+                        image: self.selectCryptocurrencyImage[i]))
+                }
+                    
             case .failure(let error):
-                   print(error)
+                print(error)
             }
+            
+            completion(self.model)
+            self.model.removeAll()
         }
     }
     
-    func pushDataToChosenViewController(indexPath: NSIndexPath) {
-        let name = cryptocurrencySortedNames[indexPath.row]
-        let rate = cryptocurrencyRates[indexPath.row]
-        let previousRate = cryptocurrencyPreviousRates[indexPath.row]
-        let icon = cryptocurrencyIcon[indexPath.row]
+    func saveCryptocurrencyData(indexPath: IndexPath) {
+        let name = selectCryptocurrencySortedName[indexPath.row]
+        let rate = selectCryptocurrencyRate[indexPath.row]
+        let previousRate = selectCryptocurrencyPreviousRate[indexPath.row]
+        let icon = selectCryptocurrencyImage[indexPath.row]
         let storedCryptocurrencyCoreData = self.persistence.retriveCoreData()
         let filterData = Array(NSOrderedSet(array: storedCryptocurrencyCoreData.name))
         
