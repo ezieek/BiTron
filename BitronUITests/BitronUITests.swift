@@ -21,7 +21,7 @@ class BitronUITests: XCTestCase {
 
     func testCheckingApplicationDoesNotCrushWhenCellIsTapped() throws {
         let app = XCUIApplication()
-        let names = ["0x", "Algory", "Augur", "Basic Attention Token", "Bitcoin", "Bitcoin Cash", "Golem"]
+        let names = ["0x", "Algory", "AMLT", "Augur", "Basic Attention Token", "Bitcoin", "Bitcoin Cash", "Bitcoin Gold", "Bitcoin SV", "Blockchain Poland", "Bob\'s Repair", "Chainlink", "Dash", "Ethereum", "Experty", "Game Credits", "Golem", "Infinity Economics", "Lisk", "Lisk Machine Learning", "Litecoin", "Maker", "Neumark", "OmniseGO", "Ripple", "Stellar", "TenX", "Tron", "Zcash"]
         
         while(true) {
             for i in names {
@@ -33,17 +33,29 @@ class BitronUITests: XCTestCase {
         }
     }
     
-    func testSelectingFavoriteCryptocurrencies() throws {
+    func testAddingFavoriteCryptocurrencies() throws {
         let app = XCUIApplication()
-        let names = ["0x", "Algory", "AMLT", "Augur", "Basic Attention Token", "Bitcoin", "Bitcoin Cash", "Bitcoin Gold", "Bitcoin SV", "Blockchain Poland", "Bob\'s Repair", "Chainlink", "Dash", "Ethereum", "Experty", "Game Credits", "Golem", "Infinity Economics", "Lisk", "Lisk Machine Learning", "Litecoin", "Maker", "Neumark", "OmniseGO", "Ripple", "Stellar", "TenX", "Tron", "Zcash"]
+        let tabButton = app.tabBars.buttons.element(boundBy: 1)
+        let myTable = app.tables.cells
+
+        for i in 0..<29 {
+            tabButton.tap()
+            sleep(1)
+            myTable.element(boundBy: i).tap()
+            sleep(2)
+        }
+    }
+    
+    func testDeletingFavoriteCryptocurrencies() throws {
+        let app = XCUIApplication()
+        let mainTable = app.tables.cells.element(boundBy: 0)
+        let navButton = app.navigationBars.buttons.element(boundBy: 0)
         
-        while(true) {
-            for i in 0..<names.count {
-                app.tabBars.buttons.element(boundBy: 1).tap()
-                sleep(1)
-                app.tables.cells.element(boundBy: i).tap()
-                sleep(2)
-            }
+        for _ in 0..<29 {
+            mainTable.tap()
+            sleep(2)
+            navButton.tap()
+            sleep(2)
         }
     }
 }
