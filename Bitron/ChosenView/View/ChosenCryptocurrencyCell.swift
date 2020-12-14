@@ -10,7 +10,7 @@ import UIKit
 
 class ChosenCryptocurrencyCell: UITableViewCell {
 
-    //MARK: - Properties
+    // MARK: - Properties
     let screen = UIScreen.main.bounds
     
     lazy var cryptoValueLabel: UILabel = {

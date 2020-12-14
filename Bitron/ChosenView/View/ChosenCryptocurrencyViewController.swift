@@ -19,7 +19,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
     private lazy var chosenViewModel = ChosenCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
     private lazy var refreshControl = UIRefreshControl()
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +36,18 @@ class ChosenCryptocurrencyViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+
         chosenViewModel.getCurrentValue { (model) in
             DispatchQueue.main.async {
                 self.model = model
                 self.contentView.mainTableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        chosenViewModel.turnOffTheCounter()
     }
 
     // MARK: - private
@@ -106,12 +111,12 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
     private func configureCell(cell: ChosenCryptocurrencyCell, indexPath: IndexPath) {
         
         let model = self.model[indexPath.row]
-    
+
         cell.textLabel?.text = model.name
         cell.detailTextLabel?.text = model.subName
         cell.imageView?.image = UIImage(named: model.image)
-        cell.cryptoValueLabel.text = model.rate
-        cell.cryptoSubValueLabel.text = model.previousRate
+        cell.cryptoValueLabel.text = "\(model.rate) PLN"
+        cell.cryptoSubValueLabel.text = "\(model.previousRate) %"
         cell.cryptoSubValueLabel.textColor = model.color
         cell.selectionStyle = .none
     }

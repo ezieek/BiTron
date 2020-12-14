@@ -24,35 +24,36 @@ class ChosenCryptocurrencyViewModel {
     private lazy var chosenCryptocurrencyPreviousRates: [String] = []
     private lazy var percentResult = 0.0
     private lazy var percentColors: [UIColor] = []
-    private lazy var rate: [String] = []
-    private lazy var previousRate: [String] = []
+    var rate: [String] = []
+    var previousRate: [String] = []
     
+
     // MARK: - internal
     func getCurrentValue(completion: @escaping([ChosenCryptocurrencyModel]) -> ()) {
+        let timeInterval = 1.0
         let retrivedCoreData = self.persistence.retriveCoreData()
-        let timeInterval = 2.0
-        
+        let name = retrivedCoreData.name
+ 
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
             AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
                 switch response.result {
-                
+
                 case .success(let value):
                     let jsonValue = JSON(value)
-                    
-                    for names in retrivedCoreData.name {
+                    for names in name {
                         let json = JSON(jsonValue)["items"][names]
                         self?.rate.append(json["rate"].stringValue)
                         self?.previousRate.append(json["previousRate"].stringValue)
                     }
-                    
+
                     self?.getCoreData()
+                    completion(self?.model ?? [])
                     
                 case .failure(let error):
                     print(error)
                 }
                 
-                completion(self?.model ?? [])
                 self?.cleanChosenCryptocurrencyData()
             }
         })
@@ -65,25 +66,25 @@ class ChosenCryptocurrencyViewModel {
     // MARK: - private
     private func getCoreData() {
         let retrivedCoreData = self.persistence.retriveCoreData()
-        for i in 0..<retrivedCoreData.name.count {
-            self.chosenCryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: retrivedCoreData.name[i]) )
+        let name = retrivedCoreData.name
+        let image = retrivedCoreData.image
+
+        for i in 0..<name.count {
+        self.chosenCryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: name[i]))
+        self.chosenCryptocurrencySubNames.append(name[i].replacingOccurrences(of: "-PLN", with: ""))
+        self.chosenCryptocurrencyRates.append(String(format: "%.2f",Float(rate[i]) ?? 0.0))
             
-            self.chosenCryptocurrencySubNames.append(retrivedCoreData.name[i].replacingOccurrences(of: "-PLN", with: ""))
+        self.chosenCryptocurrencyPreviousRates.append(self.calculatingThePercentageDifference(
+            rate: rate[i],
+            previousRate: previousRate[i]))
             
-            let fetchedCryptocurrencyRate = Float(self.rate[i]) ?? 0.0
-            self.chosenCryptocurrencyRates.append(String(format: "%.2f", fetchedCryptocurrencyRate))
-            
-            self.chosenCryptocurrencyPreviousRates.append(self.calculatingThePercentageDifference(
-                rate: self.rate[i],
-                previousRate: self.previousRate[i]))
-            
-            self.model.append(ChosenCryptocurrencyModel(
-                name: self.chosenCryptocurrencyNames[i],
-                subName: self.chosenCryptocurrencySubNames[i],
-                rate: self.chosenCryptocurrencyRates[i],
-                previousRate: self.chosenCryptocurrencyPreviousRates[i],
-                image: retrivedCoreData.image[i],
-                color: self.percentColors[i]))
+        self.model.append(ChosenCryptocurrencyModel(
+            name: self.chosenCryptocurrencyNames[i],
+            subName: self.chosenCryptocurrencySubNames[i],
+            rate: self.chosenCryptocurrencyRates[i],
+            previousRate: self.chosenCryptocurrencyPreviousRates[i],
+            image: image[i],
+            color: self.percentColors[i]))
         }
     }
     
