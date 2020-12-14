@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class SelectCryptocurrencyViewController: UIViewController {
 
     // MARK: - Properties
     weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
+    private lazy var model: [SelectCryptocurrencyModel] = [SelectCryptocurrencyModel]()
     private lazy var contentView = SelectCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
-    private lazy var cryptocurrencyViewModel = SelectCryptocurrencyViewModel()
+    private lazy var selectViewModel = SelectCryptocurrencyViewModel()
     private lazy var reuseIdentifier = "reuseCell"
 
     // MARK: - Lifecycle
@@ -24,7 +26,6 @@ class SelectCryptocurrencyViewController: UIViewController {
 
         setupView()
         contentViewActions()
-        dataViewModelActions()
     }
     
     override func loadView() {
@@ -33,6 +34,15 @@ class SelectCryptocurrencyViewController: UIViewController {
         view = contentView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        selectViewModel.getJSON { (model) in
+            self.model = model
+            self.contentView.cryptoTableView.reloadData()
+        }
+    }
+
     // MARK: - private
     private func setupView() {
         navigationItem.title = "Bitron"
@@ -46,19 +56,13 @@ class SelectCryptocurrencyViewController: UIViewController {
         contentView.cryptoTableView.dataSource = self
         contentView.cryptoTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
-    private func dataViewModelActions() {
-        cryptocurrencyViewModel.getJSONUsingBitbayAPI { [weak self] in
-            self?.contentView.cryptoTableView.reloadData()
-        }
-    }
 }
 
     // MARK: - DataSource
 extension SelectCryptocurrencyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cryptocurrencyViewModel.cryptocurrencyNames.count
+        return model.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,11 +74,14 @@ extension SelectCryptocurrencyViewController: UITableViewDataSource {
     }
     
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
-        cell.textLabel?.text = cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row]
-        cell.detailTextLabel?.text = cryptocurrencyViewModel.cryptocurrencyRates[indexPath.row]
-        cell.imageView?.image = UIImage(named: cryptocurrencyViewModel.cryptocurrencyIcon[indexPath.row])
+        let model = self.model[indexPath.row]
+        
+        cell.textLabel?.text = model.name
+        cell.detailTextLabel?.text = model.rate
+        cell.imageView?.image = UIImage(named: model.image ?? "")
         cell.accessoryType = .detailButton
         cell.tintColor = .white
+        cell.selectionStyle = .none
     }
 }
 
@@ -82,13 +89,13 @@ extension SelectCryptocurrencyViewController: UITableViewDataSource {
 extension SelectCryptocurrencyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cryptocurrencyViewModel.pushDataToChosenViewController(indexPath: indexPath as NSIndexPath)
-        tabBarController?.selectedIndex = 0
-
+        selectViewModel.saveCryptocurrencyData(indexPath: indexPath)
+        self.tabBarController?.selectedIndex = 0
+        
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        coordinatorSelect?.pushToDetailCryptocurrencyViewController(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row])
+        //coordinatorSelect?.pushToDetailCryptocurrencyViewController(name: cryptocurrencyViewModel.cryptocurrencyNames[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
