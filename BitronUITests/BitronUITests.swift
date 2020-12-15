@@ -21,13 +21,15 @@ class BitronUITests: XCTestCase {
 
     func testCheckingApplicationDoesNotCrushWhenCellIsTapped() throws {
         let app = XCUIApplication()
+        let tableViewCell = app.tables
+        let navBarButtonItem = app.navigationBars.buttons.element(boundBy: 0)
         let names = ["0x", "Algory", "AMLT", "Augur", "Basic Attention Token", "Bitcoin", "Bitcoin Cash", "Bitcoin Gold", "Bitcoin SV", "Blockchain Poland", "Bob\'s Repair", "Chainlink", "Dash", "Ethereum", "Experty", "Game Credits", "Golem", "Infinity Economics", "Lisk", "Lisk Machine Learning", "Litecoin", "Maker", "Neumark", "OmniseGO", "Ripple", "Stellar", "TenX", "Tron", "Zcash"]
         
         while(true) {
             for i in names {
-                app.tables.staticTexts[i].tap()
+                tableViewCell.staticTexts[i].tap()
                 sleep(2)
-                app.navigationBars.buttons.element(boundBy: 0).tap()
+                navBarButtonItem.tap()
                 sleep(3)
             }
         }
@@ -35,26 +37,26 @@ class BitronUITests: XCTestCase {
     
     func testAddingFavoriteCryptocurrencies() throws {
         let app = XCUIApplication()
-        let tabButton = app.tabBars.buttons.element(boundBy: 1)
-        let myTable = app.tables.cells
+        let tabBarButton = app.tabBars.buttons.element(boundBy: 1)
+        let tableViewCell = app.tables.cells
 
         for i in 0..<29 {
-            tabButton.tap()
+            tabBarButton.tap()
             sleep(1)
-            myTable.element(boundBy: i).tap()
+            tableViewCell.element(boundBy: i).tap()
             sleep(2)
         }
     }
     
     func testDeletingFavoriteCryptocurrencies() throws {
         let app = XCUIApplication()
-        let mainTable = app.tables.cells.element(boundBy: 0)
-        let navButton = app.navigationBars.buttons.element(boundBy: 0)
+        let firstTableViewCell = app.tables.cells.element(boundBy: 0)
+        let navBarButtonItem = app.navigationBars.buttons.element(boundBy: 1)
         
         for _ in 0..<29 {
-            mainTable.tap()
+            firstTableViewCell.tap()
             sleep(2)
-            navButton.tap()
+            navBarButtonItem.tap()
             sleep(2)
         }
     }
