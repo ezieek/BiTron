@@ -57,7 +57,7 @@ class ChosenCryptocurrencyViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: contentView.menuBarButtonItem)
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
         refreshControl.tintColor = .white
-        //refreshControl.addTarget(self, action: #selector(refreshingTable), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshingTable), for: .valueChanged)
     }
 
     private func contentViewActions() {
@@ -79,14 +79,17 @@ class ChosenCryptocurrencyViewController: UIViewController {
             image: model.image)
     }
     
-    /*
+    
     // MARK: - @objc selectors
     @objc private func refreshingTable() {
-        self.chosenViewModel.getCurrentValueOfSavedCryptocurrenciesNextLoadView { [weak self] in
-            self?.contentView.mainTableView.reloadData()
-            self?.refreshControl.endRefreshing()
+        chosenViewModel.getCurrentValue { (model) in
+            DispatchQueue.main.async {
+                self.model = model
+                self.contentView.mainTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
         }
-    }*/
+    }
     
     @objc private func settingsButtonPressed() {
         print("The setting button has been pressed")
@@ -126,11 +129,7 @@ extension ChosenCryptocurrencyViewController: UITableViewDataSource {
 extension ChosenCryptocurrencyViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !model.isEmpty {
-            pushToDetailViewController(indexPath: indexPath)
-        } else {
-            print("An error occured. Model is empty!")
-        }
+        pushToDetailViewController(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
