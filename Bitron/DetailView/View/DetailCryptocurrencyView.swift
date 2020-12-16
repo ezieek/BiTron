@@ -13,7 +13,7 @@ class DetailCryptocurrencyView: UIView {
 
     // MARK: - Properties
     let screen = UIScreen.main.bounds
-    
+
     lazy var cryptocurrencyNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
@@ -56,7 +56,7 @@ class DetailCryptocurrencyView: UIView {
     
     lazy var chartView: CandleStickChartView = {
         let chartView = CandleStickChartView()
-       /*chartView.chartDescription?.enabled = false
+        chartView.chartDescription?.enabled = false
         chartView.dragEnabled = false
         chartView.setScaleEnabled(true)
         chartView.maxVisibleCount = 200
@@ -72,7 +72,7 @@ class DetailCryptocurrencyView: UIView {
         chartView.leftAxis.axisMinimum = 0
         chartView.rightAxis.enabled = false
         chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!*/
+        chartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
         chartView.backgroundColor = .yellow
         chartView.translatesAutoresizingMaskIntoConstraints = false
         return chartView
