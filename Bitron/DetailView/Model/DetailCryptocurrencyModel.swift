@@ -7,28 +7,12 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct DetailCryptocurrencyModel {
-    
-    var h: String? //the highest value
-    var l: String? //the lowest value
-    var v: String? //volume value
-    var o: String? //open value
-    var c: String? //close value
+    var high: String
+    var low: String
+    var volume: String
+    var open: String
+    var close: String
 }
 
-extension DetailCryptocurrencyModel {
-    
-    enum PropertyKey: String {
-        case h, l, v, o, c
-    }
-    
-    init(json: JSON) {
-        h = json[PropertyKey.h.rawValue].stringValue
-        l = json[PropertyKey.l.rawValue].stringValue
-        v = json[PropertyKey.v.rawValue].stringValue
-        o = json[PropertyKey.o.rawValue].stringValue
-        c = json[PropertyKey.c.rawValue].stringValue
-    }
-}
