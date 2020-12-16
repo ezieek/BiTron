@@ -19,6 +19,8 @@ class DetailCryptocurrencyViewController: UIViewController {
     private lazy var contentView = DetailCryptocurrencyView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var detailViewModel = DetailCryptocurrencyViewModel()
+    private lazy var model: [DetailCryptocurrencyModel] = []
+
     let networking = Networking.shared
     let persistence = Persistence.shared
     var pushedCryptocurrencyName: String = ""
@@ -27,26 +29,18 @@ class DetailCryptocurrencyViewController: UIViewController {
     var pushedCryptocurrencyPreviousRate: String = ""
     var pushedCryptocurrencyImage: String = ""
     
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       // detailViewModel.detailCryptocurrencyShortName.append(pushedCryptocurrencySubName)
         setupView()
         contentViewActions()
-
-        // detailViewModel.getJSON {
-            //print("HIGH: \(self.detailViewModel.detailCryptocurrencyHighValue), LOW: \(self.detailViewModel.detailCryptocurrencyLowValue) VOLUME: \(self.detailViewModel.detailCryptocurrencyVolumeValue)")
-           // self.contentView.cryptocurrencyVolumeLabel.text = self.detailViewModel.detailCryptocurrencyVolumeValue
-      //  }
-      /*  detailViewModel.getJSONChartData(cryptocurrencyName: "BTC-PLN", resolution: "86400", actualTimestamp: String(timestamp)) {
-            
-            let data = CandleChartData(dataSet: self.detailViewModel.set1)
-            self.contentView.chartView.data = data
-
-        }*/
-        
         contentView.chartView.delegate = self
+        detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "86400") { (model) in
+            self.model = model
+            self.setDataCount(count: 2)
+        }
     }
     
     override func loadView() {
@@ -68,18 +62,46 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     // MARK: - private
+    private func setDataCount(count: Int) {
+        
+        let yVals1 = (0..<count).map { (i) -> CandleChartDataEntry in
+            let dataModel = model[i]
+            
+            return CandleChartDataEntry(x: Double(i), shadowH: Double(dataModel.high) ?? 0.0, shadowL: Double(dataModel.low) ?? 0.0, open: Double(dataModel.open) ?? 0.0, close: Double(dataModel.close) ?? 0.0)
+        }
+        
+        let set1 = CandleChartDataSet(entries: yVals1, label: "Data Set")
+        set1.axisDependency = .left
+        set1.setColor(UIColor(white: 80/255, alpha: 1))
+        set1.drawIconsEnabled = false
+        set1.shadowColor = .darkGray
+        set1.shadowWidth = 0.7
+        set1.decreasingColor = .red
+        set1.decreasingFilled = true
+        set1.increasingColor = UIColor(red: 122/255, green: 242/255, blue: 84/255, alpha: 1)
+        set1.increasingFilled = false
+        set1.neutralColor = .green
+        set1.valueTextColor = .white
+        
+        let data = CandleChartData(dataSet: set1)
+        contentView.chartView.data = data
+    }
+    
     private func setupView() {
+       
         navigationItem.title = "\(pushedCryptocurrencyName) (\(pushedCryptocurrencySubName))"
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "rightNavBarButton"
+        navigationItem.rightBarButtonItem?.isAccessibilityElement = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteDataButtonPressed))
     }
     
     private func contentViewActions() {
         contentView.cryptocurrencyNameLabel.text = "\(pushedCryptocurrencySubName) / PLN"
         contentView.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
-        contentView.cryptocurrencyPercentageRateLabel.text = "tak"
+        contentView.cryptocurrencyPercentageRateLabel.text = "Percentage Rate"
         contentView.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
-        contentView.pushNotificationButton.addTarget(self, action: #selector(deleteDataButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - @objc selectors
