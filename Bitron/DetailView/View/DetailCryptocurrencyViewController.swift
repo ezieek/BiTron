@@ -17,10 +17,10 @@ class DetailCryptocurrencyViewController: UIViewController {
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
     private lazy var contentView = DetailCryptocurrencyView()
+    private lazy var buttonPanelView = ButtonPanelView()
     private lazy var settingBackgroundColor = Colors()
     private lazy var detailViewModel = DetailCryptocurrencyViewModel()
     private lazy var model: [DetailCryptocurrencyModel] = []
-
     let networking = Networking.shared
     let persistence = Persistence.shared
     var pushedCryptocurrencyName: String = ""
@@ -29,13 +29,13 @@ class DetailCryptocurrencyViewController: UIViewController {
     var pushedCryptocurrencyPreviousRate: String = ""
     var pushedCryptocurrencyImage: String = ""
     
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         contentViewActions()
+        buttonPanelSettings()
         contentView.chartView.delegate = self
         detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "86400") { (model) in
             self.model = model
@@ -62,8 +62,15 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     // MARK: - private
+    private func buttonPanelSettings() {
+        [buttonPanelView].forEach { view.addSubview($0) }
+        NSLayoutConstraint.activate([
+            buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 150),
+            buttonPanelView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -220)
+        ])
+    }
+    
     private func setDataCount(count: Int) {
-        
         let yVals1 = (0..<count).map { (i) -> CandleChartDataEntry in
             let dataModel = model[i]
             
@@ -88,7 +95,6 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     private func setupView() {
-       
         navigationItem.title = "\(pushedCryptocurrencyName) (\(pushedCryptocurrencySubName))"
         view.layer.insertSublayer(settingBackgroundColor.gradientColor, at: 0)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .done, target: self, action: #selector(backButtonPressed))
@@ -102,9 +108,18 @@ class DetailCryptocurrencyViewController: UIViewController {
         contentView.cryptocurrencyRateLabel.text = "\(pushedCryptocurrencyRate) PLN"
         contentView.cryptocurrencyPercentageRateLabel.text = "Percentage Rate"
         contentView.cryptocurrencyVolumeLabel.text = "Volume 24h PLN"
+        contentView.chartViewButtonPlus.addTarget(self, action: #selector(chartViewPlusButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - @objc selectors
+    @objc private func expandButtons() {
+        print(1)
+    }
+    
+    @objc private func chartViewPlusButtonPressed() {
+        print(1)
+    }
+
     @objc private func backButtonPressed() {
         coordinatorChosen?.pushBackToChosenCryptocurrencyViewController()
         coordinatorSelect?.pushBackToSelectCryptocurrencyViewController()
@@ -115,7 +130,8 @@ class DetailCryptocurrencyViewController: UIViewController {
         coordinatorChosen?.pushBackToChosenCryptocurrencyViewController()
     }
 }
-
+    
+    // MARK: - Delegate
 extension DetailCryptocurrencyViewController: ChartViewDelegate {
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
