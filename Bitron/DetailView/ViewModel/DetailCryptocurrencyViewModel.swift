@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import CoreData
 import Alamofire
 import SwiftyJSON
-import Charts
 
 class DetailCryptocurrencyViewModel {
     
