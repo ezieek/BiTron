@@ -78,6 +78,21 @@ class DetailCryptocurrencyView: UIView {
         return chartView
     }()
     
+    lazy var chartViewButtonPlus: UIButton = {
+        let button = UIButton()
+        button.setTitle("+", for: .normal)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var chartViewButtonMinus: UIButton = {
+        let button = UIButton()
+        button.setTitle("-", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     // MARK: - init - deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,7 +106,7 @@ class DetailCryptocurrencyView: UIView {
     
     // MARK: - private
     private func createSubViews() {
-        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView].forEach { addSubview($0) }
+        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView, chartViewButtonPlus, chartViewButtonMinus].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             cryptocurrencyNameLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
@@ -105,7 +120,11 @@ class DetailCryptocurrencyView: UIView {
             chartView.topAnchor.constraint(equalTo: topAnchor, constant: 140),
             chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60)
+            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
+            chartViewButtonPlus.topAnchor.constraint(equalTo: topAnchor, constant: 150),
+            chartViewButtonPlus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            chartViewButtonPlus.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 350),
+            chartViewButtonPlus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -350)
         ])
     }
 }
