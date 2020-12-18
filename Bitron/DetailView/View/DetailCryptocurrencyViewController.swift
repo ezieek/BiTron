@@ -37,11 +37,14 @@ class DetailCryptocurrencyViewController: UIViewController {
         contentViewActions()
         buttonPanelSettings()
         contentView.chartView.delegate = self
-        detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "86400") { (model) in
+        detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "3600", fromTimestamp: fromTimestamp()) { (model) in
+            let modelCount = model[0]
             self.model = model
-            self.setDataCount(count: 2)
+            self.setDataCount(count: modelCount.count)
         }
     }
+    
+
     
     override func loadView() {
         super.loadView()
@@ -62,14 +65,33 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     // MARK: - private
+    private func fromTimestamp() -> String {
+        let currentTimeStamp = Int(NSDate().timeIntervalSince1970)
+        let numberOfSticks = 50
+        let diffrenceNumber = numberOfSticks * 3600
+        let value = currentTimeStamp - diffrenceNumber
+        return String(value)
+    }
+
     private func buttonPanelSettings() {
         [buttonPanelView].forEach { view.addSubview($0) }
+        
         NSLayoutConstraint.activate([
             buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 150),
             buttonPanelView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -220)
         ])
+        
+        buttonPanelView.selectedTimeButton.addTarget(self, action: #selector(expandButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneYearButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneMonthButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneWeekButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneDayButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneHourButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.thirtyMinutesButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.fifteenMinutesButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
+        buttonPanelView.oneMinuteButton.addTarget(self, action: #selector(panelButtonPressed), for: .touchUpInside)
     }
-    
+
     private func setDataCount(count: Int) {
         let yVals1 = (0..<count).map { (i) -> CandleChartDataEntry in
             let dataModel = model[i]
@@ -112,8 +134,78 @@ class DetailCryptocurrencyViewController: UIViewController {
     }
     
     // MARK: - @objc selectors
-    @objc private func expandButtons() {
-        print(1)
+    @objc func expandButtonPressed() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            self.buttonPanelView.expandedStackView.subviews.forEach { $0.isHidden = !$0.isHidden }
+            self.buttonPanelView.expandedStackView.isHidden = !self.buttonPanelView.expandedStackView.isHidden
+        }, completion: nil)
+    }
+    
+    @objc func panelButtonPressed() {
+        
+      /*  if buttonPanelView.oneYearButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("Y", for: .normal)   //29030400
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "29030400", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.oneMonthButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("M", for: .normal)   //2419200
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "2419200", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.oneWeekButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("W", for: .normal)   //604800
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "604800", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.oneDayButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("D", for: .normal)   //86400
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "86400", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.oneHourButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("1h", for: .normal)  //3600
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "3600", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[1]
+                print("Wartosc: \(modelCount.count)")
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.thirtyMinutesButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("30m", for: .normal) //1800
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "1800", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else if buttonPanelView.fifteenMinutesButton.isTouchInside {
+            buttonPanelView.selectedTimeButton.setTitle("15m", for: .normal) //900
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "900", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        } else {
+            buttonPanelView.selectedTimeButton.setTitle("1m", for: .normal)  //60
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: "60", fromTimestamp: <#String#>) { (model) in
+                let modelCount = model[0]
+                self.model = model
+                self.setDataCount(count: modelCount.count)
+            }
+        }
+    
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            self.buttonPanelView.expandedStackView.subviews.forEach { $0.isHidden = !$0.isHidden }
+            self.buttonPanelView.expandedStackView.isHidden = !self.buttonPanelView.expandedStackView.isHidden
+        }, completion: nil)*/
     }
     
     @objc private func chartViewPlusButtonPressed() {

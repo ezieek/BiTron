@@ -67,13 +67,15 @@ class DetailCryptocurrencyView: UIView {
         chartView.legend.drawInside = false
         chartView.legend.font = UIFont(name: "HelveticaNeue-Light", size: 10)!
         chartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
-        chartView.leftAxis.spaceTop = 0.3
-        chartView.leftAxis.spaceBottom = 0.3
-        chartView.leftAxis.axisMinimum = 0
+        //chartView.leftAxis.spaceTop = 0.3
+        //chartView.leftAxis.spaceBottom = 0.3
+        chartView.leftAxis.axisMinimum = 70000
         chartView.rightAxis.enabled = false
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
-        chartView.backgroundColor = .yellow
+        //chartView.xAxis.spaceMin = 0
+        //chartView.xAxis.spaceMax = 2
+        chartView.backgroundColor = .white
         chartView.translatesAutoresizingMaskIntoConstraints = false
         return chartView
     }()
