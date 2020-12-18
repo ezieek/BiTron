@@ -11,37 +11,51 @@ import UIKit
 class ButtonPanelView: UIView {
     
     // MARK: - Properties
-    private lazy var oneYearButton: UIButton = {
+    lazy var selectedTimeButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("Y", for: .normal)
+        button.setTitle("D", for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = .blue
-        button.addTarget(self, action: #selector(expandButtonPressed(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var oneMonthButton: UIButton = {
+    lazy var oneYearButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Y", for: .normal)
+        button.layer.cornerRadius = 25
+        button.isHidden = true
+        button.backgroundColor = .red
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var oneMonthButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("M", for: .normal)
         button.layer.cornerRadius = 25
         button.isHidden = true
         button.backgroundColor = .red
+        button.isAccessibilityElement = true
+        button.accessibilityIdentifier = "month"
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var oneWeekButton: UIButton = {
+    lazy var oneWeekButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("W", for: .normal)
         button.layer.cornerRadius = 25
         button.isHidden = true
         button.backgroundColor = .red
+        button.isAccessibilityElement = true
+        button.accessibilityIdentifier = "week"
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var oneDayButton: UIButton = {
+    lazy var oneDayButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("D", for: .normal)
         button.layer.cornerRadius = 25
@@ -51,7 +65,7 @@ class ButtonPanelView: UIView {
         return button
     }()
     
-    private lazy var oneHourButton: UIButton = {
+    lazy var oneHourButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("1h", for: .normal)
         button.layer.cornerRadius = 25
@@ -61,7 +75,7 @@ class ButtonPanelView: UIView {
         return button
     }()
     
-    private lazy var thirtyMinutesButton: UIButton = {
+    lazy var thirtyMinutesButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("30m", for: .normal)
         button.layer.cornerRadius = 25
@@ -71,7 +85,7 @@ class ButtonPanelView: UIView {
         return button
     }()
 
-    private lazy var fifteenMinutesButton: UIButton = {
+    lazy var fifteenMinutesButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("15m", for: .normal)
         button.layer.cornerRadius = 25
@@ -81,26 +95,28 @@ class ButtonPanelView: UIView {
         return button
     }()
     
-    private lazy var oneMinuteButton: UIButton = {
+    lazy var oneMinuteButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("1m", for: .normal)
         button.layer.cornerRadius = 25
         button.isHidden = true
         button.backgroundColor = .red
+        button.isAccessibilityElement = true
+        button.accessibilityIdentifier = "one"
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var expandedStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [oneMonthButton, oneWeekButton, oneDayButton, oneHourButton, thirtyMinutesButton, fifteenMinutesButton, oneMinuteButton])
+    lazy var expandedStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [oneMinuteButton, fifteenMinutesButton, thirtyMinutesButton, oneHourButton, oneDayButton, oneWeekButton, oneMonthButton, oneYearButton])
         stackView.axis = .vertical
         stackView.isHidden = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
-    private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [oneYearButton, expandedStackView])
+    lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [selectedTimeButton, expandedStackView])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -125,6 +141,8 @@ class ButtonPanelView: UIView {
         NSLayoutConstraint.activate([
             containerStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             containerStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            selectedTimeButton.widthAnchor.constraint(equalToConstant: 50),
+            selectedTimeButton.heightAnchor.constraint(equalToConstant: 50),
             oneYearButton.widthAnchor.constraint(equalToConstant: 50),
             oneYearButton.heightAnchor.constraint(equalToConstant: 50),
             oneMonthButton.widthAnchor.constraint(equalToConstant: 50),
@@ -144,14 +162,5 @@ class ButtonPanelView: UIView {
             self.widthAnchor.constraint(equalTo: containerStackView.widthAnchor),
             self.heightAnchor.constraint(equalTo: containerStackView.heightAnchor)
         ])
-    }
-}
-
-extension ButtonPanelView {
-    @objc func expandButtonPressed(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-            self.expandedStackView.subviews.forEach { $0.isHidden = !$0.isHidden }
-            self.expandedStackView.isHidden = !self.expandedStackView.isHidden
-        }, completion: nil)
     }
 }
