@@ -13,13 +13,15 @@ import SwiftyJSON
 class DetailCryptocurrencyViewModel {
     
     // MARK: - Properties
-    private lazy var model: [DetailCryptocurrencyModel] = [DetailCryptocurrencyModel]()
+    weak var timer:          Timer?
+    private lazy var model:  [DetailCryptocurrencyModel] = [DetailCryptocurrencyModel]()
     private lazy var high:   [String] = []
     private lazy var low:    [String] = []
     private lazy var volume: [String] = []
     private lazy var open:   [String] = []
     private lazy var close:  [String] = []
-   
+    lazy var rate:           [String] = []
+    
     // MARK: - internal
     func getJSONChartData(cryptocurrencyName: String, resolution: String, fromTimestamp: String, completion: @escaping ([DetailCryptocurrencyModel]) -> ()) {
         let currentTimestamp = Int(NSDate().timeIntervalSince1970)
@@ -29,7 +31,7 @@ class DetailCryptocurrencyViewModel {
             switch response.result {
             
             case .success(let value):
-                for i in 0...49 {
+                for i in 0..<50 {
                     let json = JSON(value)["items"][i][1]
                     self?.high.append(json["h"].stringValue)
                     self?.low.append(json["l"].stringValue)
@@ -42,7 +44,8 @@ class DetailCryptocurrencyViewModel {
                         low: self?.low[i] ?? "",
                         volume: self?.volume[i] ?? "",
                         open: self?.open[i] ?? "",
-                        close: self?.close[i] ?? ""))
+                        close: self?.close[i] ?? "",
+                        rate: ""))
                 }
 
                 completion(self?.model ?? [])
@@ -50,8 +53,35 @@ class DetailCryptocurrencyViewModel {
             case .failure(let error):
                 print(error)
             }
+            
             self?.cleanDetailCryptocurrencyData()
         }
+    }
+    
+    func getCurrentValue(name: String, completion: @escaping([DetailCryptocurrencyModel]) -> ()) {
+        let timeInterval = 1.0
+      
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
+            AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+
+                switch response.result {
+                
+                case .success(let value):
+                    let jsonValue = JSON(value)
+                    let json = JSON(jsonValue)["items"][name]
+                    self?.rate.append(json["rate"].stringValue)
+                    self?.model.append(DetailCryptocurrencyModel(high: "", low: "", volume: "", open: "", close: "", rate: self?.rate[0] ?? ""))
+                    completion(self?.model ?? [])
+                    
+                case .failure(let error):
+                    print(error)
+                }
+                
+                self?.model.removeAll()
+                self?.rate.removeAll()
+            }
+        })
     }
     
     // MARK: - private
