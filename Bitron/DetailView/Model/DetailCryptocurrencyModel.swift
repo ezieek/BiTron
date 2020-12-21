@@ -14,6 +14,5 @@ struct DetailCryptocurrencyModel {
     var volume: String
     var open: String
     var close: String
-    var count: Int
 }
 
