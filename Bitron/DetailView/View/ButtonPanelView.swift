@@ -26,7 +26,6 @@ class ButtonPanelView: UIView {
         button.layer.cornerRadius = 25
         button.isHidden = true
         button.backgroundColor = .red
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

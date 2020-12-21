@@ -37,6 +37,7 @@ class ChosenCryptocurrencyViewModel {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (_) in
             AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { [weak self] (response) in
+
                 switch response.result {
 
                 case .success(let value):
@@ -53,7 +54,6 @@ class ChosenCryptocurrencyViewModel {
                 case .failure(let error):
                     print(error)
                 }
-                
                 self?.cleanChosenCryptocurrencyData()
             }
         })
