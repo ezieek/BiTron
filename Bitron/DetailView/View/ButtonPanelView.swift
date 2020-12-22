@@ -13,31 +13,9 @@ class ButtonPanelView: UIView {
     // MARK: - Properties
     lazy var selectedTimeButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("D", for: .normal)
+        button.setTitle("1h", for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = .blue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var oneYearButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setTitle("Y", for: .normal)
-        button.layer.cornerRadius = 25
-        button.isHidden = true
-        button.backgroundColor = .red
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var oneMonthButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setTitle("M", for: .normal)
-        button.layer.cornerRadius = 25
-        button.isHidden = true
-        button.backgroundColor = .red
-        button.isAccessibilityElement = true
-        button.accessibilityIdentifier = "month"
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -107,7 +85,7 @@ class ButtonPanelView: UIView {
     }()
     
     lazy var expandedStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [oneMinuteButton, fifteenMinutesButton, thirtyMinutesButton, oneHourButton, oneDayButton, oneWeekButton, oneMonthButton, oneYearButton])
+        let stackView = UIStackView(arrangedSubviews: [oneMinuteButton, fifteenMinutesButton, thirtyMinutesButton, oneHourButton, oneDayButton, oneWeekButton])
         stackView.axis = .vertical
         stackView.isHidden = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -142,10 +120,6 @@ class ButtonPanelView: UIView {
             containerStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             selectedTimeButton.widthAnchor.constraint(equalToConstant: 50),
             selectedTimeButton.heightAnchor.constraint(equalToConstant: 50),
-            oneYearButton.widthAnchor.constraint(equalToConstant: 50),
-            oneYearButton.heightAnchor.constraint(equalToConstant: 50),
-            oneMonthButton.widthAnchor.constraint(equalToConstant: 50),
-            oneMonthButton.heightAnchor.constraint(equalToConstant: 50),
             oneWeekButton.widthAnchor.constraint(equalToConstant: 50),
             oneWeekButton.heightAnchor.constraint(equalToConstant: 50),
             oneDayButton.widthAnchor.constraint(equalToConstant: 50),
