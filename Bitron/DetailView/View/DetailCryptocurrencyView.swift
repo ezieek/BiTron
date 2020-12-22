@@ -63,19 +63,19 @@ class DetailCryptocurrencyView: UIView {
         chartView.pinchZoomEnabled = true
         chartView.legend.horizontalAlignment = .right
         chartView.legend.verticalAlignment = .top
-        chartView.legend.orientation = .vertical
+        chartView.legend.textColor = .white
         chartView.legend.drawInside = false
         chartView.legend.font = UIFont(name: "HelveticaNeue-Light", size: 10)!
-        chartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
-        //chartView.leftAxis.spaceTop = 0.3
-        //chartView.leftAxis.spaceBottom = 0.3
-        chartView.leftAxis.axisMinimum = 70000
-        chartView.rightAxis.enabled = false
+        chartView.rightAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
+        chartView.rightAxis.labelTextColor = .white
+        chartView.leftAxis.enabled = false
+        chartView.rightAxis.enabled = true
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
-        //chartView.xAxis.spaceMin = 0
-        //chartView.xAxis.spaceMax = 2
-        chartView.backgroundColor = .white
+        chartView.xAxis.labelTextColor = .white
+        chartView.xAxis.spaceMin = 0
+        chartView.xAxis.spaceMax = 2
+        chartView.backgroundColor = .clear
         chartView.translatesAutoresizingMaskIntoConstraints = false
         return chartView
     }()
@@ -122,11 +122,11 @@ class DetailCryptocurrencyView: UIView {
             chartView.topAnchor.constraint(equalTo: topAnchor, constant: 140),
             chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
-            chartViewButtonPlus.topAnchor.constraint(equalTo: topAnchor, constant: 150),
+            chartView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60)
+           /* chartViewButtonPlus.topAnchor.constraint(equalTo: topAnchor, constant: 150),
             chartViewButtonPlus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             chartViewButtonPlus.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 350),
-            chartViewButtonPlus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -350)
+            chartViewButtonPlus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -350)*/
         ])
     }
 }
