@@ -15,5 +15,6 @@ struct DetailCryptocurrencyModel {
     var open: String
     var close: String
     var rate: String
+    var lowestRate: String
 }
 
