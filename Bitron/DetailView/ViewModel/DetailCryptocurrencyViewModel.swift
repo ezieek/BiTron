@@ -21,6 +21,7 @@ class DetailCryptocurrencyViewModel {
     private lazy var open:   [String] = []
     private lazy var close:  [String] = []
     lazy var rate:           [String] = []
+    lazy var lowestRate:     [String] = []
     
     // MARK: - internal
     func getJSONChartData(cryptocurrencyName: String, resolution: String, fromTimestamp: String, completion: @escaping ([DetailCryptocurrencyModel]) -> ()) {
@@ -33,21 +34,25 @@ class DetailCryptocurrencyViewModel {
             case .success(let value):
                 for i in 0..<50 {
                     let json = JSON(value)["items"][i][1]
-                    self?.high.append(json["h"].stringValue)
-                    self?.low.append(json["l"].stringValue)
-                    self?.volume.append(json["v"].stringValue)
-                    self?.open.append(json["o"].stringValue)
-                    self?.close.append(json["c"].stringValue)
+                    if json.exists() {
+                        self?.high.append(json["h"].stringValue)
+                        self?.low.append(json["l"].stringValue)
+                        self?.volume.append(json["v"].stringValue)
+                        self?.open.append(json["o"].stringValue)
+                        self?.close.append(json["c"].stringValue)
+                        self?.lowestRate.append(self?.low.min() ?? "")
 
-                    self?.model.append(DetailCryptocurrencyModel(
-                        high: self?.high[i] ?? "",
-                        low: self?.low[i] ?? "",
-                        volume: self?.volume[i] ?? "",
-                        open: self?.open[i] ?? "",
-                        close: self?.close[i] ?? "",
-                        rate: ""))
+                        self?.model.append(DetailCryptocurrencyModel(
+                            high: self?.high[i] ?? "",
+                            low: self?.low[i] ?? "",
+                            volume: self?.volume[i] ?? "",
+                            open: self?.open[i] ?? "",
+                            close: self?.close[i] ?? "",
+                            rate: "",
+                            lowestRate: self?.lowestRate[i] ?? ""))
+                    }
                 }
-
+                
                 completion(self?.model ?? [])
                 
             case .failure(let error):
@@ -71,7 +76,16 @@ class DetailCryptocurrencyViewModel {
                     let jsonValue = JSON(value)
                     let json = JSON(jsonValue)["items"][name]
                     self?.rate.append(json["rate"].stringValue)
-                    self?.model.append(DetailCryptocurrencyModel(high: "", low: "", volume: "", open: "", close: "", rate: self?.rate[0] ?? ""))
+                    
+                    self?.model.append(DetailCryptocurrencyModel(
+                        high: "",
+                        low: "",
+                        volume: "",
+                        open: "",
+                        close: "",
+                        rate: self?.rate[0] ?? "",
+                        lowestRate: ""))
+                    
                     completion(self?.model ?? [])
                     
                 case .failure(let error):
