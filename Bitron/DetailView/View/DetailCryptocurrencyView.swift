@@ -34,6 +34,7 @@ class DetailCryptocurrencyView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.textColor = .white
+        label.text = "Percentage Rate"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,6 +43,7 @@ class DetailCryptocurrencyView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.textColor = .gray
+        label.text = "Volume 24h PLN"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
