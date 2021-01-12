@@ -110,7 +110,7 @@ class DetailCryptocurrencyView: UIView {
     
     // MARK: - private
     private func createSubViews() {
-        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView, chartViewButtonPlus, chartViewButtonMinus].forEach { addSubview($0) }
+        [cryptocurrencyNameLabel, cryptocurrencyRateLabel, cryptocurrencyPercentageRateLabel, cryptocurrencyVolumeLabel, chartView/*, chartViewButtonPlus, chartViewButtonMinus*/].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             cryptocurrencyNameLabel.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topAnchor, constant: 50),
