@@ -27,9 +27,8 @@ class ChosenCryptocurrencyViewModel {
     var rate: [String] = []
     var previousRate: [String] = []
     
-
     // MARK: - internal
-    func getCurrentValue(completion: @escaping([ChosenCryptocurrencyModel]) -> ()) {
+    func getCurrentValue(completion: @escaping([ChosenCryptocurrencyModel]) -> Void) {
         let timeInterval = 1.0
         let retrivedCoreData = self.persistence.retriveCoreData()
         let name = retrivedCoreData.name
@@ -69,22 +68,22 @@ class ChosenCryptocurrencyViewModel {
         let name = retrivedCoreData.name
         let image = retrivedCoreData.image
 
-        for i in 0..<name.count {
-        self.chosenCryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: name[i]))
-        self.chosenCryptocurrencySubNames.append(name[i].replacingOccurrences(of: "-PLN", with: ""))
-        self.chosenCryptocurrencyRates.append(String(format: "%.2f",Float(rate[i]) ?? 0.0))
+        for number in 0..<name.count {
+        self.chosenCryptocurrencyNames.append(self.constants.settingMainNameOfCryptocurrency(getName: name[number]))
+        self.chosenCryptocurrencySubNames.append(name[number].replacingOccurrences(of: "-PLN", with: ""))
+        self.chosenCryptocurrencyRates.append(String(format: "%.2f", Float(rate[number]) ?? 0.0))
             
         self.chosenCryptocurrencyPreviousRates.append(self.calculatingThePercentageDifference(
-            rate: rate[i],
-            previousRate: previousRate[i]))
+            rate: rate[number],
+            previousRate: previousRate[number]))
             
         self.model.append(ChosenCryptocurrencyModel(
-            name: self.chosenCryptocurrencyNames[i],
-            subName: self.chosenCryptocurrencySubNames[i],
-            rate: self.chosenCryptocurrencyRates[i],
-            previousRate: self.chosenCryptocurrencyPreviousRates[i],
-            image: image[i],
-            color: self.percentColors[i]))
+            name: self.chosenCryptocurrencyNames[number],
+            subName: self.chosenCryptocurrencySubNames[number],
+            rate: self.chosenCryptocurrencyRates[number],
+            previousRate: self.chosenCryptocurrencyPreviousRates[number],
+            image: image[number],
+            color: self.percentColors[number]))
         }
     }
     
@@ -106,7 +105,7 @@ class ChosenCryptocurrencyViewModel {
         if percentResult > 0.0 {
             percentColors.append(.green)
         } else {
-            percentResult = percentResult * (-1)
+            percentResult *= /*percentResult * */(-1)
             percentColors.append(.red)
         }
         

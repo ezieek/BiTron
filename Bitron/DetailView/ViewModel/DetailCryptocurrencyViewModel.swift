@@ -14,18 +14,18 @@ import Charts
 class DetailCryptocurrencyViewModel {
     
     // MARK: - Properties
-    weak var timer:          Timer?
-    private lazy var model:  [DetailCryptocurrencyModel] = [DetailCryptocurrencyModel]()
-    private lazy var high:   [String] = []
-    private lazy var low:    [String] = []
+    weak var timer: Timer?
+    private lazy var model: [DetailCryptocurrencyModel] = [DetailCryptocurrencyModel]()
+    private lazy var high: [String] = []
+    private lazy var low: [String] = []
     private lazy var volume: [String] = []
-    private lazy var open:   [String] = []
-    private lazy var close:  [String] = []
-    lazy var rate:           [String] = []
-    lazy var lowestRate:     [String] = []
+    private lazy var open: [String] = []
+    private lazy var close: [String] = []
+    lazy var rate: [String] = []
+    lazy var lowestRate: [String] = []
     
     // MARK: - internal
-    func getCurrentValue(name: String, completion: @escaping([DetailCryptocurrencyModel]) -> ()) {
+    func getCurrentValue(name: String, completion: @escaping([DetailCryptocurrencyModel]) -> Void) {
         let timeInterval = 1.0
       
         timer?.invalidate()
@@ -60,7 +60,7 @@ class DetailCryptocurrencyViewModel {
         })
     }
     
-    func getJSONChartData(cryptocurrencyName: String, resolution: String, completion: @escaping ([DetailCryptocurrencyModel]) -> ()) {
+    func getJSONChartData(cryptocurrencyName: String, resolution: String, completion: @escaping ([DetailCryptocurrencyModel]) -> Void) {
         let currentTimestamp = Int(NSDate().timeIntervalSince1970)
         let fromTimestamp = startingTime(currentTimestamp: currentTimestamp, resolution: Int(resolution) ?? 0)
         
@@ -69,8 +69,8 @@ class DetailCryptocurrencyViewModel {
             switch response.result {
             
             case .success(let value):
-                for i in 0..<50 {
-                    let json = JSON(value)["items"][i][1]
+                for number in 0..<50 {
+                    let json = JSON(value)["items"][number][1]
                     if json.exists() {
                         self?.high.append(json["h"].stringValue)
                         self?.low.append(json["l"].stringValue)
@@ -80,13 +80,13 @@ class DetailCryptocurrencyViewModel {
                         self?.lowestRate.append(self?.low.min() ?? "")
 
                         self?.model.append(DetailCryptocurrencyModel(
-                            high: self?.high[i] ?? "",
-                            low: self?.low[i] ?? "",
-                            volume: self?.volume[i] ?? "",
-                            open: self?.open[i] ?? "",
-                            close: self?.close[i] ?? "",
+                            high: self?.high[number] ?? "",
+                            low: self?.low[number] ?? "",
+                            volume: self?.volume[number] ?? "",
+                            open: self?.open[number] ?? "",
+                            close: self?.close[number] ?? "",
                             rate: "",
-                            lowestRate: self?.lowestRate[i] ?? ""))
+                            lowestRate: self?.lowestRate[number] ?? ""))
                     }
                 }
 
@@ -101,10 +101,10 @@ class DetailCryptocurrencyViewModel {
     }
     
     func setDataCount(count: Int) -> ChartData {
-        let yVals1 = (0..<count).map { (i) -> CandleChartDataEntry in
-            let dataModel = model[i]
+        let yVals1 = (0..<count).map { (number) -> CandleChartDataEntry in
+            let dataModel = model[number]
             
-            return CandleChartDataEntry(x: Double(i), shadowH: Double(dataModel.high) ?? 0.0, shadowL: Double(dataModel.low) ?? 0.0, open: Double(dataModel.open) ?? 0.0, close: Double(dataModel.close) ?? 0.0)
+            return CandleChartDataEntry(x: Double(number), shadowH: Double(dataModel.high) ?? 0.0, shadowL: Double(dataModel.low) ?? 0.0, open: Double(dataModel.open) ?? 0.0, close: Double(dataModel.close) ?? 0.0)
         }
         
         let dataSet = CandleChartDataSet(entries: yVals1, label: "Data Set")

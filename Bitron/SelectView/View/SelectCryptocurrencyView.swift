@@ -38,7 +38,7 @@ class SelectCryptocurrencyView: UIView {
             cryptoTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             cryptoTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             cryptoTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            cryptoTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            cryptoTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

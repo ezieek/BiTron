@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class SelectCryptocurrencyViewModel {
     
-    //MARK: - Properties
+    // MARK: - Properties
     private lazy var persistence = Persistence.shared
     private lazy var constants = Constants.shared
     private lazy var model: [SelectCryptocurrencyModel] = [SelectCryptocurrencyModel]()
@@ -31,7 +31,7 @@ class SelectCryptocurrencyViewModel {
     private lazy var selectCryptocurrencyImage = ["zrx", "btc", "amlt", "rep", "bat", "btc-1", "bcc", "btg", "bsv", "btc-2", "bob", "link", "dash", "eth", "btc-3", "game", "gnt", "xin", "lsk", "btc-4", "ltc", "mkr", "neu", "omg", "xrp", "btc-5", "pay", "trx", "zec"]
     
     // MARK: - internal
-    func getJSON(completion: @escaping([SelectCryptocurrencyModel]) -> ()) {
+    func getJSON(completion: @escaping([SelectCryptocurrencyModel]) -> Void) {
         AF.request("https://api.bitbay.net/rest/trading/ticker").responseJSON { (response) in
             switch response.result {
             
@@ -44,18 +44,18 @@ class SelectCryptocurrencyViewModel {
                     self.previousRate.append(json["previousRate"].stringValue)
                 }
                     
-                for i in 0..<self.selectCryptocurrencySortedName.count {
-                    self.selectCryptocurrencyName.append(self.constants.settingMainNameOfCryptocurrency(getName: self.selectCryptocurrencySortedName[i]))
+                for number in 0..<self.selectCryptocurrencySortedName.count {
+                    self.selectCryptocurrencyName.append(self.constants.settingMainNameOfCryptocurrency(getName: self.selectCryptocurrencySortedName[number]))
                    
-                    let fetchedCryptocurrencyRate = Float(self.rate[i]) ?? 0.0
+                    let fetchedCryptocurrencyRate = Float(self.rate[number]) ?? 0.0
                     self.selectCryptocurrencyRate.append(String(format: "%.2f", fetchedCryptocurrencyRate))
 
-                    self.selectCryptocurrencyPreviousRate.append(self.previousRate[i])
+                    self.selectCryptocurrencyPreviousRate.append(self.previousRate[number])
 
                     self.model.append(SelectCryptocurrencyModel(
-                        name: self.selectCryptocurrencyName[i],
-                        rate: self.selectCryptocurrencyRate[i],
-                        image: self.selectCryptocurrencyImage[i]))
+                        name: self.selectCryptocurrencyName[number],
+                        rate: self.selectCryptocurrencyRate[number],
+                        image: self.selectCryptocurrencyImage[number]))
                 }
                     
             case .failure(let error):

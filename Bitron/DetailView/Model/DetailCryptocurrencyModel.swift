@@ -17,4 +17,3 @@ struct DetailCryptocurrencyModel {
     var rate: String
     var lowestRate: String
 }
-

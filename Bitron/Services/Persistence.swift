@@ -57,7 +57,7 @@ class Persistence {
         }
     }
     
-    // MARK: - Retrive
+    // MARK: - Retrive
     func retriveCoreData() -> (name: [String], rate: [String], previousRate: [String], image: [String]) {
         var names: [String] = []
         var rates: [String] = []
@@ -67,7 +67,7 @@ class Persistence {
     
         do {
             let results = try context.fetch(fetchRequest)
-            let emptyArrays = ([""],[""],[""],[""])
+            let emptyArrays = ([""], [""], [""], [""])
             for result in results {
                 
                 guard let readTitle = result.name else { return emptyArrays }
@@ -120,8 +120,8 @@ class Persistence {
         }
     }*/
     
-    //MARK: - Delete
-    func deleteCoreData(name: String, rate: String, previousRate: String, image: String) -> Void {
+    // MARK: - Delete
+    func deleteCoreData(name: String, rate: String, previousRate: String, image: String) {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)

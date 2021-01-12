@@ -10,7 +10,7 @@ import UIKit
 
 class ChosenCryptocurrencyViewController: UIViewController {
     
-    //MARK: - Properties
+    // MARK: - Properties
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
     private lazy var model: [ChosenCryptocurrencyModel] = [ChosenCryptocurrencyModel]()
@@ -78,7 +78,6 @@ class ChosenCryptocurrencyViewController: UIViewController {
             previousRate: model.previousRate,
             image: model.image)
     }
-    
     
     // MARK: - @objc selectors
     @objc private func refreshingTable() {
