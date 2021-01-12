@@ -17,7 +17,7 @@ struct Constants {
     
     func settingMainNameOfCryptocurrency(getName: String) -> String {
         var nameReceived: String = ""
-        switch(getName) {
+        switch getName {
         case "ZRX-PLN":  nameReceived = "1 0x"
         case "ALG-PLN":  nameReceived = "2 Algory"
         case "AMLT-PLN": nameReceived = "3 AMLT"
