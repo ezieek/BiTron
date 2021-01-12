@@ -13,6 +13,7 @@ import Charts
 class DetailCryptocurrencyViewController: UIViewController {
     
     // MARK: - Properties
+    weak var timer: Timer?
     weak var coordinatorDetail: DetailCryptocurrencyCoordinator?
     weak var coordinatorChosen: ChosenCryptocurrencyCoordinator?
     weak var coordinatorSelect: SelectCryptocurrencyCoordinator?
@@ -23,13 +24,12 @@ class DetailCryptocurrencyViewController: UIViewController {
     private lazy var model: [DetailCryptocurrencyModel] = [DetailCryptocurrencyModel]()
     let networking = Networking.shared
     let persistence = Persistence.shared
+    var resolutionToSet: String = "3600"
     var pushedCryptocurrencyName: String = ""
     var pushedCryptocurrencySubName: String = ""
     var pushedCryptocurrencyRate: String = ""
     var pushedCryptocurrencyPreviousRate: String = ""
     var pushedCryptocurrencyImage: String = ""
-    var resolutionToSet: String = "3600"
-    weak var timer: Timer?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -130,14 +130,12 @@ class DetailCryptocurrencyViewController: UIViewController {
             buttonPanelView.oneMinuteButton: "60"
         ]
         
-        for (key, value) in buttons {
-            if key.isTouchInside {
-                detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: value) { (model) in
-                    self.model = model
-                    self.resolutionToSet = value
-                    self.setSelectedTimeButtonTitle(resolution: value)
-                    self.contentView.chartView.data = self.detailViewModel.setDataCount(count: model.endIndex - 1)
-                }
+        for (key, value) in buttons where key.isTouchInside {
+            detailViewModel.getJSONChartData(cryptocurrencyName: "\(pushedCryptocurrencySubName)-PLN", resolution: value) { (model) in
+                self.model = model
+                self.resolutionToSet = value
+                self.setSelectedTimeButtonTitle(resolution: value)
+                self.contentView.chartView.data = self.detailViewModel.setDataCount(count: model.endIndex - 1)
             }
         }
     

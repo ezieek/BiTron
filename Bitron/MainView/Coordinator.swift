@@ -16,11 +16,9 @@ class Coordinator: NSObject {
     func start() { }
     
     func didDismiss(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
+        for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {
                 childCoordinators.remove(at: index)
                 break
-            }
         }
     }
 }
