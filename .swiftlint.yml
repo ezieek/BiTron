@@ -1,0 +1,12 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- Pods
+
+line_length:
+ - 400 # warning
+ - 450 # error
+disabled_rules:
+ - trailing_whitespace
+cyclomatic_complexity:
+ - 35 # error
+large_tuple:
+ - 5 # error

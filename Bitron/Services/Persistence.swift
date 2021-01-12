@@ -41,42 +41,39 @@ class Persistence {
     }
     
     // MARK: - Create
-    func createCoreData(title: String, value: String, previousRate: String, image: String) {
+    func createCoreData(name: String, rate: String, previousRate: String, image: String) {
         guard let userEntity = NSEntityDescription.entity(forEntityName: "CryptocurrencyModel", in: context) else { return }
-             
         let newValue = NSManagedObject(entity: userEntity, insertInto: context)
-        newValue.setValue(title, forKey: "title")
-        newValue.setValue(value, forKey: "value")
+        newValue.setValue(name, forKey: "name")
+        newValue.setValue(rate, forKey: "rate")
         newValue.setValue(previousRate, forKey: "previous")
         newValue.setValue(image, forKey: "image")
         
         do {
             try context.save()
+            print("Dane poprawnie zapisane")
         } catch {
-            print("Saving error")
+            print("Problem z zapisem danych")
         }
     }
     
-    // MARK: - Retrive
+    // MARK: - Retrive
     func retriveCoreData() -> (name: [String], rate: [String], previousRate: [String], image: [String]) {
         var names: [String] = []
         var rates: [String] = []
         var previousRates: [String] = []
         var images: [String] = []
-        
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
     
         do {
-            
             let results = try context.fetch(fetchRequest)
-            let emptyArrays = ([""],[""],[""],[""])
-            
+            let emptyArrays = ([""], [""], [""], [""])
             for result in results {
                 
-                guard let readTitle = result.title else { return emptyArrays }
+                guard let readTitle = result.name else { return emptyArrays }
                 names.append(readTitle)
                 
-                guard let readValue = result.value else { return emptyArrays }
+                guard let readValue = result.rate else { return emptyArrays }
                 rates.append(readValue)
                 
                 guard let readPreviousRates = result.previous else { return emptyArrays }
@@ -86,9 +83,8 @@ class Persistence {
                 images.append(readImageName)
             }
         } catch {
-            print("Could not retrive core data!")
+            print("Problem z odczytem danych")
         }
-        
         return (names, rates, previousRates, images)
     }
     
@@ -124,27 +120,20 @@ class Persistence {
         }
     }*/
     
-    //MARK: - Delete
-    /*func deleteCoreData(indexPath: IndexPath, completion: @escaping () -> Void) {
-        let context = persistence.context
-        
+    // MARK: - Delete
+    func deleteCoreData(name: String, rate: String, previousRate: String, image: String) {
+        let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<CryptocurrencyModel>(entityName: "CryptocurrencyModel")
-        fetchRequest.predicate = NSPredicate(format: "title = %@", chosenCryptocurrencyNames[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "value = %@", chosenCryptocurrencyRates[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "previous = %@", chosenCryptocurrencyPreviousRates[indexPath.row])
-        fetchRequest.predicate = NSPredicate(format: "image = %@", chosenCryptocurrencyImages[indexPath.row])
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        fetchRequest.predicate = NSPredicate(format: "rate = %@", rate)
+        fetchRequest.predicate = NSPredicate(format: "previous = %@", previousRate)
+        fetchRequest.predicate = NSPredicate(format: "image = %@", image)
 
         do {
             if let result = try? context.fetch(fetchRequest) {
             
                 for object in result {
                     context.delete(object)
-                    chosenCryptocurrencyNames.remove(at: indexPath.row)
-                    chosenCryptocurrencyRates.remove(at: indexPath.row)
-                    chosenCryptocurrencyPreviousRates.remove(at: indexPath.row)
-                    chosenCryptocurrencyImages.remove(at: indexPath.row)
-
-                    completion()
                 }
             }
 
@@ -154,5 +143,5 @@ class Persistence {
                 print(error)
             }
         }
-    }*/
+    }
 }

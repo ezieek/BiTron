@@ -12,32 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var coordinator: ApplicationCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-       /* let window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator = ApplicationCoordinator(window: window)
-        coordinator?.start()*/
-        
-        
-        // create the main navigation controller to be used for our up
-        let rootViewController = LoginViewController()
-        let navController = UINavigationController(rootViewController: rootViewController)
-        
-        // send that into our coordinator so that it can display vc
-        coordinator = ApplicationCoordinator(navigationController: navController)
-
-        // tell the coordinator to take over control
-        coordinator?.start()
-        
-        // create a basic UIWindow and activate it
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navController
-        self.window?.makeKeyAndVisible()
-        
+ 
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = MenuTabBarController()
+        window?.makeKeyAndVisible()
         setupAppearance()
-        
         return true
     }
     

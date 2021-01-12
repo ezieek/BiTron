@@ -2,7 +2,7 @@
 //  BitronUITests.swift
 //  BitronUITests
 //
-//  Created by Maciej Wołejko on 04/08/2020.
+//  Created by Maciej Wołejko on 11/24/20.
 //  Copyright © 2020 Maciej Wołejko. All rights reserved.
 //
 
@@ -11,33 +11,37 @@ import XCTest
 class BitronUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        XCUIApplication().activate()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // put code here
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    
+    func testAddingFavoriteCryptocurrencies() throws {
         let app = XCUIApplication()
-        app.launch()
+        let tabBarButton = app.tabBars.buttons.element(boundBy: 1)
+        let tableViewCell = app.tables.cells
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        for number in 0..<29 {
+            tabBarButton.tap()
+            sleep(1)
+            tableViewCell.element(boundBy: number).tap()
+            sleep(2)
+        }
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+    
+    func testDeletingFavoriteCryptocurrencies() throws {
+        let app = XCUIApplication()
+        let firstTableViewCell = app.tables.cells.element(boundBy: 0)
+        let navBarButtonItem = app.navigationBars.buttons.element(boundBy: 1)
+        
+        for _ in 0..<29 {
+            firstTableViewCell.tap()
+            sleep(2)
+            navBarButtonItem.tap()
+            sleep(2)
         }
     }
 }
